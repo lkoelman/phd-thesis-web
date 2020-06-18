@@ -1,0 +1,292 @@
+%###############################################################################
+% HOWTO
+%###############################################################################
+
+% COMPILE
+% - Overleaf tips
+%   - clear cache: logs button > trash button
+% - splitting
+%   - use \input to split over files
+%   - use \include + \includeonly instead of \input to work on one file
+% - .bib file
+%   - generate in Zotero using Better Biblatex addon
+%   - in .bib file, use ctrl+f for any unicode characters you get warning about
+
+% FIGURES
+% - use the floating environment figure*/table* for multi-column spanning figures/tables
+% - save as pdf/eps in Python or Matlab, then import in Inkspace to edit
+% - for sizing figures so that figure + captions fits page, use following expression:
+%   `\includegraphics[height=\dimexpr \textheight - X\baselineskip\relax]{...}`
+%   where X is the number of text lines in the caption
+% - Inkscape tips
+%   - add guides by dragging from rulers
+%   - after editing: File > Document Properties > Resize page to drawing or selection
+%   - interpret text between $$ as LaTeX : check LaTeX option when saving as PDF
+%       - must add: \def\svgwidth{\columnwidth} + \input{figure.pdf_tex}
+
+% ZOTERO
+% - manually export BibTex library via `File > Export Library`
+%   - select '(Better) Biblatex' for correct biblatex fields
+% - auto-synchronization of BibTex file using BBT plugin: https://retorque.re/zotero-better-bibtex/push-and-pull/
+
+% COMMENTS
+% - Tags TODO an FIXME are used to mark tasks
+% - Commented sections to structure document have headers:
+%   - CONTENTS    (what should go into the section)
+%   - STRUCTURE   (how text should be structured)
+%   - ARGUMENTS   (key arguments to convey)
+%   - FIGURES     (what should be shown graphically)
+%   - REFERENCES  (references for statements and data)
+%   - RELATED     (other resources related to the section, in our own notes or elsewhere)
+
+
+%###############################################################################
+% PREAMBLE
+%###############################################################################
+
+\documentclass[11pt]{book} % SETPARAM: option [a4paper,oneside/twoside] for printing
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx} % \ang{30} and SI{50}{\micro}
+
+% Page Layout
+% \usepackage{rotating} % for sidewaysfigure environment
+% \usepackage{fullpage}
+% \usepackage{pdfpages} % include PDF pages using \includepdf{}
+\usepackage[a4paper]{geometry} % SETPARAMS margins: either use options outer,inner,top,bottom or margin/width/bindingoffset
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[colorlinks=false,bookmarks=true,bookmarksopenlevel=2]{hyperref} % options: colorlinks=true,linkcolor=blue,citecolor=red
+% \usepackage[open,openlevel=1]{bookmark} % bookmarks/outline in generated pdf
+% \usepackage{fancyhdr} % header on top of each page (ch., section)
+% \pagestyle{fancy}
+\raggedbottom % no variable paragraph spacing
+
+% Bibliography
+% https://www.overleaf.com/learn/how-to/Using_bibliographies_on_Overleaf
+%   - see bottom for different guides for natbib, biblatex, or pure bibtex
+%   - biblatex styles: https://www.overleaf.com/learn/latex/Biblatex_citation_styles
+%   - natbib styles: https://www.overleaf.com/learn/latex/Natbib_bibliography_styles
+% \usepackage[round,authoryear]{natbib} % for \citet and \citep
+% \usepackage[style=authoryear,natbib=true,uniquename=false,uniquelist=false,maxcitenames=2,maxbibnames=10,giveninits=true,date=year,dashed=false,isbn=false,url=false]{biblatex} % natbib for \citep, doi=false, One may also need: uniquelist=false,labeldate=year,alldates=year,urldate=short
+
+% Figures
+\usepackage{rotating} % for sidewaysfigure/sidewaystable environment
+\usepackage[section]{placeins} % command \FloatBarrier to flush figures/tables
+\usepackage{graphicx} % SETPARAM: option [draft] to remove figures in draft
+\usepackage{xcolor} % control text/block color, using names
+%\usepackage{graphics}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{multirow}
+
+% Todo notes
+% \usepackage[colorinlistoftodos,shadow]{todonotes}
+% 'todonotes' usage: \todo{...}, \todo[inline]{...}, \missingfigure[figwidth=]{figtext}
+\newcommand{\comment}[1]{\textcolor{Orange}{#1}}
+% \newcommand{\commented}[1]{{\color{Blue}#1}}
+% \newcommand{\commentinvisible}[1]{\iffalse#1\fi}
+% \newcommand{\marktodo}[1]{\textcolor{red}{#1}}
+
+\DeclareUnicodeCharacter{2212}{-} % minus sign not set up by default with inputenc
+
+%###############################################################################
+% DOCUMENT SETTINGS
+%###############################################################################
+
+% Line spacing
+\linespread{1.3} % use 1.0/1.3/1.6 for single/1.5/double
+
+% SETPARAM: Biblatex bibliography files
+% \addbibresource{bibliography/zotero_library_BMO_biblatex-20200506.bib}
+% \addbibresource{bibliography/manual_references.bib}
+
+% SETPARAM: include only chapter you're working on
+% \includeonly{ch_frontmatter/ch_abstract}
+% \includeonly{ch_background_literature/ch_literature_review}
+% \includeonly{ch_detailed_model/ch_detailed_network_model}
+% \includeonly{ch_dbs_fem/ch_dbs_fem_integration}
+% \includeonly{ch_reduced_model/ch_reduced_cell_models}
+% \includeonly{ch_discussion/ch_thesis_discussion}
+
+\title{Investigation of Pathophysiology of Parkinson's Disease and Mechanisms of Deep Brain Stimulation using Biophysically Detailed Neuron Models}
+% - Biophysically Detailed Modeling of the Basal Ganglia in Parkinson's Disease
+% - Investigation of Pathophysiology and Mechanisms of Deep Brain Stimulation using Multi-compartment Cable Neuron Models (Simulation of Basal Ganglia Network Activity)
+% - Investigation of Pathophysiology and Mechanisms of Deep Brain Stimulation in the Basal Ganglia using Biophysically Detailed Neuron Models
+% - Simulation of the Basal Ganglia Network using Detailed Neuron Models - Investigation of Pathophysiology and Mechanisms of Deep Brain Stimulation in Parkinson's Disease
+\author{Lucas Koelman}
+\date{January 2020} % \today
+
+%###############################################################################
+% FRONTMATTER
+%###############################################################################
+
+\begin{document}
+
+% Cover page
+% \includepdf[pages={1}]{cover_page.pdf}
+% \maketitle
+
+\input{ch_frontmatter/titlepage.tex}
+
+% ToC
+% \addcontentsline{toc}{chapter}{Contents} % add unnumbered sec. to ToC
+% \pdfbookmark{\contentsname}{toc}
+\tableofcontents
+% \clearpage
+
+% List of figures/tables
+% \addcontentsline{toc}{chapter}{List of Figures}
+% \listoffigures
+% \addcontentsline{toc}{chapter}{List of Tables}
+% \listoftables
+
+% NOTE: use format
+% \chapter[toc version]{doc version}
+% \chaptermark{version for page header}
+
+\frontmatter % starts page numbering in roman
+
+% Front matter: unnumbered chapters
+\chapter*{Abstract}
+\label{fm:abstract}
+% \addcontentsline{toc}{chapter}{\nameref{fm:abstract}} % add unnumbered sec. to ToC
+\input{ch_frontmatter/ch_abstract}
+
+% \chapter*{Dedication}
+% To ...
+
+% \chapter*{Declaration}
+% TODO: I declare that..
+
+\chapter*{Acknowledgements}
+% TODO: I want to thank...
+
+Countless people have contributed to this PhD thesis taking shape, each
+in their own ways. Space permitting, some of them deserve special mention here.
+% while others may be mentioned on request.
+In particular, I would like to express my gratitude to ...\\
+
+\noindent
+Prof. Madeleine Lowery, my supervisor, for her scientific feedback, excellent
+writing suggestions, and continuous encouragement in the face of existential doubts.\\
+
+\noindent
+Iwona, for her emotional support, patience and understanding, gentle chastisements,
+and inspiring discussions about the meaning of doing research in the 21st century.\\
+
+\noindent
+All the scientists who inspired me to pursue science and engineering by elevating it
+from a technical to a philosophical pursuit. In particular the cyberneticists
+H. Maturana \& F. Varela, N. Wiener and mathematicians B. Russell, L. Wittgenstein, and A. Turing. \\
+
+\noindent
+The artists, writers and directors that have imagined and depicted
+humans interfacing with computers long before it was remotely possible.\\
+
+\noindent
+To Leela for her relaxing purrs and excellent writing suggestions
+by walking over my keyboard whenever I suffered writer's block.\\
+
+\noindent
+To everyone contributing to the open and free access to science.
+
+
+\chapter*{Associated publications}
+\label{fm:publications}
+% \addcontentsline{toc}{chapter}{\nameref{fm:publications}}
+\input{ch_frontmatter/publications.tex}
+
+% Abbreviations/symbol table
+\chapter*{Abbreviations \& symbols}
+\label{fm:abbreviations}
+% \addcontentsline{toc}{chapter}{\nameref{fm:abbreviations}}
+\input{ch_frontmatter/ch_abbreviations_symbols}
+
+%###############################################################################
+% CHAPTERS
+%###############################################################################
+
+\mainmatter % starts page numbering in arabic
+
+% Background and problem statement
+\chapter{Introduction}
+\label{ch1:introduction}
+\input{ch_intro/ch_intro_problem}
+
+% Literature review and detailed problem
+\chapter{Literature review}
+\label{ch2:lit-review}
+\input{ch_background_literature/ch_literature_review}
+
+% Detailed BG network model
+\chapter{Beta-band resonance and intrinsic oscillations in a biophysically detailed model of the subthalamic
+nucleus-globus pallidus network}
+\chaptermark{STN-GPe network model}
+\label{ch3:detailed-model}
+\input{ch_detailed_model/ch_detailed_network_model}
+
+% Integration with FE Model of DBS electrode
+\chapter{TODO: Awaiting publication}
+% \chapter{Network effects of high-frequency and phase-locked DBS in a biophysically detailed model of the STN-GPe loop}
+% \chaptermark{DBS model}
+% \label{ch4:dbs-model}
+% \input{ch_dbs_fem/ch_dbs_fem_integration}
+
+This chapter is awaiting publication as a journal article and will be published here later.
+
+% Larger model using reduced cell models
+\chapter{Neuronal morphology reduction applied to a detailed STN-GPe network model}
+\chaptermark{Reduced network model}
+\label{ch5:reduced-model}
+\input{ch_reduced_model/ch_reduced_cell_models}
+
+% Discussion of thesis as a whole
+\chapter{Conclusions}
+\label{ch6:conclusions}
+\input{ch_discussion/ch_thesis_discussion}
+
+%###############################################################################
+% APPENDICES
+%###############################################################################
+% What goes in the appendices? Any material which impedes the smooth development of your presentation, but which is important to justify the results of a thesis. Generally it is material that is of too nitty-gritty a level of detail for inclusion in the main body of the thesis, but which should be available for perusal by the examiners to convince them sufficiently. Examples include program listings, immense tables of data, lengthy mathematical proofs or derivations, etc.
+
+%\appendixpage* % if wanted
+\appendix
+
+% Figure numbering A.X, B.X in appendices
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{\Alph{chapter}\arabic{figure}}
+
+\chapter{Supplementary Figures}
+\input{ch_appendix/appendix_figures}
+
+\chapter{Code and software}
+\input{ch_appendix/appendix_software}
+
+
+%###############################################################################
+% BIBLIOGRAPHY
+%###############################################################################
+% The bibliography comes after the appendices.
+
+% \backmatter % in documentclass 'book' -> no chapter numbering
+
+% include bibliography in ToC
+% \addcontentsline{toc}{chapter}{Bibliography}
+
+% Using BibTeX or Natbib
+\bibliographystyle{plainurl} % harvard == agsm
+\bibliography{bibliography/bibliography_manual,bibliography/bibliography_zotero}
+% \bibliography{file1,file2,file3} without .bib extensions
+
+% Using BibLaTeX
+% https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex
+% \printbibheading % done automatically
+% \printbibliography
+
+\end{document}
+

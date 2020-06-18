@@ -1,0 +1,1320 @@
+
+%
+%
+%
+
+%
+%
+%
+%
+%
+
+%
+
+%
+
+%
+%
+%
+%
+%
+
+%
+%
+
+%
+%
+%
+%
+
+%
+%
+
+%
+%
+%
+\section{Introduction}
+\label{sec:ch3-introduction}
+
+%
+%
+%
+
+%
+%
+
+%
+%
+%
+
+%
+
+%
+%
+To understand how DBS reshapes pathological neuronal unit and network activity
+characteristic of PD, both network effects as well as stimulation effects on a sub-cellular
+scale should be taken into account (Chapters~\ref{ch1:introduction}-\ref{ch2:lit-review}).
+As the basis for addressing the aims determined for this thesis, this chapter introduces a
+biophysically detailed network model that captures both sub-cellular and network interactions
+of DBS, which will be further explored in Chapter~\ref{ch4:dbs-model}.
+%
+%
+%
+%
+
+
+%
+%
+Pathological oscillations in the basal ganglia-thalamocortical (BGTC) network have
+long been implicated in the motor symptoms of Parkinson's disease. Beta-band (13-30 Hz)
+oscillations are consistently strengthened with dopamine depletion both in individuals
+with Parkinson's disease (PD) and parkinsonian animal models \cite{sharott_dopamine_2005,mallet_disrupted_2008,kuhn_high-frequency_2008},
+and are reduced by deep brain stimulation and pharmacological interventions
+that alleviate parkinsonian motor symptoms \cite{kuhn_reduction_2006,weinberger_beta_2006,eusebio_deep_2011,ray_local_2008}. The magnitude of subthalamic nucleus local field potential beta oscillations is also correlated with the severity and degree of improvement of bradykinetic/akinetic motor symptoms and rigidity \cite{kuhn_reduction_2006,bronte-stewart_stn_2009}. Although beta-band oscillations may not be causal to bradykinetic/akinetic symptoms \cite{leblois_late_2007}, they offer potential as a biomarker for symptom severity and the underlying network pathophysiology in advanced Parkinson's Disease.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+The origin of beta-band oscillations in the BGTC network, however, remains unclear.
+The most prominent hypotheses emphasize the importance of dopamine-modulated strengthening
+of particular feedback loops within the BGTC network (see Chapter~\ref{sec:ch2-litrev/oscillation-models}).
+Computational models have provided a valuable tool with which to explore various hypotheses
+regarding the mechanisms by which oscillatory activity with the network is generated.
+These models show that under many conditions the network is prone to oscillate,
+through intrinsic pacemaking or susceptibility to an extrinsic rhythm.
+%
+%
+%
+%
+
+%
+The reciprocally connected subthalamo-pallidal (STN-GPe) network is a key site in the basal ganglia in which beta-band oscillations are manifest in Parkinson's disease \cite{mallet_parkinsonian_2008,mallet_disrupted_2008}. This network was an early focus of modelling studies due to its reciprocally connected structure and ability to generate low frequency oscillations in tissue cultures \cite{plenz_basal_1999}. Models of the STN-GPe as a pacemaker initially focused on the generation of low frequency oscillations within the frequency range of parkinsonian tremor \cite{gillies_subthalamic-pallidal_2002,terman_activity_2002}, with focus shifting to the beta-band with increasing evidence of a link between beta activity and parkinsonian motor symptoms \cite{holgado_conditions_2010,pavlides_improved_2012}.
+
+%
+More recent experimental evidence suggests that, rather than the STN-GPe network operating in a pacemaking mode, patterning by the cortex may play a critical role in the generation of pathological beta-band oscillations in Parkinson's disease. This is supported by observations of high functional coupling between cortex and STN \cite{mallet_parkinsonian_2008,magill_brain_2004,moran_alterations_2011,sharott_dopamine_2005,litvak_resting_2011}, and that oscillatory activity in STN-GPe is contingent on input from cortex and can be abolished by disrupting them \cite{drouot_functional_2004,magill_dopamine_2001,tachibana_subthalamo-pallidal_2011}.
+Cortical patterning of the STN-GPe network by means of feedback inhibition provides a proposed mechanism for this functional coupling \cite{baufreton_enhancement_2005,bevan_cellular_2006,tachibana_subthalamo-pallidal_2011,mallet_parkinsonian_2008,mallet_dichotomous_2012}. According to this hypothesis, weak oscillatory activity arriving via cortico-STN afferents is amplified in the STN-GPe network when feedback inhibition from the GPe is offset in phase with cortical excitation. While such feedback-mediated oscillations have been observed in vivo \cite{paz_rhythmic_2005} and in slices \cite{baufreton_enhancement_2005}, the ability of the network to generate autonomous oscillations and its resonant response properties are still poorly understood.
+%
+%
+%
+%
+%
+%
+Specifically, it is not clear whether the STN-GPe network plays an active part in generating beta-band oscillations, nor whether it amplifies or merely sustains them. Neither is it fully understood how beta-band oscillations relate to other pathological patterns of neural activity in the subthalamic nucleus (STN) and external globus pallidus (GPe) that correlate more strongly with parkinsonian motor symptoms, notably increased neural bursting \cite{sanders_parkinsonism-related_2013,sharott_activity_2014}. It is clear, however, that interventions in the loop and its afferents that reduce beta-band oscillations \cite{tachibana_subthalamo-pallidal_2011} or bursting \cite{gradinaru_optical_2009,sanders_optogenetic_2016,pan_neuronal_2016} lead to improvements in motor symptoms. Similarly, the STN \cite{benabid_deep_2009} and GPe, in nonhuman primates \cite{vitek_external_2012}, are effective targets for deep brain stimulation (DBS).
+%
+%
+%
+%
+%
+%
+
+%
+Previous modeling studies have focused on alterations in connection patterns and strength within or between nuclei, typically represented by mean-field or single-compartment spiking neuron models. While such models are computationally efficient, they may not fully capture the role of intrinsic properties of neurons in shaping pathological activity patterns. Although cell-specific ion channels can be used, single-compartment neuron models lump together ion channels and synapses in one isopotential compartment in a way that may not capture the complex dynamics that arise when non-uniformly distributed ion channels \cite{gillies_membrane_2005} interact with synapses associated with distinct subcellular regions \cite{pan_neuronal_2016,galvan_differential_2004,bevan_glutamate-enriched_1995}. Hence they may not fully account for the mechanisms contributing to pathological activity within the STN and the role that synaptic-ionic current interactions play in sustaining beta-band oscillations and excessive burst firing.
+%
+%
+
+%
+It has recently been demonstrated that following dopamine depletion the balance of excitatory and inhibitory synaptic currents in STN neurons is shifted toward inhibition \cite{chu_loss_2017,wang_impaired_2018}, known to promote burst responses by increasing the availability of $Ca^{2+}$ and $Na^{+}$ channels de-inactivated at hyperpolarized potentials \cite{baufreton_enhancement_2005}. In the GPe increased inhibition, caused mainly by strengthening of striato-pallidal afferents, is also believed to play a role in generating pathological oscillations as demonstrated in model simulation \cite{terman_activity_2002,gillies_subthalamic-pallidal_2002,kumar_role_2011,holgado_conditions_2010}. Increased GPe inhibition has been suggested to cause increased engagement of HCN channels \cite{chan_hcn2_2004}, which are involved in phase resetting and controlling the regularity of firing. However, whether functional coupling between BG nuclei is also moderated by the excitation-inhibition balance is not fully understood.
+%
+%
+
+%
+The aim of this study was, therefore, to understand the relative contributions of intrinsic, endogenously generated oscillations and patterning by exogenous oscillatory inputs in the generation of synchronous beta-band oscillatory activity within the STN-GPe network. A second aim was to understand how pathological oscillations and bursting patterns are related to the balance of excitation and inhibition in the STN and GPe. The STN-GPe network was modeled using biophysically detailed multi-compartmental cell models of STN and GPe neurons that capture the interaction between synaptic and intrinsic currents distributed within the dendritic structure and involved in autonomous pacemaking and bursting \cite{gillies_membrane_2005,gunay_channel_2008}.
+%
+The generation of oscillations both autonomously within the network and in response to beta frequency inputs from the cortex (CTX) and indirect pathway striatal medium spiny neurons (iMSN) was examined as the balance of excitation and inhibition within the network was systematically varied, and oscillatory inputs with varying phase relationships were added. A better understanding of the relative contribution of these different factors and their interaction has the potential to improve understanding of the mechanism of action of existing anti-parkinsonian therapies, including deep brain stimulation (DBS) and to guide the development of more effective circuit interventions.
+
+%
+%
+%
+%
+
+The work presented in this chapter has been published in \cite{koelman_beta-band_2019}.
+
+%
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{ch_detailed_model/figs/stn-gpe_network_diagram.png}
+\caption{\textbf{Network architecture: population and subcellular connectivity.} \textbf{A}: Neuronal populations and their projections modeled in the network. Subthalamic projection neurons (STN) and prototypic neurons of the external globus pallidus (GPe) were modeled using multi-compartmental neuron models. Cortical projection neurons (CTX) and indirect pathway striatal medium spiny neurons (iMSN) were modeled as spike generators. \textbf{B}: Branching structure of the STN neuron model and representative synapses by afferent type, indicating subcellular distribution of synapses. Cortical glutamergic afferents synapse primarily onto thin dendrites, distally relative to the soma, but NMDA receptors with faster NR2A subunits mainly target the soma and proximal areas. Pallidal GABAergic afferents target proximal areas of the cell. \textbf{C}: Branching structure of the GPe neuron model and representative synapses by afferent type. GABAergic GPe-GPe collaterals mainly target somata and proximal dendrites, whereas glutamergic afferents were placed in distal regions. Full details of the model are provided in the Methods.}
+\label{fig:network_diagram}
+\end{figure}
+
+%
+%
+%
+\section{Methods}
+\label{sec:ch3-methods}
+
+
+%
+%
+\subsection{Model architecture}
+
+The network model of the STN-GPe network consisted of four populations of neurons (Fig.~\ref{fig:network_diagram}): the STN and GPe neurons, modeled as multi-compartmental conductance-based models, and their cortical and striatal inputs, modeled as Poisson or bursting spike generators.
+
+Population sizes were chosen to preserve the decrease in population sizes and convergence of projections along the indirect and hyperdirect pathways in the basal ganglia. The STN and GPe populations consisted of 50 and 100 multi-compartmental cells, respectively, to approximate the ratio of approximately 13,000 STN cells to 30,000 GPe prototypic cells \cite{abdi_prototypic_2015,oorschot_absolute_1999} unilaterally in the rat.
+%
+As a source of synaptic noise, an additional 10\% of the cells in the STN and GPe populations were modeled as Poisson spike generators firing at a mean rate equal to the experimentally reported rate for the modeled state.
+
+The cortical and striatal populations consisted of 1,000 and 2,000 cells, respectively, modeled as spike generators. These numbers were chosen to have 20 independent pre-synaptic spike generators per post-synaptic cell to model convergence along the hyperdirect CTX-STN and indirect iMSN-GPe projection. For the iMSN-GPe projection, convergence from all medium spiny neurons (MSN) to GPe, ignoring subpopulations, is approximately 2,800,000 MSN cells to 46,000 GPe cells \cite{oorschot_total_1996} resulting in a convergence factor of approximately 60. Assuming that convergence is similar between iMSN and GPe prototypic neurons, the number used here is an underestimation by a factor three. Because iMSN cells in the current model spike independently and since the number of synapses per cell was lower than in reality, this was considered acceptable.
+
+%
+%
+%
+%
+%
+
+Stochastic connectivity profiles for the connections illustrated in Fig.~\ref{fig:network_diagram} were generated by randomly selecting a fixed number of afferents from the pre-synaptic population for each post-synaptic cell. The ratios of number of afferents from each source population (Table~\ref{tab:model_conn_data}) were determined, where possible, based on experimentally reported number of synaptic boutons per afferent type and the number of contacts per axon (Table~\ref{tab:conn_data}). Each multi-synaptic contact was represented by a single synapse to reduce the number of simulated synapses to a more tractable number.
+
+%
+%
+%
+
+%
+\begin{table}
+\centering
+%
+\begin{tabular}{lllll}
+\toprule
+target & source & \begin{tabular}{@{}c@{}} connection \\ probability \end{tabular} & \begin{tabular}{@{}c@{}} number of \\ afferents \end{tabular} & \begin{tabular}{@{}c@{}} source \\ pop. size \end{tabular} \\
+\midrule
+STN & CTX & 0.014 & 14 & 1000 \\ %
+ & GPe & 0.073 & 8 & 110 \\ %
+\midrule
+GPe & GPe & 0.055 & 6 & 110 \\ %
+ & STN & 0.18 & 10 & 55 \\ %
+ & MSN & 0.015 & 30 & 2000 \\ %
+\bottomrule
+\end{tabular}
+%
+%
+%
+\caption{{\bf Connection data used in the model.} Population sizes include 10\% surrogate spike sources.}
+\label{tab:model_conn_data}
+\end{table}
+
+\begin{sidewaystable}
+\centering
+\caption{
+{\bf Experimentally reported connection parameters used to calibrate the model.}}
+\begin{adjustbox}{width=\textwidth} %
+%
+\begin{tabular}{p{0.05\textheight}p{0.05\textheight}p{0.10\textheight}p{0.15\textheight}p{0.15\textheight}p{0.15\textheight}p{0.15\textheight}p{0.15\textheight}}
+\toprule
+target & source & \begin{tabular}{@{}c@{}} afferent \\ neurons \end{tabular} & \begin{tabular}{@{}c@{}} synaptic \\ contacts \end{tabular} & \begin{tabular}{@{}c@{}} subcellular \\ targets \end{tabular} & \begin{tabular}{@{}c@{}} short-term \\ plasticity \end{tabular} & delay & \begin{tabular}{@{}c@{}} effect of \\ dopamine depletion \end{tabular} \\
+\midrule
+STN & (all) & 300 (\cite{baufreton_d2-like_2008}) &  & N.A. & N.A. & N.A. & N.A. \\
+ & CTX &  &  & distal \cite{bevan_glutamate-enriched_1995,mathai_reduced_2015,pan_neuronal_2016} & depression (\cite{chu_heterosynaptic_2015}) & 5.9 ms (\cite{kita_cortical_2011}) & weakened \cite{chu_loss_2017,wang_impaired_2018} \\
+ &  &  &  & proximal (\cite{pan_neuronal_2016}) &  &  &  \\
+ & GPe & 57 (\cite{atherton_short-term_2013}) & 883 (\cite{baufreton_sparse_2009}) & proximal (\cite{smith_topographical_1990}) & depression (\cite{atherton_short-term_2013}) & 4 ms (\cite{fujimoto_response_1993}) & strengthened (\cite{chu_heterosynaptic_2015}) \\
+ &  &  &  &  &  &  & prolonged decay (\cite{fan_proliferation_2012}) \\ \midrule
+GPe & GPe &  &  & proximal, somatic \cite{sadek_single-cell_2007,chan_hcn2_2004} & depression (\cite{miguelez_altered_2012}) &  & strengthened (\cite{miguelez_altered_2012}) \\
+ & STN & 135 (\cite{kita_organization_2016}) &  & dendritic, distal \cite{shink_differential_1995} & facilitation, & 2 ms (\cite{kita_intracellular_1991}) & strengthened (\cite{hernandez_control_2006}) \\
+ &  &  &  &  & depression (\cite{hanson_short-term_2002}) &  &  \\
+ & MSN &  & 10622 (\cite{kita_organization_2016}) & dendritic, distal (\cite{chan_hcn2_2004}) & facilitation (\cite{miguelez_altered_2012}) & 5 ms (\cite{kita_intracellular_1991}) & \\
+ \bottomrule
+\end{tabular}
+\end{adjustbox}
+%
+%
+\label{tab:conn_data}
+\end{sidewaystable}
+
+%
+%
+\subsection{Conductance-based models}
+
+The membrane potential $v_j$ (mV) in each compartment $j$ of a multi-compartmental cable model is governed by:
+
+%
+\begin{align}
+    c_m \frac{ \delta v_{j} }{ \delta t } &= \frac{d}{4 R_a} \frac{ \delta^2 v_j }{ \delta x^2 } - g_m (v_j - E_m) - \sum I_{ion,j} - \sum I_{syn,j}
+\end{align}
+
+%
+%
+%
+%
+%
+%
+
+where $x$ (cm) is the position along the cable, $c_m$ ($ \mu F / cm^2 $) is the specific membrane capacitance, $d$ (cm) is the cable diameter, $R_a$ is the specific axial resistance ($\Omega cm$), $g_m$ ($S / cm^2$) is the passive membrane conductance, $E_m$ (mV) the leakage reversal potential, $I_{ion,j}$ ($mA / cm^2$) are the ionic currents flowing across the membrane of compartment $j$, and $I_{syn,j}$ ($mA / cm^2$) are the synaptic currents at synapses placed in the compartment.
+Each ionic current is governed by an equation of the form:
+
+\begin{equation}
+    I_x = \overline{g}_x m_x^p h_x^q (v_j - E_x)
+\end{equation}
+
+where $\overline{g}_x$ is the maximum conductance of the channel ($S/cm^2$), $E_x$ is the reversal potential (mV), $m_x$ and $h_x$ the open fractions of the activation and inactivation gates, and $p$ and $q$ are exponents fitted to experimental data. The dynamics of the activation and inactivation gates $m$ and $h$ are governed by
+
+\begin{equation}
+    \frac{dm}{dt} = \frac{ m_{ \infty } (v_j) - m }{ \tau_{ m } (v) } ,
+\end{equation}
+
+with $ m_{ \infty } (v) $ and $\tau_{ m } (v)$ representing the voltage-dependent steady state value and time constant of the gate. For some currents the gating dynamics are described in terms of the opening and closing rates $\alpha_m$ and $\beta_m$ related through $ \tau_{ m } = \frac{1}{ \alpha_m + \beta_m } $, $ m_{ \infty } = \frac{ \alpha_m }{ \alpha_m + \beta_m }$ :
+
+\begin{equation}
+    \frac{dm}{dt} = \alpha_m (v) \cdot (1 - m) - \beta_m (v) \cdot m .
+\end{equation}
+
+Reversal potentials are assumed constant unless otherwise noted. The reversal potential for $  Ca  ^ { 2 + } $ currents was calculated using the Nernst equation from the intra- and extracellular ion concentrations:
+
+\begin{equation}
+    E_{Ca} = \frac{RT}{zF} \ln { \frac{ \left[  Ca  ^ { 2 + } \right] _ { o }  }{ \left[  Ca  ^ { 2 + } \right] _ { i }  } }
+\end{equation}
+
+where $T$ is the temperature in Kelvin, $R$ is the universal gas constant, $F$ is the Faraday constant, and $z$ is the valence of the calcium ion (+2). Intracellular calcium buffering in a sub-membrane shell is modeled as:
+
+\begin{align}
+    \frac { d \left[  Ca ^ { 2 + } \right] _ { i } }{ dt } &= - \left( I_{CaL} + I_{CaN} + I_{CaT} \right) \, \frac{c}{2 F d} \, - \frac{ \left[ Ca^{2+} \right] _ { i0 } - \left[Ca^ { 2 + } \right] _ { i } }{ \tau _ {Ca} }
+\end{align}
+
+where $c$ is a unit conversion constant, $d$ is the thickness of the sub-membrane shell, and $ \tau _ {  Ca  } $ is the time constant of decay. \\
+
+%
+%
+
+Synapses were modeled by a dual exponential profile with rise and decay times $\tau_{rise}$ and $\tau_{decay}$ modulated by the fraction of synaptic resources in the active state which was governed by Tsodyks-Markram dynamics \cite{tsodyks_neural_1998}:
+
+\begin{align}
+%
+I_{syn} &= \overline{g}_{syn} (B - A) (v_j - E_{syn}) \label{eq:tm-synapse-start} \\
+\frac{dA}{dt} &= \frac{-A}{\tau_{rise}} + f_{peak} \cdot U_{SE} \cdot R \cdot \delta (t - t_{spk}) \\
+\frac{dB}{dt} &= \frac{-B}{\tau_{decay}} + f_{peak} \cdot U_{SE} \cdot R \cdot \delta (t - t_{spk}) \\
+\frac{dR}{dt} &= \frac{1 - R}{\tau_{rec}} - U_{SE} \cdot R \cdot \delta (t - t_{spk}) \\
+\frac{dU_{SE}}{dt} &= \frac{-U_{SE}}{\tau_{facil}} + U_{1} \cdot ( 1 - U_{SE} ) \cdot \delta (t - t_{spk}) \\
+f_{peak} &= \frac{1}{\exp (-t_{peak} / \tau_{decay}) - \exp (-t_{peak} / \tau_{rise})} \\
+t_{peak} &= \frac{\tau_{rise} \cdot \tau_{decay}}{\tau_{decay} - \tau_{rise}} \log ( \frac{ \tau_{decay} }{ \tau_{rise} } ) \label{eq:tm-synapse-end}
+\end{align}
+
+where, $\overline{g}_{syn}$ is the peak synaptic conductance, B-A represents the synaptic gating variable, $f_{peak}$ is a normalization factor so that B-A reaches its maximum at time $t_{peak}$ after the time of spike arrival $t_{spk}$, R is the fraction of vesicles available for release, $U_{SE}$ is the release probability, $U_1$ the initial release probability, and $\tau_{rec}$ and $\tau_{facil}$ are the time constants for recovery from short-term depression and facilitation, respectively. The synaptic reversal potentials $ E_{syn} $ were 0 mV for AMPA and NMDA, -80 mV for GABA\textsubscript{A}, and -95 mV for GABA\textsubscript{B}. For NMDA synapses there is an additional voltage-dependent gating variable representing magnesium block \cite{jahr_voltage_1990}:
+
+\begin{align}
+    m(v) = 1 / (1 + exp(-0.062 v) (1 / 3.57))
+\end{align}
+
+The metabotropoc GABA\textsubscript{B} receptor-mediated current was modeled as an intracellular signaling cascade based on the model by \cite{destexhe_g_1995}. The equations describing G-protein activation and the synaptic current were retained, but the bound receptor fraction including the effects of desensitization was represented by the fraction of resources in the active state in the Tsodyks-Markram scheme (B-A). The equation governing the G-protein production rate thus became
+
+\begin{align}
+    \frac{dG}{dt} = K_3 (B-A) - K_4 G
+\end{align}
+
+where G is the G-protein concentration, and $K_3$ and $K_4$ are the rates of G-protein production and decay, respectively. The G-protein concentration $G$ gates the peak synaptic synaptic conductance according to a sigmoid activation function represented by the Hill equation:
+
+\begin{align}
+    I_{GABA_B} = \overline{g}_{syn} \tfrac{G^n}{G^n + K_d^n} (v - E_{GABA_B}).
+    \label{eq:gabab-synapse-end}
+\end{align}
+
+%
+\subsection{STN cell model}
+
+STN neurons were modeled using the rat subthalamic projection neuron model by \cite{gillies_membrane_2005} (ModelDB accession number \href{https://senselab.med.yale.edu/ModelDB/showmodel.cshtml?model=74298}{74298}). The neuron morphology is based on quantitative characterization of the dendritic trees of STN neurons in vitro. The model includes ten intrinsic ionic currents (Table~\ref{tab:stn_ionic_currents}) :
+
+\begin{equation}
+\begin{split}
+    I_{ion,j} = \ & I_{NaF} + I_{NaP} \\
+              & + I_{KDR} + I_{Kv31} + I_{sKCa} \\
+              & + I_{CaT} + I_{CaL} + I_{CaN} \\
+              & + I_{HCN} + I_{L}
+\end{split}
+\end{equation}
+
+where $I_{NaF}$ and $I_{NaP}$ are the transient fast-acting and persistent sodium current, $I_{KDR}$, $I_{Kv31}$, and $I_{sKCa}$ the delayed rectifier, fast rectifier and calcium-activated potassium current, $I_{CaT}$, $I_{CaL}$ and  $I_{CaN}$ the low-voltage-activated T-type, high-voltage-activated L-type, and high-voltage-activated N-type calcium currents, $I_{HCN}$ the hyperpolarization-activated cyclic nucleotide (HCN) current, and $I_{L}$ the leak current. The equations governing the dynamics of the gating variables are listed in Table~\ref{tab:stn_ionic_currents}. The channel density distributions are described extensively in \cite{gillies_membrane_2005}.
+%
+As a source of noise, a current with a Gaussian amplitude distribution, mean zero and
+standard deviation 0.1 $mA/cm^2$ was added to the somatic compartment.
+
+%
+The synaptic currents included an excitatory glutamergic input from cortex, acting through AMPA and NMDA receptors, and an inhibitory GABAergic input from the GPe, acting through GABA\textsubscript{A} and GABA\textsubscript{B} receptors (Table~\ref{tab:stn_synaptic_currents}):
+
+\begin{equation}
+\begin{split}
+    I_{syn,j} = \ & I_{CTX−STN,AMPA} + I_{CTX−STN,NMDA} \\
+              & + I_{GPE−STN,GABA_A} + I_{GPE−STN,GABA_B}
+\end{split}
+\end{equation}
+
+In the control condition STN neurons had 20 excitatory cortical afferents and 8 inhibitory
+pallidal afferents. Excitatory glutamergic synapses were modeled as conductance-based
+synapses with Tsodyks-Markram dynamics \cite{tsodyks_neural_1998}. For each cortical
+afferent one model synapse was placed distally in the dendritic tree and one model synapse was
+placed proximally near the soma. The distal synapses had both an AMPA and slower NMDA
+conductance component with common short-term plasticity dynamics but separate conductance
+variables. The latter represented slower-kinetics NMDA receptors with majority NR2B and
+NR2D subunits that have dendritic punctual expression \cite{pan_neuronal_2016}. The
+proximal synapses had only an NMDA component and represented NMDA receptors with NR2A
+subunits that have faster kinetics \cite{pan_neuronal_2016}. The parameter values for the
+conductance-based synapses are listed in Table~\ref{tab:stn_synaptic_currents},
+where $s$ represents the synaptic gating variable $(B-A)$ and $m$ the magnesium
+block variable.
+Parameters describing short-term plasticity dynamics were set to match experimentally
+reported traces listed in Table~\ref{tab:model_conn_data} were available.
+
+%
+%
+%
+
+%
+
+\begin{table}[ht]
+\centering
+\caption{
+{\bf STN model intrinsic current equations from \cite{gillies_membrane_2005}.}}
+\begin{adjustbox}{width=\textwidth} %
+\begin{tabular}{lllll}
+\toprule
+Current & Equation & Gating variables &  & Parameters \\ \midrule
+$ I_{NaF} $ & $ \overline{g}_{NaF} m^2 h (v - E_{Na}) $ & $ \alpha _ { m } = 0.32 \frac { \left( 13.1 − v \right) } { \exp ( ( 13.1 − v ) / 4 ) − 1 } $ & $ \beta _ { m } = 0.28 \frac { \left( v - 40,1 \right) } { \exp \left( v - 40.1 \right) − 1 } $ & $ \overline{g}_{NaF} = 14.83 e{-3} $ (soma) \\
+ &  &$ \alpha _ { h } = 0.128 \exp \left( \frac{ 17 − v } { 18 } \right) $ & $ \beta _ { h } = \frac { 4 } { \exp \left( \left( 40 − v \right) / 5 \right) + 1 } $ & $ \overline{g}_{NaF} = 1 e{-7} $ (dendrite) \\ \midrule
+$ I_{NaP} $ & $ \overline{g}_{NaP} (v - E_{Na}) $ &  &  & $ \overline{g}_{NaP} = 1.11 e{-5} $ (soma) \\
+ &  &  &  & $ \overline{g}_{NaP} = 8.10 e{-6} $ (dendrite) \\ \midrule
+$ I_{KDR} $ & $ \overline{g}_{KDR} n (v - E_{K}) $ & $ \alpha _ { n } = \frac { 0.016 \left( 35.1 − v \right) } { \exp \left( \left( 35.1 − v \right) / 5 \right) − 1 } $ & $ \beta _ { n } = 0.25 \exp \left( \left( 20 − v \right) / 40 \right) $ & $ \overline{g}_{KDR} = 3.84 e{-3} $ (soma) \\
+ &  &  &  & $ \overline{g}_{KDR} \in \left[ 4.22 , 9.32 \right] \times 10^{−5} $ (dendrite) \\ \midrule
+$ I_{Kv31} $ & $ \overline{g}_{Kv31} p (v - E_{K}) $ & $ p _ { \infty } = \frac { 1 } { 1 + \exp \left( − \left( v + 5 \right) / 9 \right) } $ & $ \tau_{\infty} = \frac{ 18.71 }{ \exp ( − (v + 28) / 6 ) + \exp ( ( v + 4) / 16 ) } $ & $ \overline{g}_{Kv31} = 1.34 e{-2} $ (soma) \\
+ &  &  &  & $ \overline{g}_{Kv31} \in \left[ 8.91 , 10 \right] \times 10^{−4} $ (dendrite) \\ \midrule
+$ I_{sKCa} $ & $ \overline{g}_{sKCa} w (v - E_{K}) $ & $ w_{ \infty } = \frac{ 0.81 }{ 1 + \exp \frac{ − \log \left[ Ca^{2+} \right]_i - 0.3 } { 0.46 } } $ & $ \tau_{w} = 40 $ & $ \overline{g}_{sKCa} = 6.84 e{-5} $ (soma) \\
+ &  &  &  & $ \overline{g}_{sKCa} = 3.92 e{-5} $ (dendrite) \\ \midrule
+$ I_{HCN} $ & $ \overline{g}_{HCN} f (v - E_{HCN}) $ & $ f_{\infty} = \frac { 1 } { 1 + \exp \left( v + 75 \right) / 5.5 } $ & $ \tau_{f} = \frac { 1 } { \exp \left( − 14.59 − .086 v \right) + \exp \left( − 1.87 + .07 v \right) } $ & $ \overline{g}_{HCN} = 1.01 e{-3} $ (soma) \\
+ &  &  &  & $ \overline{g}_{HCN} = 5.10 e{-4} $ (dendrite) \\ \midrule
+$ I_{CaT} $ & $ \overline{g}_{CaT} \, r^3 \, s \, (v - E_{Ca}) $ & $ \alpha _ { r } = \frac { 1 } { 1.7 + \exp \left( − \left( v + 28.2 \right) / 13.5 \right) } $ & $ \beta _ { r } = \frac { \exp \left( − \left( v + 63 \right) / 7.8 \right) } { 1.7 + \exp \left( − \left( v + 28.8 \right) / 13.5 \right) } $ & $ \overline{g}_{CaT} = 0 $ (soma) \\
+ &  & $ \alpha _ { s } = \exp \left[ − \left( v + 160.3 \right) / 17.8 \right] $ & $ \beta _ { s } = \left( \sqrt { .25 + \exp \frac{ v + 83.5 } { 6.3 } } − .5 \right) k_s $ & $ \overline{g}_{CaT} \in \left[ 1.17 , 1.67 \right] \times 10^{−3} $ (dendrite) \\
+ &  & $ \alpha _ { d } = \frac { 1 + \exp \left[ \frac{ \left( v + 37.4 \right) }{ 30 } \right] } { 240 \left( 0.5 + \sqrt{ 0.25 + \exp \left[ \frac{ \left( v + 83.5 \right) }{ 6.3 } \right] } \right) } $ & $ k_s = \exp \left[ − \left( v + 160.3 \right) / 17.8 \right] $ & $ \left[  Ca  ^ { 2 + } \right] _ { i0 } = 1 e{-4} $ \\
+ &  &  & $ \beta _ { d } = \left( \sqrt { 0.25 + \exp \frac{ v + 83.5 } { 6.3 } } − 0.5 \right) \alpha _ { d } \left( v \right) $ & $ \tau _ {  Ca } = 185.7 $ \\ \midrule
+$ I_{CaL} $ & $ g_{CaT} \, q^{ 2 } h \, (v - E_{Ca})$ & $ h_{ \infty } ( \scriptstyle{ \left[  Ca  ^ { 2 + } \right] _ { i } } ) = 0.53 + \frac{ 0.47 }{ 1 + \exp ( \frac{ \scriptstyle{ \left[  Ca  ^ { 2 + } \right] _ { i } } − 0.7 }{ 0.15 } ) } $ & $ \tau _ { \infty } \left( \scriptstyle{ \left[  Ca  ^ { 2 + } \right] _ { i } } \right) = 1220 $ & $ \overline{g}_{CaL} = 9.50 e{-4} $ (soma) \\
+ &  & $ q _ { \infty } \left( v \right) = \frac { 1 } { 1 + \exp \left[ \left( − 24.6 − v \right) / 11.3 \right] } $ & $ \tau _ { q } \left( v \right) = \frac { 1.25 } { \cosh \left[ − 0.03 \left( v + 37.1 \right) \right] } $ & $ \overline{g}_{CaL} \in \left[ 1.21 , 18.7  \right] \times 10^{−4} $ (dendrite) \\ \midrule
+$ I_{CaN} $ & $ g _ { CaN } \, q^{2} \, (v - E_{Ca})  $ & $ u _ { \infty } \left( v _ { j } \right) = \frac { 1 } { 1 + \exp \left[ \left( v _ { j } + 60 \right) / 12.5 \right] } $ & $ \tau _ {  u  } \left( v \right) = 98 + \cosh \left[ 0.021 \left( 10.1 − v \right) \right] $ & $ \overline{g}_{CaN} = 1.15 e{-3} $ (soma) \\
+ &  &  &  & $ \overline{g}_{CaN} = 4.79 e{-4} $ (dendrite) \\ \bottomrule
+\end{tabular}
+\end{adjustbox}
+%
+%
+\label{tab:stn_ionic_currents}
+\end{table}
+
+%
+%
+%
+
+%
+
+\begin{table}[ht]
+\centering
+\caption{{\bf STN model synaptic current equations.}}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lllll}
+\toprule
+Current & Equation & Location & Parameters &  \\ \midrule
+$ I_{CTX−STN,AMPA} $ & $ \overline{g}_{syn} s (v - E_{AMPA}) $ & distal : $ x \geq 100 \mu m $ & $ \tau_{rise} = 1 $ & $ \tau_{rec} = 200 $ \\
+ &  &  & $ \tau_{decay} = 4 $ & $ \tau_{facil} = 1 $ \\
+ &  &  & $ t_{d} = 5.9 $ & $ U_1 = 0.2 $ \\
+ &  &  & $ \overline{g}_{syn} = 4.44 e{-3} $ &  \\ \midrule
+$ I_{CTX−STN,NMDA1} $ & $ \overline{g}_{syn} m s (v - E_{NMDA}) $ & distal : $ x \geq 100 \mu m $ & $ \tau_{rise} = 3.7 $ & $ \tau_{rec} = 200 $ \\
+ &  &  & $ \tau_{decay} = 212 $ & $ \tau_{facil} = 1 $ \\
+ &  &  & $ t_{d} = 5.9 $ & $ U_1 = 0.2 $ \\
+ &  &  & $ \overline{g}_{syn} = 5.04 e{-3} $ &  \\ \midrule
+$ I_{CTX−STN,NMDA2} $ & $ \overline{g}_{syn} m s (v - E_{NMDA}) $ & proximal : $ x < 120 \mu m $ & $ \tau_{rise} = 3.7 $ & $ \tau_{rec} = 200 $ \\
+ &  &  & $ \tau_{decay} = 80 $ & $ \tau_{facil} = 1 $ \\
+ &  &  & $ t_{d} = 5.9 $ & $ U_1 = 0.2 $ \\
+ &  &  & $ \overline{g}_{syn} = 5.04 e{-3} $ &  \\ \midrule
+$ I_{GPE−STN,GABA_A} $ & $ \overline{g}_{syn} s (v - E_{GABA_A}) $ & proximal : $ x < 120 \mu m $ & $ \tau_{rise} = 2 $ & $ \tau_{rec} = 400 $ \\
+ &  &  & $ \tau_{decay} = 7 $ & $ \tau_{facil} = 1 $ \\
+ &  &  & $ t_{d} = 2.0 $ & $ U_1 = 0.2 $ \\
+ &  &  & $ \overline{g}_{syn} = 18 e{-3} $ &  \\ \midrule
+$ I_{GPE−STN,GABA_B} $ & $ \overline{g}_{syn} \tfrac{G^n}{G^n + K_d^n} (v - E_{GABA_B}) $ & proximal : $ x < 120 \mu m $ & $ \tau_{rise} = 5 $ & $ \tau_{rec} = 400 $ \\
+ &  &  & $ \tau_{decay} = 25 $ & $ \tau_{facil} = 1 $ \\
+ &  &  & $ t_{d} = 2.0 $ & $ U_1 = 0.2 $ \\
+ &  &  & $ \overline{g}_{syn} = 3.75 e{-3} $ & $ K_3 = 0.098 $ \\
+ &  &  & $ n = 4 $ & $ K_4 = 6.25 e{-3} $ \\
+ &  &  &  & $ K_d = 1.4 $ \\ \bottomrule
+\end{tabular}
+\end{adjustbox}
+%
+%
+\label{tab:stn_synaptic_currents}
+\end{table}
+
+%
+\subsection{GPe cell model}
+
+GPe neurons were modeled using the baseline rat GPe neuron model by \cite{gunay_channel_2008} (ModelDB accession number \href{https://senselab.med.yale.edu/modeldb/ShowModel.cshtml?model=114639}{114639}). The model is based on a reconstructed morphology from the adult rat and contains nine types of ion channels with varying densities in the soma, dendrite, and axon initial segment:
+
+\begin{equation}
+\begin{split}
+    I_{ion,j} = \ & I_{NaF} + I_{NaP} + I_{Kv2} + I_{Kv3} \\
+              & + I_{Kv4,f} + I_{Kv4,s} + I_{KCNQ} + I_{sKCa} \\
+              & + I_{CaHVA} + I_{HCN,f} + I_{HCN,s} + I_{L}
+\end{split}
+\end{equation}
+
+where $I_{NaF}$ and $I_{NaP}$ are the transient fast-acting and persistent sodium current, $I_{Kv2}$ and $I_{Kv3}$ the slow and fast delayed rectifier potassium current, $I_{Kv4f}$ and $I_{Kv4s}$ the fast and slow component of the A-type, transient potassium current, $I_{KCNQ}$ the M-type potassium current, $I_{sKCa}$ the calcium-dependent potassium current, $I_{CaHVA}$ the high-threshold, noninactivating calcium current (reflecting a mixture of L, N, and P/Q-type calcium channel types), and $I_{HCN,f}$ and $I_{HCN,s}$ the fast and slow component of the HCN channel. The equations governing the dynamics of the gating variables are listed in Table~\ref{tab:gpe_ionic_currents}. The channel density distributions are those described in \cite{gunay_channel_2008} for model \textit{t9842}.
+%
+As a source of noise, a current with a Gaussian amplitude distribution, mean zero and standard deviation 0.0075 $mA/cm^2$ was added to the somatic compartment, to represent membrane voltage noise of similar amplitude the STN cell model, given the lower somatic input resistance of the STN model.
+
+GPe neurons each had 10 excitatory afferents from STN, 6 inhibitory afferents from GPe-GPe collaterals, and 30 inhibitory afferents from indirect pathway medium spiny neurons (iMSN). The glutamergic synapse model was the same as previously described but had only an AMPA component. GABAergic synapses had a fast ionotropic GABA\textsubscript{A} component with Tsodyks-Markram dynamics, and GPe-GPe synapses had an additional slower metabotropic GABA\textsubscript{B} component (Table~\ref{tab:gpe_synaptic_currents}). Parameters describing short-term plasticity dynamics were set to match experimentally reported traces
+listed in Table~\ref{tab:model_conn_data} where available.
+%
+
+
+%
+%
+%
+
+%
+
+\begin{table}[ht]
+\centering
+\caption{
+{\bf GPe model intrinsic current equations from \cite{gunay_channel_2008}.}}
+\begin{adjustbox}{width=\textwidth} %
+\begin{tabular}{llllllllllll}
+\toprule
+Current                & Equation                                           & Gate & $ m_0 $ & $ \theta_{m \infty} $ & $ \sigma_{m \infty} $ & $ \tau_0 $ & $ \tau_1 $ & $ \theta_{m \tau} $ & $ \sigma_{m0} $ & $ \sigma_{m1} $ & Additional parameters \\ \midrule
+%
+$ I_{NaF} $            & $ \overline{g}_{NaF} m^3 h s (v - E_{Na}) $        & m    & 0       & -39                   & 5                     & 0.028      & 0.028      & N/A                 & N/A             & N/A             & $ \overline{g}_{NaF} = 0.035 $ (soma)  \\
+                      &                                                    & h    & 0       & -48                   & -2.8                  & 0.025      & 4          & -43                 & 10              & -5              & $ \overline{g}_{NaF} = 0.035 $ (dendrite) \\
+                      &                                                    & s    & 0.15    & -40                   & -5.4                  & 10         & 1000       & -40                 & 18.3            & -10             & $ \overline{g}_{NaF} = 0.5 $ (axon) \\ \midrule
+%
+$ I_{NaP} $            & $ \overline{g}_{NaP} m^3 h s (v - E_{Na}) $        & m    & 0       & -57.7                 & 5.7                   & 0.03       & 0.146      & -42.6               & 14.4            & -14.4           & $ \overline{g}_{NaP} = 10.15 e{-3} $ (soma) \\
+                      &                                                    & h    & 0.154   & -57                   & -4                    & 10         & 17         & -34                 & 26              & -31.9           & $ \overline{g}_{NaP} = 10.15 e{-3} $ (dendrite)  \\
+                      &                                                    & s    & 0       & -10                   & -4.9                  & N/A        & N/A        & N/A                 & N/A             & N/A             & $ \overline{g}_{NaF} = 4 e{-3} $ (axon) \\ \midrule
+%
+$ I_{Kv2} $            & $ \overline{g}_{Kv2} m^4 h (v - E_{K}) $           & m    & 0       & -33.2                 & 9.1                   & 0.1        & 30         & -33.2               & 21.7            & -13.9           & $ \overline{g}_{Kv2} = 0.1 e{-3} $ (soma, dendrite)  \\
+                      &                                                    & h    & 0.2     & -20  & -10                   & 3400       & 3400       & N/A                 & N/A             & N/A             & $ \overline{g}_{Kv2} = 64 e{-3} $ (axon) \\ \midrule
+%
+$ I_{Kv3} $            & $ \overline{g}_{Kv3} m^4 h (v - E_{K}) $           & m    & 0       & -26                   & 7.8                   & 0.1        & 14         & -26                 & 13              & -12             & $ \overline{g}_{Kv3} = 1 e{-3} $ (soma, dendrite)  \\
+                      &                                                    & h    & 0.6     & -20                   & -10                   & 7          & 33         & 0                   & 10              & -10             & $ \overline{g}_{Kv3} = 128 e{-3} $ (axon) \\ \midrule
+%
+$ I_{Kv4,f} $          & $ \overline{g}_{Kv4,f} m^4 h (v - E_{K}) $         & m    & 0       & -49                   & 12.5                  & 0.25       & 7          & -49                 & 29              & -29             & $ \overline{g}_{Kv4,f} = 2 e{-3} $ (soma) \\
+                      &                                                    & h    & 0       & -83                   & -10                   & 7          & 21         & -83                 & 10              & -10             & $ \overline{g}_{Kv4,f} = 4 e{-3} $ (dendrite) \\
+ & & & & & & & & & & & $ \overline{g}_{Kv4,f} = 160 e{-3} $ (axon)  \\ \midrule
+%
+$ I_{Kv4,s} $          & $ \overline{g}_{Kv4,s} m^4 h (v - E_{K}) $         & m    & 0       & -49                   & 12.5                  & 0.25       & 7          & -49                 & 29              & -29             & $ \overline{g}_{Kv4,s} = 3 e{-3} $ (soma)  \\
+                      &                                                    & h    & 0       & -83                   & -10                   & 50         & 121        & -83                 & 10              & -10             & $ \overline{g}_{Kv4,s} = 6 e{-3} $ (dendrite) \\
+ & & & & & & & & & & & $ \overline{g}_{Kv4,s} = 240 e{-3} $ (axon) \\ \midrule
+%
+$ I_{KCNQ} $  & $ \overline{g}_{KCNQ} m^4 h (v - E_{K}) $ & m    & 0       & -61                   & 19.5                  & 6.7        & 100        & -61                 & 35              & -25             & $ \overline{g}_{KCNQ} = 20 e{-5} $ (soma, dendrite)  \\
+ & & & & & & & & & & & $ \overline{g}_{KCNQ} = 4 e{-5} $ (axon)  \\ \midrule
+%
+$ I_{CaHVA} $ & $ \overline{g}_{CaHVA} m (v - E_{Ca}) $   & m    & 0       & -20                   & 7                     & 0.2        & 0.2        & -20                 & N/A             & N/A             & $ \overline{g}_{CaHVA} = 3 e{-5} $ (soma, thick dendrites) \\
+ & & & & & & & & & & & $ \overline{g}_{CaHVA} = 4.5 e{-5} $ (medium dendrites) \\
+ & & & & & & & & & & & $ \overline{g}_{CaHVA} = 9 e{-5} $ (thin dendrites) \\
+ & & & & & & & & & & & $ \left[  Ca  ^ { 2 + } \right] _ { i0 } = 5 e{-5} $ \\
+ & & & & & & & & & & & $ \tau _ {  Ca } = 1 $ \\ \midrule
+%
+$ I_{HCN,f} $ & $ \overline{g}_{HCN,f} m (v - E_{h}) $    & m    & 0       & -76.4                 & -3.3                  & 0          & 3625       & -76.4               & 6.56            & -7.48           & $ \overline{g}_{HCN,f} = 1 e{-4} $ (soma, dendrite)  \\ \midrule
+%
+$ I_{HCN,s} $ & $ \overline{g}_{HCN,s} m (v - E_{h}) $    & m    & 0       & -87.5                 & -4                    & 0          & 6300       & -87.5               & 8.9             & -8.2            & $ \overline{g}_{HCN,f} = 2.5 e{-4} $ (soma, dendrite)  \\ \bottomrule
+\end{tabular}
+\end{adjustbox}
+%
+%
+\label{tab:gpe_ionic_currents}
+\end{table}
+
+%
+%
+%
+
+%
+
+\begin{table}[ht]
+\centering
+\caption{{\bf GPe model synaptic current equations.}}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lllll}
+\toprule
+Current & Equation & Location & Parameters &  \\ \midrule
+$ I_{STN−GPE,AMPA} $ & $ \overline{g}_{syn} s (v - E_{AMPA}) $ & distal : $ x \geq 100 \mu m $ & $ \tau_{rise} = 1 $ & $ \tau_{rec} = 200 $ \\
+ &  &  & $ \tau_{decay} = 4 $ & $ \tau_{facil} = 800 $ \\
+ &  &  & $ t_{d} = 2 $ & $ U_1 = 0.1 $ \\
+ &  &  & $ \overline{g}_{syn} = 3.75 e{-3} $ &  \\ \midrule
+$ I_{GPE−GPE,GABA_A} $ & $ \overline{g}_{syn} s (v - E_{GABA_A}) $ & proximal : $ x < 200 \mu m $ & $ \tau_{rise} = 2 $ & $ \tau_{rec} = 400 $ \\
+ &  &  & $ \tau_{decay} = 5 $ & $ \tau_{facil} = 1 $ \\
+ &  &  & $ t_{d} = 0.5 $ & $ U_1 = 0.2 $ \\
+ &  &  & $ \overline{g}_{syn} = 2 e{-4} $ &  \\ \midrule
+$ I_{GPE−GPE,GABA_B} $ & $ \overline{g}_{syn} \tfrac{G^n}{G^n + K_d^n} (v - E_{GABA_B}) $ & proximal : $ x < 200 \mu m $ & $ \tau_{rise} = 5 $ & $ K_3 = 0.098 $ \\
+ &  &  & $ \tau_{decay} = 25 $ & $ K_4 = 6.25 e{-3} $ \\
+ &  &  & $ t_{d} = 0.5 $ & $ K_d = 1.4 $ \\
+ &  &  & $ \overline{g}_{syn} = 3 e{-4} $ & $ n = 4 $ \\ \midrule
+$ I_{iMSN-GPE,GABA_A} $ & $ \overline{g}_{syn} s (v - E_{GABA_A}) $ & proximal : $ x < 200 \mu m $ & $ \tau_{rise} = $ & $ \tau_{rec} = 1 $ \\
+ &  &  & $ \tau_{decay} = $ & $ \tau_{facil} = 200 $ \\
+ &  &  & $ t_{d} = 5 $ & $ U_1 = 0.3 $ \\
+ &  &  & $ \overline{g}_{syn} = 3 e{-4} $ &  \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+%
+%
+\label{tab:gpe_synaptic_currents}
+\end{table}
+
+
+%
+%
+%
+%
+%
+%
+
+\subsection{Modeling the parkinsonian state}
+
+To model the parkinsonian state, the biophysical properties of the network and cell models
+were modified based on experimental findings reported in the literature.
+Scaling factors for biophysical parameters were set to experimentally reported values
+where available, otherwise they were chosen to bring the mean population firing rates
+into physiological ranges reported for the rat in a state of cortical activation during light anesthesia \cite{mallet_disrupted_2008,kita_cortical_2011}.
+
+%
+The mean firing rate of STN surrogate spike sources was increased from 14.6 to 29.5 Hz in
+the parkinsonian state \cite{mallet_disrupted_2008}.
+%
+The peak GABA\textsubscript{A} and GABA\textsubscript{B}
+conductance of GPe to STN synapses was increased by 50\% and the GABA\textsubscript{B} decay time constant
+increased by 2 ms to model the increase in the number of contacts, vesicle release
+probability, and decay kinetics of GPe afferents \cite{fan_proliferation_2012}.
+%
+To model the reduction in cortico-STN axon terminals and their dendritic
+targets \cite{chu_loss_2017,wang_impaired_2018} the number of CTX-STN afferents was
+reduced to 70\% of the normal condition, corresponding to the ratio of vGluT1 expression
+in the normal and dopamine depleted condition used to label axon
+terminals \cite{chu_loss_2017}. To model functional strengthening of remaining synapses,
+the AMPA and NMDA peak conductances of remaining synapses were multiplied by the ratio of
+the current scaling factors reported in \cite{shen_dopamine_2005} to the fraction of remaining synapses.
+The effect of functional strengthening and weakening of the CTX-STN projection was further investigated
+by systematically varying the peak synaptic conductances in the simulations experiments.
+%
+Finally, HCN currents were reduced by 50\% to model reduced depolarization and spontaneous
+activity after dopamine depletion \cite{cragg_synaptic_2004,zhu_pharmacological_2002} and
+modulation of HCN current by D2R receptors \cite{yang_d2_2016}.
+%
+
+%
+In GPe neurons the peak AMPA conductance of STN afferents was increased by 50\% to model
+the modulatory effect of dopamine on glutamergic excitatory
+currents \cite{hernandez_control_2006,johnson_gaba-_1997,kita_globus_2007}. The strengthening of GPe-GPe collaterals \cite{nevado-holgado_effective_2014,miguelez_altered_2012} was modeled by increasing the peak GABA\textsubscript{A} and GABA\textsubscript{B} conductances by 50\%. The mean firing rate of GPe surrogate spike sources was decreased from 33.7 to 14.6 \cite{mallet_parkinsonian_2008}. Finally, the HCN channel conductance was decreased by 50\% in accordance with experimental data \cite{chan_hcn_2011}.
+
+%
+In simulations without oscillatory inputs, cortical projection neurons were modeled as Poisson spike generators firing at 10 Hz, a multiple of the experimentally reported rate of 2.5 Hz \cite{li_therapeutic_2012}, so that each synapse represented the combined inputs of four pre-synaptic neurons (making use of the additive property of the Poisson distribution). In simulations with oscillatory inputs, oscillatory spike trains were generated as follows: on top of the aforementioned background firing pattern, bursts were added in each period of a regular oscillation at the chosen oscillation frequency. In each period of the oscillation 10\% of neurons were selected randomly to emit a burst. The onset time of the burst was the same in each selected neuron, so that bursts occurred in-phase between neurons, but the number of spikes in a burst was variable with inter-spike intervals sampled from the interval $[5, 6]$ ms. All background spikes occurring in a time window centered on a burst were deleted to prevent unrealistically high inter-spike intervals. Figure~\ref{fig:exogenous_ctx-resonance-example_B-rasters}.A shows a rastergram with representative spike trains generated using this method.
+
+%
+The increase in excitability and spontaneous activity of iMSN \cite{kita_cortical_2011,fieblinger_cell_2014} was modeled by increasing the mean
+firing rate of the Poisson spike generators from 1.5 to 6.64 Hz. In experiments where iMSN
+cells fired oscillatory bursts the same algorithm as described for cortical projection neurons
+was used. The modulation of GABAergic transmission from iMSN to GPe
+neurons \cite{cooper_dopamine_2001,shin_dopamine_2003} was modeled by increasing the
+initial release probability and the peak GABA\textsubscript{A} conductance of synapses by 50\%.
+
+\subsection{Simulation details}
+%
+%
+The model was simulated in the NEURON simulation environment \cite{hines_neuron_1997} and implemented in Python. The default fixed time step integrator with a time step of 0.025 ms was used for all simulations. Compartmental membrane voltages were initialized to a random value between -63 and -73 mV in GPe and between -60 and -70 mV in STN cells. Gating variables were initialized to their equilibrium values for the initial membrane voltage. Simulation data for the first 2000 ms of each simulation were discarded, and the analyzed intervals were of duration 4000 ms unless otherwise noted. Simulations were run on the UCD Sonic cluster using 8 parallel processes per simulation on a single computing node, consisting of two Intel Ivybridge E5-2660 v2 CPUs (10 cores per CPU).
+%
+%
+
+\subsection{Signal analysis}
+%
+
+Signal analyses were performed using the SciPy toolbox \cite{jones_scipy_2001} for Python. Power spectral densities (PSDs) were calculated using Welch's periodogram method, using overlapping segments of two seconds duration with 50\% overlap and a Hanning window. Given the sampling period of 0.05 ms this led to a frequency resolution of 0.5 Hz. The population PSD was calculated as the mean PSD of all somatic membrane voltages. The instantaneous phase of each population was estimated by applying the Hilbert transform to the average somatic membrane voltage of cells in the population, after band-pass filtering using a neutral-phase filter (Butterworth filter, 4th order, command \textit{sosfiltfilt}) in an 8 Hz wide frequency band centered on the dominant oscillation frequency. For populations that were modeled as surrogate spike trains (cortex and striatum), artificial membrane voltage signals were first constructed by convolving the spike trains with a typical action potential waveform. Bursts were detected using a simple algorithm where a burst consisted of a minimum of four consecutive spikes with inter-spike intervals (ISIs) $\leq$ 20 ms.
+
+
+%
+%
+%
+\section{Results}
+\label{sec:ch3-results}
+
+%
+%
+%
+%
+%
+
+The STN-GPe pacemaker hypothesis was first investigated by modeling cortical inputs to the STN as Poisson spike generators without any periodic or oscillatory component. Cortical patterning of neural activity in the STN-GPe network via the hyperdirect pathway was then investigated by modeling cortical input to the STN inputs as periodically bursting spike trains. To investigate whether changing the excitation-inhibition balance in STN and GPe contributed to changes in spontaneous synchronization and functional coupling between nuclei, the ratio of excitation and inhibition was systematically increased by altering the strength of individual projections between nuclei. The ratio of total excitatory to inhibitory synaptic currents (E/I ratio) was altered by scaling the peak conductance of all synapses belonging to a given projection known to be strengthened or weakened by dopamine depletion. The role of additional oscillatory inputs entering the STN-GPe network via the indirect striato-pallidal pathway and their phase relationship to cortical inputs were then investigated.
+%
+%
+%
+%
+%
+
+%
+%
+%
+%
+%
+
+%
+%
+\subsection{The balance of excitation and inhibition in the STN affects the oscillation frequency of the STN-GPe network and firing mode of STN neurons.}
+\label{sec:endogenous_sweep-gmax-ctx-stn}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+Increasing the strength of the CTX-STN projection by increasing the conductance of cortico-subthalamic synapses revealed parameter regimes that favoured low frequency bursting in STN neurons and phase-locking to an emergent beta-band rhythm in the STN-GPe network (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents} - \ref{fig:endogenous_sweep-gmax-ctx-stn_B-rasters-vectors}).
+For lower values of synaptic conductance the network exhibited synchronous oscillatory activity at 12-13 Hz (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.A), with both STN and GPe neurons entrained to the oscillation (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_B-rasters-vectors}.A).
+This high entrainment regimen coincided with low neuronal firing rates (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.B) where short spike sequences, mostly singlets and doublets, showed a high phase preference as evidenced by the high population and individual neuronal phase vector lengths (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_B-rasters-vectors}.Aiii).
+
+Increasing the synaptic conductance caused a proportional increase in excitatory current to the STN (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.Bi, blue area), with a corresponding increase in inhibition (red area) as a result of the negative feedback structure of the STN-GPe loop. However, because the GPe population exhibited a saturating population firing rate curve (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.Bii), feedback inhibition to STN was outpaced by cortical excitation, resulting in a shift to net excitation (E/I $>$ 1). This saturating firing rate curve in the GPe was a result of two negative feedback mechanisms that have a homeostatic effect on the GPE's E/I ratio: reciprocal inhibition through intra-GPe colaterals and short-term depression of STN to GPe synapses \cite{hanson_short-term_2002}.
+The increase of excitatory drive in the network increased the frequency at which oscillations emerged within the network (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.Aii, peak in the PSD is shifted), though the level of synchronization of neurons was relatively weak. This was particularly the case in the STN, as evidenced by the low phase vector lengths (Fig~\ref{fig:endogenous_sweep-gmax-ctx-stn_B-rasters-vectors}.Aiii-Ciii). Despite the smaller vector lengths, reflecting more dispersed spike timings within a period of the oscillation, spikes in both STN and GPe neurons showed a consistent phase preference with respect to the ongoing oscillation, as evidenced by the alignment of individual neuronal and population phase vector. The STN population vector led that of GPe by approximately 45 degrees indicating that STN neurons excited GPe neurons which responded with a delay of approximately 10 ms, resulting in a wave of inhibition to the STN with a long recovery period comparable to the oscillation period.
+Although excitation outpaced inhibition in STN neurons, higher inhibitory currents resulted in increased transient inhibition of STN dendrites, engaging the ion channels underlying burst responses. This brought STN neurons into a slow burst firing mode characterized by sparse, strong bursts (Fig~\ref{fig:endogenous_sweep-gmax-ctx-stn_B-rasters-vectors}.Bi). These low-frequency fluctuations in firing rate were transmitted to GPe neurons as evident in the power spectra of both nuclei (Fig~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.Ai-Aii).\\
+
+
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+%
+
+\begin{figure}
+\centering
+\includegraphics[height=\dimexpr \textheight - 12\baselineskip\relax]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-ctx-stn_A-psd-currents.png}
+%
+\caption{\textbf{The level of excitation by cortex determines firing patterns and oscillation frequency in the autonomous STN-GPe network.}
+Behavior of autonomous STN-GPe network for increasing values of CTX-STN synaptic conductance. Possible parkinsonian parameter region with co-occurrence of beta-band oscillations and bursting is indicated. Default value used in other simulations ({\color{brown} $g_{max}$ scale = 1}) is marked on horizontal axis.
+\textbf{A}: Mean PSD of the somatic membrane voltages of STN (Ai) and GPe (Aii) neurons.
+\textbf{B}: Balance of excitation and inhibition in the STN (Bi) and GPe (Bii) based on synaptic currents recorded in three neurons. Population firing rate (brown), E/I ratio (purple), and net synaptic current (blue). Shaded areas represent estimated total synaptic current from one pre-synaptic population during a simulation. Total current was estimated by recording all synapses on 3 randomly selected cells in each population and adjusting for the true number of cells.}
+\label{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-ctx-stn_B-rasters-vectors.png}
+%
+\caption{\textbf{The level of excitation by cortex determines firing patterns and oscillation frequency in the autonomous STN-GPe network.}
+Behavior of autonomous STN-GPe network for increasing values of CTX-STN synaptic conductance.
+\textbf{A-C}: Representative spike trains and phase vectors for STN (top rows, green) and GPe population (bottom rows, red) for three different scale factors of the CTX to STN conductance (scale 0.2; 0.7; 1.3 in A;B;C respectively). Panel iii shows phase vectors of the STN and GPe populations (in green; red, respectively, mean population vectors plotted as thick solid lines and cell vectors as thin transparent lines) reflecting phase locking to the instantaneous GPe phase. Phase vectors were measured with respect to the instantaneous phase of the GPe population extracted using a bandpass filter with passband of 8 Hz centered on the frequency bin with maximum power in the 13-30 Hz band.
+}
+\label{fig:endogenous_sweep-gmax-ctx-stn_B-rasters-vectors}
+\end{figure}
+
+%
+%
+%
+%
+%
+%
+
+%
+Increasing the strength of GPe-GPe colaterals (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents} - \ref{fig:endogenous_sweep-gmax-gpe-gpe_C-metrics}) similarly increased the level of excitation of STN neurons but by a different mechanism. By increasing self-inhibition within the GPe, and thereby decreasing inhibition of targets in the STN (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents}.Bi, red area), the E/I ratio in both populations moved in opposite directions. As the E/I ratio in STN increased toward dominant excitation (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents}.B), neural activity shifted from strong low-frequency bursting (characterized by a high intra-burst firing rate and high low-frequency power, Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents}.Ai, \ref{fig:endogenous_sweep-gmax-gpe-gpe_B-rasters-vectors}.Ai, \ref{fig:endogenous_sweep-gmax-gpe-gpe_C-metrics}.B) toward more regular firing with decreasing coefficient of variation of inter-spike intervals (CV\textsubscript{ISI}) and intra-burst firing rate (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_B-rasters-vectors}.Bi, \ref{fig:endogenous_sweep-gmax-gpe-gpe_C-metrics}.B).
+The E/I ratio and population firing rate in the GPe showed a saturating characteristic (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents}.Bii) caused by the negative feedback structures inherent in the loop as before (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents}.B) as it was progressively disinhibited.
+%
+GPe neurons were more strongly entrained to the emergent oscillation (17-26 Hz) whereas STN spiking showed a weaker phase preference (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_B-rasters-vectors}.Aiii, Biii, \ref{fig:endogenous_sweep-gmax-gpe-gpe_C-metrics}.A). This result was the same whether the instantaneous phase was extracted from the STN or GPe population.
+
+%
+\begin{figure}
+\centering
+\includegraphics[height=\dimexpr \textheight - 10\baselineskip\relax]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-gpe-gpe_A-psd-currents.png}
+\caption{
+\textbf{Increasing the strength of collateral GPe-GPe inhibition shifts excitation-inhibition balance in STN and GPe in opposite directions.}
+Behavior of autonomous STN-GPe network for increasing values of GPe-GPe synaptic conductance. All other parameters were fixed. Default value used in other simulations ({\color{brown} $g_{max}$ scale = 1}) is marked on horizontal axis.
+\textbf{A}: Mean PSD of the somatic membrane voltages of STN (Ai) and GPe (Aii) neurons.
+\textbf{B}: Balance of excitation and inhibition in the STN (Bi) and GPe (Bii) based on synaptic currents recorded in three neurons. Mean population firing rate (brown), E/I ratio (purple), and net synaptic current (blue). Shaded areas represent estimated total synaptic current from one pre-synaptic population during a simulation.
+}
+\label{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-gpe-gpe_B-rasters.png}
+\caption{
+\textbf{Increasing the strength of collateral GPe-GPe inhibition shifts excitation-inhibition balance in STN and GPe in opposite directions.}
+Behavior of the autonomous STN-GPe network for increasing values of GPe-GPe synaptic conductance.
+\textbf{A-B}: Representative spike trains and phase vectors for STN (green) and GPe population (red) for two values of the GPe to GPe conductance (scale 0.33; 2.0 in A; B respectively). Panels iii shows phase vectors of the STN and GPe populations (in green; red, respectively, mean population vectors plotted as thick solid lines and cell vectors as thin transparent lines) reflecting phase locking to the instantaneous GPe phase.
+}
+\label{fig:endogenous_sweep-gmax-gpe-gpe_B-rasters-vectors}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-gpe-gpe_C-metrics.png}
+\caption{
+\textbf{Phase relationships and aggregate spike metrics in the autonomous STN-GPe network for increasing values of GPe-GPe synaptic conductance.}
+\textbf{A}: Population vector length and angle of STN and GPe population (green; red, respectively).
+\textbf{B}: Metrics that characterize bursting in STN neurons: median burst rate, intra-burst firing rate, and coefficient of variation of ISIs across all STN cells.
+}
+\label{fig:endogenous_sweep-gmax-gpe-gpe_C-metrics}
+\end{figure}
+
+%
+%
+%
+%
+%
+%
+
+%
+%
+\subsection{Strength and time-course of GPe-STN inhibition controls bursting and phase-locking in STN neurons}
+%
+\label{sec:endogenous_sweep-gpe-stn-gmax-gabaAB}
+
+%
+%
+%
+%
+Following dopamine depletion the inhibitory GPe-STN connection is strengthened by a proliferation of synapses and increased decay kinetics of GABA currents \cite{fan_proliferation_2012}. Moreover, the expression of both GABA\textsubscript{A} \cite{fan_proliferation_2012} and GABA\textsubscript{B} \cite{shen_dopamine_2005} receptors is upregulated leading to larger evoked synaptic currents. To investigate the effects of increased inhibition and altered kinetics of inhibitory post-synaptic currents (IPSC) in STN neurons on network activity patterns, an increase in the GABA\textsubscript{A} and GABA\textsubscript{B} conductances was simulated and the relative contribution of both currents was altered.
+%
+%
+%
+
+%
+Increasing the conductance of both GABA\textsubscript{A} and GABA\textsubscript{B} synapses lead to an increase in low-frequency bursting of STN neurons (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-stn_A-psd-currents}.A, \ref{fig:endogenous_sweep-gmax-gpe-stn_B-rasters-vectors}.A-B). Bursting was periodic at low frequencies ($\sim$ 2-5 Hz) but was not synchronized between cells (Fig.~\ref{fig:endogenous_sweep-gmax-gpe-stn_B-rasters-vectors}.Bi). Increasing the conductance also shifted the firing mode of STN neurons towards longer bursts with higher intra-burst firing rate against a lower background firing rate, characterized by a high coefficient of variation of ISIs (Fig~\ref{fig:endogenous_sweep-gmax-gpe-stn_A-psd-currents}.B, \ref{fig:endogenous_sweep-gmax-gpe-stn_C-metrics}.B). Bursting with high intra-burst firing rates is mediated by a shift toward net inhibition in STN neurons (Fig~\ref{fig:endogenous_sweep-gmax-gpe-stn_A-psd-currents}.Bi), leading to increased availability of voltage-sensitive $Na^+$ and $Ca^{2+}$ channels through de-inactivation at hyperpolarized membrane voltages \cite{gillies_membrane_2005,baufreton_enhancement_2005,hallworth_globus_2005}. The GPe neuron model does not possess the same high density of $Ca^{2+}$ channels that underlies plateau potentials and strong bursting, and therefore has a lower tendency towards burst firing.
+While STN neurons were more weakly entrained to the beta oscillation they preferentially fired in an interval leading the GPe by approximately 65 degrees (Fig~\ref{fig:endogenous_sweep-gmax-gpe-stn_B-rasters-vectors}.Aiii-Biii, \ref{fig:endogenous_sweep-gmax-gpe-stn_C-metrics}.A). The shift toward low-frequency, fast bursting coincided with an increase in synchronization in the network, as measured by the population vector length of the STN and GPe.
+%
+%
+%
+%
+
+%
+\begin{figure}
+\centering
+\includegraphics[height=\dimexpr \textheight - 9\baselineskip\relax]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-gpe-stn_A-psd-currents.png}
+\caption{
+\textbf{Increasing the level of GPe-STN inhibition shifts STN to a low-frequency burst firing mode.}
+Behavior of autonomous STN-GPe network for increasing values of GPe-STN synaptic conductance. All other parameters were fixed. Default value used in other simulations ({\color{brown} $g_{max}$ scale = 1}) is marked on horizontal axis.
+\textbf{A}: Mean PSD of the somatic membrane voltages of STN (Ai) and GPe (Aii) neurons.
+\textbf{B}: Balance of excitation and inhibition in the STN (Bi) and GPe (Bii) based on synaptic currents recorded in three neurons. Mean population firing rate (brown), E/I ratio (purple), and net synaptic current (blue). Shaded areas represent estimated total synaptic current from one pre-synaptic population during a simulation.
+}
+\label{fig:endogenous_sweep-gmax-gpe-stn_A-psd-currents}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-gpe-stn_B-rasters.png}
+\caption{
+\textbf{Increasing the level of GPe-STN inhibition shifts STN to a low-frequency burst firing mode.}
+Behavior of the autonomous STN-GPe network for increasing values of the GPe to STN synaptic conductance.
+\textbf{A-B}: Representative spike trains and phase vectors for STN (green) and GPe population (red) for two values of the GPe to GPe conductance (scale 0.33; 2.0 in A; B respectively). Panels iii shows phase vectors of the STN and GPe populations (in green; red, respectively, mean population vectors plotted as thick solid lines and cell vectors as thin transparent lines) reflecting phase locking to the instantaneous GPe phase.
+}
+\label{fig:endogenous_sweep-gmax-gpe-stn_B-rasters-vectors}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_endogenous_sweep-gmax-gpe-stn_C-metrics.png}
+\caption{
+\textbf{Phase relationships and aggregate spike metrics in the autonomous STN-GPe network for increasing values of GPe-STN synaptic conductance.}
+\textbf{A}: Population vector length and angle of STN and GPe population (green; red, respectively).
+\textbf{B}: Metrics that characterize bursting in STN neurons: median burst rate, intra-burst firing rate, and coefficient of variation of ISIs across all STN cells.
+}
+\label{fig:endogenous_sweep-gmax-gpe-stn_C-metrics}
+\end{figure}
+
+%
+%
+%
+%
+
+%
+
+%
+
+%
+To investigate the effect of IPSC kinetics on the generation of beta oscillations within the network, the relative strength of the GABA\textsubscript{A} and GABA\textsubscript{B}-mediated current was changed by decreasing the GABA\textsubscript{B} conductance by 50\% and increasing the GABA\textsubscript{A} conductance progressively (Fig~\ref{fig:endogenous_sweep-gaba-AB-gpe-stn_AC-psd-all}). As this increased the level of inhibition in STN neurons, it resulted in a small shift in the oscillation frequency across the parameter sweep (Fig~\ref{fig:endogenous_sweep-gaba-AB-gpe-stn_AC-psd-all}.A).
+%
+The simulation results showed that the slow nature of the GABA\textsubscript{B}-mediated current prevented GPe neurons from patterning their targets with short duration IPSC required for strong entrainment in the 20-30 Hz range. When the GABA\textsubscript{A} conductance was increased, and the GABA\textsubscript{B} conductance decreased accordingly, both STN and GPe neurons entrained strongly to the beta rhythm as evident in phase histograms and spike trains (Fig.~\ref{fig:endogenous_sweep-gaba-AB-gpe-stn_B-rasters-phases}). When the experiment of Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents} was repeated in the adjusted network with a higher GABA\textsubscript{A} to GABA\textsubscript{B} ratio, the oscillation frequency in both STN and GPe also showed a clear sensitivity to the strength of the Poisson distributed cortical excitatory input (Fig~\ref{fig:endogenous_sweep-gaba-AB-gpe-stn_AC-psd-all}.B).
+
+%
+\begin{figure}
+\centering
+\includegraphics[height=\dimexpr \textheight - 9\baselineskip\relax]{ch_detailed_model/figs_split/fig_endogenous_sweep-gaba-AB_AC-psd-all.png}
+\caption{
+\textbf{Endogenous oscillations in the STN-GPe network are strengthened by shifting the GPe-STN synaptic current from slow GABA\textsubscript{B} receptors to fast GABA\textsubscript{A} receptors.}
+\textbf{A} Power of population activity in the STN and GPe for increasing values of the GABA\textsubscript{A} to GABA\textsubscript{B} conductance ratio of GPe-STN synapses.
+\textbf{B}: Power of population activity in the STN and GPe for increasing CTX-STN conductance and at higher GABA\textsubscript{A}:GABA\textsubscript{B} ratio. The GABA\textsubscript{B} conductance of GPe to STN synapses was halved, and the GABA\textsubscript{A} conductance was doubled.
+}
+\label{fig:endogenous_sweep-gaba-AB-gpe-stn_AC-psd-all}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_endogenous_sweep-gaba-AB_B-rasters-phases.png}
+\caption{
+\textbf{Endogenous oscillations in the STN-GPe network are strengthened by shifting the GPe-STN synaptic current from slow GABA\textsubscript{B} receptors to fast GABA\textsubscript{A} receptors.}
+\textbf{B-C}: Representative spike trains and phase histograms of STN (green) and GPe neurons (red) in baseline model without scaling of conductances (A-B) and model where GABA\textsubscript{A} conductance was scaled by a factor 6 and GABA\textsubscript{B} conductance was scaled by factor 0.2 (C-D), chosen so that the E/I ratio was close to that in the baseline model (A-B: baseline model, E/I ratio was 0.89; 0.97 in STN, GPe respectively; C-D: scaled conductances, ratio was 0.89; 0.93).
+}
+\label{fig:endogenous_sweep-gaba-AB-gpe-stn_B-rasters-phases}
+\end{figure}
+
+%
+%
+\subsection{STN-GPe network shows resonant properties and phase locks to cortical beta inputs}
+\label{sec:patterned-loop_sweep-burst-freq}
+
+%
+The degree of phase locking of the STN-GPe network to synchronous cortical rhythms and its sensitivity to intrinsic network parameters was then examined. The network was simulated with cortical inputs modeled as spike trains exhibiting sparse, synchronous bursts.
+%
+The frequency of the synchronous cortical inputs was first increased from 3 Hz to 60 Hz and the frequency response and phase locking strength of the STN-GPe loop was estimated (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power} - \ref{fig:exogenous_ctx-resonance-response_B-vectorlength}). Spectral power and phase locking, measured by the population vector length, were strongest when the cortical oscillation frequency was close to the network's endogenous oscillation frequency (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power}.C, \ref{fig:exogenous_ctx-resonance-response_B-vectorlength}.A), indicating a resonance effect. Spectral power at the oscillation frequency was increased considerably above that observed for Poisson distributed cortical inputs (compare Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power}.A-AB to Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.Ai-Aii). Moreover, the frequencies that were amplified by the STN-GPe network corresponded well to the beta-band, i.e. 13-30 Hz (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power}.C).
+%
+%
+To study the dependence of the resonance peak on the excitation-inhibition balance in the STN, the cortical input strength was then varied while the oscillation frequency remained fixed (Fig.~\ref{fig:exogenous_ctx-resonance-response_B-vectorlength}.B-C). The range of synaptic conductances was chosen so that the STN population firing rate traversed the experimentally reported range of 17-37 Hz \cite{kita_cortical_2011,mallet_disrupted_2008} in the dopamine depleted state during cortical activation (Fig.~\ref{fig:exogenous_ctx-resonance-example_A-psd-currents}.C).
+%
+%
+Maximum phase locking coincided with frequency of maximum endogenous oscillation power observed in the absence of oscillatory inputs (Fig.~\ref{fig:exogenous_ctx-resonance-response_B-vectorlength}.B-C). The results demonstrate how the resonant frequency of the network can be shifted by changing the excitation-inhibition balance, biasing the network toward a slower or faster oscillation.
+GPe neurons synchronized stronger to the oscillatory input compared to STN neurons (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power}.C, \ref{fig:exogenous_ctx-resonance-response_B-vectorlength}.A, \ref{fig:exogenous_ctx-resonance-example_B-rasters}), which showed a tendency to burst, mirroring the results for spontaneous synchronization in the autonomous STN-GPe network. Analogous to the autonomous loop, when the slow bursting behaviour was reduced by shifting the GPe to STN synaptic current from GABA\textsubscript{B} to faster GABA\textsubscript{A} receptors, synchronization and phase locking of both STN and GPe neurons was greatly increased.
+%
+%
+%
+%
+%
+%
+%
+
+%
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_exogenous_resonance-psd-vectorlength_A-power.png}
+\caption{
+\textbf{Frequency response of STN-GPe network in response to cortical oscillatory bursting inputs.}
+\textbf{A-B}: Power of population activity in the STN (A) and GPe (B) for increasing oscillatory bursting frequency.
+\textbf{C}: Mean power of population activity in the STN (green) and GPe (red) neurons, averaged within a 5 Hz wide frequency band centered on the cortical oscillation frequency.
+}
+\label{fig:exogenous_ctx-resonance-response_A-power}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[height=\dimexpr \textheight - 10\baselineskip\relax]{ch_detailed_model/figs_split/fig_exogenous_resonance-psd-vectorlength_B-vectorlength.png}
+\caption{
+\textbf{Phase locking of the STN-GPe network to cortical oscillatory bursting inputs.}
+\textbf{A}: Population vector length, indicating strength of phase locking to the cortical oscillation of STN (green) and GPe (red) neurons.
+\textbf{B-C}: Change in population vector length (solid lines) for a fixed cortical oscillation frequency (20 Hz, 25 hz, 30 Hz in green, blue, orange, respectively) and increasing CTX-STN input synaptic conductance, reflected in an increased ratio of excitation to inhibition (E/I ratio). Endogenous oscillation power in network without oscillatory cortical input is plotted for comparison (dotted lines, power integrated in 5 Hz band centered on cortical frequency in equivalent simulation with cortical inputs). %
+}
+\label{fig:exogenous_ctx-resonance-response_B-vectorlength}
+\end{figure}
+
+%
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_exogenous_ctx-resonance-example_A-psd-currents.png}
+\caption{
+\textbf{Response of STN-GPe network to 20 Hz cortical oscillatory bursting for increasing coupling strength.}
+\textbf{A-B}: Power of population activity in STN (A) and GPe (B) as a function of the synaptic conductance of CTX-STN inputs. The peak at 20 Hz reaches a maximum when synapses are at 70\% of their baseline strength, whereas the peak in low-frequency power (2-5 Hz) occurs at 50\%.
+\textbf{C}: Balance of excitation and inhibition in the STN based on synaptic currents recorded in three neurons. Population firing rate (brown), E/I ratio (purple), and net synaptic current (blue).
+}
+\label{fig:exogenous_ctx-resonance-example_A-psd-currents}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_exogenous_ctx-resonance-example_B-rasters.png}
+\caption{
+\textbf{Spiking patterns in response to 20 Hz oscillatory bursting in cortical neurons.}
+\textbf{A}: Cortical oscillatory bursting pattern illustrated using representative spike trains. In each cycle of the oscillation 10\% of cells were selected at random to fire a burst in phase with the oscillation, with a variation of 1 ms on the onset and spike timings.
+\textbf{B}: Representative spike trains of STN (A) and GPe neurons (B) in simulation with synaptic conductances scaled to 70\%, corresponding to maximum phase locking and 20 Hz power.
+}
+\label{fig:exogenous_ctx-resonance-example_B-rasters}
+\end{figure}
+
+%
+%
+\subsection{Influence of phase relationship between cortical and striatal beta inputs}
+\label{sec:patterned-loop_sweep-ctx-msn-phase}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+Striatal microcircuits exhibit beta-band oscillations in healthy primates \cite{feingold_bursts_2015} and parkinsonian rodent models \cite{mccarthy_striatal_2011,sharott_population_2017} and have been hypothesized to be part of the pacemaking circuit that generates them. In the previous section, the STN-GPe network was shown to generate weak beta-band oscillations in the absence of exogenous beta inputs  (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents},~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents},~\ref{fig:endogenous_sweep-gmax-gpe-stn_A-psd-currents}), and to phase lock to cortical beta-band inputs which amplified oscillatory activity (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power} - \ref{fig:exogenous_ctx-resonance-response_B-vectorlength}). A potential role of the pallido-striatal loop could be to amplify beta-band oscillations in the STN-GPe network to a more pathological level, as part of a double resonant loop converging on the GPe. A suggested mechanism is that altered striatal activity in PD could shift the phase of firing of the GPe relative to the STN to one that supports STN phase locking through increasing the availability of $Na^{+}$ and $Ca^{2+}$ channels post-inhibition and pre-excitation \cite{baufreton_enhancement_2005,mallet_parkinsonian_2008,mallet_dichotomous_2012}. Alternatively, oscillations that originate in striatal circuits could be transmitted via the striato-pallidal projection and thus introduced into the STN-GPe network \cite{mccarthy_striatal_2011,corbit_pallidostriatal_2016}. Of the two loops converging on GPe neurons, inhibitory striatal afferents would be better suited to interrupt ongoing activity and influence the phase compared to excitatory STN afferents. Hence, the iMSN to GPe projection could play an important role in patterning neural activity in the STN-GPe network.
+%
+
+Phase vector plots in the previous section show that STN and GPe neurons settle into a particular phase relationship where STN leads GPe by 60-90 degrees which contributed to sustaining beta-band oscillations. It was hypothesized that inhibitory inputs from the striatum would either disrupt this phase relationship, thereby suppressing beta-band oscillations, or reinforce them depending on where in the phase of the beta oscillation they arrive. To investigate this hypothesis, surrogate striatal spike trains exhibiting beta frequency bursts were generated and the phase with respect to the incoming cortical oscillation was increased in increments of 45 degrees by varying the onset time of bursts. As iMSN-GPe synapses exhibit short-term facilitation, bursts administered through this projection led to an increase in inhibition to the GPe that was greater than the relative increase in spike rate. To compensate for this effect and maintain a physiological firing rate range of the GPe neurons, the peak conductance of iMSN-GPe synapses was reduced by 60\%.
+
+%
+Varying the phase of striatal relative to cortical bursts revealed that populations connected by an inhibitory projection, i.e. iMSN, GPe, and STN maintained a rigid phase relationship with respect to the cortical oscillation (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}: population vectors in green, red, purple formed a rigid frame that rotated relative to the cyan-colored cortical population vector). The local maximum in phase locking occurred when excitatory CTX and inhibitory GPe afferents to STN fired in anti-phase, occurring when the CTX-iMSN phase difference was set to 225 degrees (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents}.B, \ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}.B, \ref{fig:exogenous_sweep-ctx-msn-phase_C-metrics}.B). This supports the feedback inhibition hypothesis where cortical patterning is promoted when GPe-STN inhibition is offset in phase relative to cortical excitation in PD \cite{baufreton_enhancement_2005,mallet_parkinsonian_2008,mallet_dichotomous_2012}. The changing phase relationship of cortical spiking relative to the three other populations also shifted the balance of excitatory and inhibitory currents in the STN (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents}.Bi). Maximum phase locking occurred where the STN was maximally inhibited (E/I ratio $\approx$ 1.1, population firing rate $\approx$ 21 Hz), whereas minimum phase locking coincided with maximum excitation (E/I ratio $\approx$ 1.3, population firing rate $\approx$ 40 Hz). In the GPe this relationship between phase locking strength and firing rate was reversed (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents}.Bii) whereas the relationship with E/I ratio showed no clear trend. The optimal phase relationship of 225 degrees further strengthened phase locking to the applied beta rhythm compared to the situation with only cortical oscillatory inputs. Maximum vector length was increased by a factor of two, confirming increased synchronization, in both populations when compared to the case where only cortical beta frequency inputs were simulated. Maximum power at the oscillation frequency was also increased by a factor of approximately 2.7 in STN and 5.2 in GPe.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+
+%
+
+\begin{figure}
+\centering
+\includegraphics[height=\dimexpr \textheight - 10\baselineskip\relax]{ch_detailed_model/figs_split/fig_exogenous_sweep-ctx-msn-phase_A-psd-currents.png}
+\caption{
+\textbf{The phase relationship between cortical and striatal beta-band inputs to the STN-GPe network affects the strength of phase-locking by setting the relative timing of excitatory and inhibitory STN afferents.}
+\textbf{A}: Power of population activity in STN (Ai) and GPe (Aii), showing weakening and strengthening of oscillations as relative phases of inputs are rotated.
+\textbf{B}: Balance of excitation and inhibition in the STN (Bi) and GPe (Bii) based on synaptic currents recorded in three neurons. Population firing rate (brown), E/I ratio (purple), and net synaptic current (blue). Shaded areas represent estimated total synaptic current from one pre-synaptic population during a simulation.
+}
+\label{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_exogenous_sweep-ctx-msn-phase_B-rasters.png}
+\caption{
+\textbf{The phase relationship between cortical and striatal beta-band inputs to the STN-GPe network affects the strength of phase-locking by setting the relative timing of excitatory and inhibitory STN afferents.}
+Representative spike trains and phase vectors of STN (green) and GPe population (red) for CTX-iMSN phase difference of $90^\circ$ (A) and $225^\circ$ (B). Panels iii shows phase vectors of the STN, GPe, CTX, iMSN populations (in green; red; blue; purple, respectively; mean population vectors plotted as thick solid lines and cell vectors as thin transparent lines).
+}
+\label{fig:exogenous_sweep-ctx-msn-phase_B-rasters}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch_detailed_model/figs_split/fig_exogenous_sweep-ctx-msn-phase_C-metrics.png}
+\caption{
+\textbf{The phase relationship between cortical and striatal beta-band inputs to the STN-GPe network affects bursting tendency and temporal spike dispersion in the STN.}
+\textbf{A}: Population vector length and angle of STN (green) and GPe (red) population.
+\textbf{B}: Metrics that characterize bursting in STN neurons: median burst rate, intra-burst firing rate, and coefficient of variation of ISIs across all STN cells.
+}
+\label{fig:exogenous_sweep-ctx-msn-phase_C-metrics}
+\end{figure}
+
+%
+%
+\subsection{Mechanism of phase locking}
+
+%
+%
+%
+%
+
+%
+%
+%
+
+To further illustrate the interaction between synaptically coupled STN and GPe neurons in the model under conditions of synchronous oscillatory beta-band activity, the mechanism of phase locking of STN cells is presented in Fig.~\ref{fig:cell-phaselocking-mechanisms}. Pooled cortical spike trains (Fig.~\ref{fig:cell-phaselocking-mechanisms}.A-B, green) illustrate how sparse cortical beta bursts (Fig.~\ref{fig:exogenous_ctx-resonance-example_B-rasters}.A) result in distributed synaptic inputs to individual STN neurons that are not tightly phase locked, but have a combined firing rate that is modulated at the beta frequency. While these exogenous cortical inputs had high spike timing variability, STN and GPe spikes became highly structured and tightly locked to the beta oscillation through the feedback inhibition mechanism. The cortical beta modulation is transmitted to the STN and then to the GPe through their excitatory projections (see phase vectors in Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}). When the inhibitory feedback arrives back in STN this shuts down spiking (Fig.~\ref{fig:cell-phaselocking-mechanisms}.A) and simultaneously primes the cell for the next period of increased cortical excitation by de-inactivating $Ca^{2+}$ channels (Fig.~\ref{fig:cell-phaselocking-mechanisms}.C) and $Na^{+}$ channels. As the cortical firing rate rises again, synaptic currents (Fig.~\ref{fig:cell-phaselocking-mechanisms}.B) combine with dendritic $Ca^{2+}$ currents to overcome any lingering inhibition and cause the next wave of phase-locked STN spikes. The striatal beta inputs further decreased spiking variability of GPe neurons by narrowing their time window of firing through phasic inhibition (purple phase vector in Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}).
+
+%
+
+%
+\begin{figure}
+\centering
+\includegraphics[height=\dimexpr \textheight - 15\baselineskip\relax]{ch_detailed_model/figs/fig_cell-phaselocking-mechanisms.png}
+\caption{\textbf{Mechanisms contributing to phase locking of STN cells to cortical beta oscillations.} Recordings of synaptic currents and T-type calcium (CaT) channel inactivation from an identified phase-locked STN cell during a simulation with high phase locking. Inactivation variables were recorded from each compartment with CaT ion channels and averaged over all compartments in the cell. Zero-crossings of the instantaneous beta phase are indicated using vertical dotted lines. \textbf{A}: Somatic membrane voltage during phase-locked interval (blue). Spike trains from excitatory (green) and inhibitory (red) afferents to the cell were pooled. \textbf{B}: Total excitatory and inhibitory synaptic current (in green; red, respectively) and pooled spike trains underneath. \textbf{C}: Mean CaT channel inactivation across the cell's dendritic tree. High values correspond to de-inactivation. Transient de-inactivation approximately one half period after an inhibitory barrage engages depolarizing T-type $Ca^{2+}$ current and contributes to phase-locked spiking.}
+\label{fig:cell-phaselocking-mechanisms}
+\end{figure}
+
+%
+%
+%
+
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+%
+\section{Discussion}
+\label{sec:ch3-discussion}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+A new model of the STN-GPe network is presented that incorporates biophysically detailed multi-compartment cell models. The individual STN and GPe cell models capture the interaction of intrinsic and synaptic membrane currents with nonuniform subcellular distributions across the dendritic structure, which can not be captured in single compartment models. The model illustrates how phase locking of STN and GPe neurons, and increased bursting of STN neurons, can arise from the interaction of these currents when their relative strengths and temporal relationships are altered. The STN-GPe model network showed an intrinsic susceptibility to beta-band synchrony that manifest as weak, autonomously-generated endogenous oscillations and selective amplification of exogenous beta-band synaptic inputs at the network's preferred oscillation frequency.  The frequency at which endogenous beta oscillatory activity occurred varied with the ratio of excitatory to inhibitory currents to the STN. Varying the phase relationships between external beta-frequency inputs to the network through cortical and striatal pathways further increased or suppressed the level of amplification of cortical beta inputs by modulating the temporal dispersion of action potentials in STN neurons and thereby influencing the precision of phase locking.
+%
+Varying synaptic strengths within the network affected the balance of excitation and inhibition in both STN and GPe neurons and produced a rich set of behaviors, not only modulating firing rates but also affecting synchronization and bursting properties of neurons. Homeostatic mechanisms mediated by feedback connections and short-term synaptic plasticity dynamics served to stabilize the excitation-inhibition balance in the GPe and reduced the sensitivity of its population firing rate to variations in pre-synaptic rates.
+
+%
+\subsection{Oscillatory properties of the multi-compartmental STN-GPe network}
+%
+In the autonomous STN-GPe network, under conditions of Poisson distributed external synaptic inputs, STN neurons exhibited weak synchronization to the endogenous beta rhythm but retained a weak phase preference with respect to the stronger oscillation in the GPe population (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_B-rasters-vectors} - ~\ref{fig:endogenous_sweep-gmax-gpe-stn_B-rasters-vectors}). The synchronization strength of STN neurons was found to depend on the relative strength of GABA\textsubscript{A} and GABA\textsubscript{B} receptors in STN dendrites (Fig.~\ref{fig:endogenous_sweep-gaba-AB-gpe-stn_AC-psd-all}, \ref{fig:endogenous_sweep-gaba-AB-gpe-stn_B-rasters-phases}), with an increase in the proportion of fast-acting GABA\textsubscript{A} receptors resulting in an increase in the strength of oscillation. The endogenous oscillation frequency of the STN-GPe network was further influenced by the balance of excitatory and inhibitory currents in the STN. This balance affected the net level of excitatory drive in the network, shifting the oscillation frequency towards the higher beta range for increased levels of excitatory drive (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}.A, \ref{fig:endogenous_sweep-gaba-AB-gpe-stn_AC-psd-all}.B).
+Besides affecting population firing rates and the frequency of synchronous oscillations, the excitation-inhibition balance also strongly influenced the firing pattern of STN neurons: for a low ratio of excitation to inhibition and sufficiently strong inhibitory currents, STN neurons transitioned to a firing mode characterized by low-frequency tight bursts (high intra-burst firing rate, Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}-~\ref{fig:endogenous_sweep-gmax-gpe-stn_C-metrics}). Low-frequency bursting was periodic at 2-5 Hz but was not synchronized between cells. This shift in firing pattern towards sparse, tight bursting is in correspondence with changes in burst-related measures such as intra-burst firing rate and sub-beta band power that are most predictive of akinetic-bradykinetic symptoms in humans \cite{sharott_activity_2014} and monkeys \cite{sanders_parkinsonism-related_2013}. The firing rate and pattern of GPe neurons was less sensitive than that of STN neurons to variations in its excitatory or inhibitory drive due to the contribution of negative feedback control by homeostatic mechanisms that operated in synergy to stabilize its E/I ratio. However, GPe neurons did synchronize more strongly under conditions of low excitatory drive from the STN enabling them to act more autonomously and synchronize through inhibitory collaterals within the GPe network.
+%
+%
+
+%
+%
+%
+%
+%
+When beta-band spiking inputs were applied to the STN-GPe network via cortico-STN afferents, the STN-GPe network phase locked to the beta rhythm. Frequencies near the autonomous oscillation frequency for a given E/I ratio were preferentially amplified, reflected in increased phase locking and power of the somatic membrane voltage at that frequency (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power} - \ref{fig:exogenous_ctx-resonance-response_B-vectorlength}). This is supportive of experimental observations that oscillatory activity in STN is contingent on cortical oscillations \cite{magill_dopamine_2001}, likely transmitted though the hyperdirect pathway \cite{tachibana_subthalamo-pallidal_2011}. Phase locking and beta frequency power were further strengthened by the addition of striatal oscillatory inputs with a particular phase relationship to cortical oscillatory inputs (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents} - \ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}).
+Maximum phase-locking occurred when GPe spiking was aligned in anti-phase with cortical inputs to the STN (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}.B, \ref{fig:exogenous_sweep-ctx-msn-phase_C-metrics}.A). When excitation and inhibition occurred in anti-phase, inhibition was likely more effective at transiently hyperpolarizing the membranes of STN neurons, suggested by the local minimum in their E/I ratio (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents}.Bi). Strong hyperpolarization can evoke low-latency, temporally precise responses to an excitatory stimulus by de-inactivating $Ca^{2+}$ and $Na^{+}$ channels, and thereby priming them to respond to excitatory cortical inputs \cite{bevan_gabaergic_2007}. This mechanism may be responsible for the increase in phase locking under this phase relationship.
+In contrast, phase alignment of cortical and GPe neurons, corresponding to coincident firing, desynchronized STN neurons (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}.A). These findings are in agreement with recent experimental observations which demonstrate that co-stimulation of GABAergic and glutamergic STN afferents disperses STN spiking and has a desynchronizing effect on the population \cite{steiner_connectivity_2019}.
+
+Overall, the simulation results are consistent with the hypothesis of cortical patterning and resonance of beta activity within the STN-GPe network through feedback inhibition, whereby GPe inhibition arriving in anti-phase to cortical excitation promotes phase locking of STN neurons to beta-band cortical inputs \cite{baufreton_enhancement_2005}. The model predicts that exaggerated phase locking of the STN-GPe
+loop to external oscillatory inputs arises in Parkinsonian conditions as a result of a new balance of excitatory to inhibitory inputs to the STN and GPe.
+Moreover, it predicts that this exaggerated phase locking is not only contingent on cortical
+oscillations arriving through the hyperdirect pathway, but that striatal oscillations arriving
+through the indirect pathway are also crucial in setting an anti-phase relationship
+between cortex and GPe activity that maximizes cortical patterning of the STN.
+%
+
+%
+%
+%
+%
+
+\subsection{Relation of mechanism of oscillations to other models of oscillatory activity in the STN-GPe network}
+\label{sec:ch3-disc:osc-mech-others}
+
+%
+%
+%
+
+%
+The mechanism by which oscillatory neural activity can be generated in the STN-GPe network, by alternating phases of excitation and inhibition in a delayed negative feedback loop, has been described in previous models \cite{terman_activity_2002,holgado_conditions_2010,kumar_role_2011}. The mechanism of oscillation in the model presented here is consistent with this, and the model additionally illustrates the dual role of precisely timed GPe inhibition in transiently reducing STN neuron excitability and hyperpolarising them such that they are primed to respond with bursting to excitatory cortical inputs (Fig.~\ref{fig:cell-phaselocking-mechanisms}). Furthermore, it highlights the sensitivity of the network oscillation to the excitation-inhibition balance in each population and synaptic current properties.
+
+%
+In the multicompartment model, endogenously generated beta frequency oscillations were generated within the STN-GPe network when the strength of short duration GABA\textsubscript{A}-mediated currents was increased. Since the slow timescale, signaling cascade-mediated GABA\textsubscript{B} currents are typically not modeled, this result can be easily reconciled with results from single-compartment and firing rate models where high gain within the closed-loop is a necessary condition for strong endogenously-generated oscillations in the STN-GPe network \cite{holgado_conditions_2010,pavlides_improved_2012,park_neural_2011,wei_role_2015}. The strength of the endogenous oscillations in the current model was relatively weak, except when inhibitory GPe-STN currents were strongly dominated by fast-acting GABA\textsubscript{A}-mediated currents and GABA\textsubscript{B}-mediated slow currents were weak. The oscillation frequency of the network could be modulated by varying the ratio of excitation to inhibition in STN and GPe, and increased as this ratio increased (Fig.~\ref{fig:exogenous_ctx-resonance-response_B-vectorlength}) .
+
+%
+The oscillation frequency of the network has been shown to be sensitive to model parameters in previous computational models of the BGTC network. Specifically, in mean field models of the STN-GPe loop the oscillation frequency showed a strong sensitivity to transmission delays and neuronal membrane time constants \cite{holgado_conditions_2010,lienard_beta-band_2017}, and a weaker sensitivity to coupling strengths \cite{holgado_conditions_2010,pavlides_computational_2015,liu_neural_2017}, also demonstrated in a spiking model \cite{wei_role_2015}. In the multicompartment model presented here, where active ion channels on the dendrites contribute to synaptic integration, synaptic strength and effective membrane time constant are interdependent since the membrane charging speed is affected by transient activation of ion channels as a response to synaptic inputs. In biological neurons the balance of excitation and inhibition is tightly regulated through multiple adaptive processes \cite{turrigiano_too_2011}, and likely maintains the range of possible oscillation frequencies within a narrow range.
+
+%
+%
+%
+
+%
+Other than the condition where GPe-STN currents were dominated by fast-acting GABA\textsubscript{A} currents, strongly synchronized beta-band oscillations appeared only when exogenous beta-band inputs were introduced to the network (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power}, \ref{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents}, \ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}). These results, therefore, support a role for resonance with oscillations throughout other basal ganglia loops in the generation of increased STN-GPe beta activity in Parkinson's disease. Such an oscillatory drive can be provided either by an extrinsic oscillator, assumed to originate within the cortex in the present model, or by reverberation of oscillations in connected feedback loops such as the pallido-striatal loop \cite{corbit_pallidostriatal_2016}, intra-striatal loops \cite{mccarthy_striatal_2011}, or the larger thalamocortical loop \cite{pavlides_computational_2015,kang_interaction_2013,reis_thalamocortical_2019,dovzhenok_origin_2012}.
+%
+The model exhibited clear resonance in response to excitatory synaptic inputs to the STN within the beta frequency range (Fig.~\ref{fig:exogenous_ctx-resonance-response_A-power} - \ref{fig:exogenous_ctx-resonance-response_B-vectorlength}). The frequency at which the maximum resonance occurred increased with increasing ratio of excitation to inhibition, similar to the increase in frequency observed in the case of endogenously generated oscillations. Resonance phenomena in the beta-band have previously been reported in computational models of basal ganglia networks, consistent with the modeling results presented here: \cite{pavlides_computational_2015} fitted mean field rate models to experimental data from nonhuman primates and found that the models that best explained the data relied on a strong cortical oscillation to sustain beta-band oscillations ($\sim 15$ Hz) in the network. \cite{ahn_synchronized_2016} using 10 single compartment STN and GPe neurons observed multiple resonances in the beta-band when varying the strength of striato-pallidal and pallida-subthalamic inhibition, with resonant peaks occurring consistently between 18-21 Hz. Similarly, \cite{fountas_role_2017} found that STN neurons in their model exhibited high spontaneous beta-band power (18-30 Hz) and synchronized selectively with cortical input in this frequency range.
+
+%
+%
+%
+%
+
+%
+%
+
+%
+%
+
+%
+%
+%
+
+%
+%
+%
+
+%
+%
+%
+%
+%
+%
+
+%
+\subsection{Model complexity and limitations}
+\label{sec:ch3-limitations}
+
+%
+%
+%
+%
+%
+One of the main advantages of the biophysically detailed model presented here is that the model can capture the nonuniform distribution of afferent inputs from different pre-synaptic populations across the dendritic tree (Table~\ref{tab:stn_synaptic_currents},~\ref{tab:gpe_synaptic_currents}). This targeting of specific regions of the dendrites by different populations can lead to variations in synaptic integration properties within the structure. This feature is potentially of particular importance in the generation of pathological oscillations given that neuronal phase response curves, used to quantify the tendency of neurons to synchronize to their inputs, differ when stimuli are applied to different subcellular regions in STN and GPe neurons \cite{schultheiss_phase_2010,farries_phase_2012}. Hence, a model that incorporates a full complement of ion channel and the synapse groups that interact with them may be expected to yield a more realistic representation of how synchronization arises in the network. In future studies, this could also contribute to a better understanding of neuronal currents contributing to the local field potential in synchronized and asynchronous states, as synaptic and ionic transmembrane currents combine to form the extracellular currents that underpin this signal \cite{buzsaki_origin_2012}.
+%
+
+%
+%
+A second advantage of such detailed multicompartment models is that parameters have a clear relationship to the underlying biophysical system and are more meaningful in terms of physiological processes compared to models where parameters are lumped, as in single-compartment conductance-based models, or abstracted as in mean-field or generalized integrate-and-fire models. This allows for a more direct translation of experimental findings to parameter variations in the model. On the other hand, detailed cell models are more sensitive to correct estimation of these parameters which is limited by measurements performed for the purpose of model fitting as well as the fitting procedures themselves.
+
+%
+%
+Biophysically detailed models offer new ways to study factors contributing to the development of synchrony. Such models provide a means to investigate the relative contributions of physiological mechanisms to the development of synchrony while controlling other factors in a manner that is not possible in vivo. Though the model presented incorporates a higher level of physiological detail than previous models of the STN-GPe network, several simplifications were  necessary due to the model complexity, which should be considered.
+
+\subsubsection*{Biological realism and variability}
+%
+
+To model the effects of dopamine depletion on neuron physiology,
+downregulation of HCN channel currents with dopamine depletion was modeled as a decrease in its peak conductance. However, dopamine is known to interact with several more ion channels that are involved in linearizing the current-firing rate curve and regularizing autonomous pacemaking of STN neurons \cite{ramanathan_d2-like_2008,yang_d2_2016,loucif_depolarisation_2008}. These channels are not included in the STN cell model used here \cite{gillies_membrane_2005}. Recent evidence suggests that the loss of autonomous spiking is a necessary condition for the exaggerated cortical patterning of STN related to motor dysfunction \cite{mciver_chemogenetic_2018}. Better characterization of the ion channels involved in pacemaking and their response to dopamine depletion will enable the systematic exploration of their contribution to STN response properties and pathological firing patterns.
+
+Furthermore, variability in morphological, electrical, and biophysical properties of neurons within
+populations was not fully captured.
+%
+In the GPe, two distinct populations have been identified based on their molecular profile and axonal connectivity \cite{mallet_dichotomous_2012}. Only the prototypic sub-population projecting mainly to STN and preferentially firing in anti-phase to it was modelled here, with the arkypallidal sub-populations projecting back to striatum omitted. Moreover, the GPe cell model used was only one representative candidate out of a large set of models with varying ion channel expression and morphology that matched a corresponding database of electrophysiological recordings \cite{gunay_channel_2008}.
+%
+Similarly, the STN model represents a stereotypic characterization rather than a reconstruction of a specific STN cell and does not capture variability in firing properties and receptor expression. In particular, STN neurons in vivo are known to have variable expression of GABA\textsubscript{B} receptors \cite{galvan_differential_2004} which cause strong hyperpolarization responses and longer pauses in some but not all STN neurons \cite{hallworth_globus_2005} and a strong rebound burst response \cite{galvan_differential_2004} in a subset of these. A model that accounts for the biological variability in GABA\textsubscript{B} expression and that of channels underlying the rebound response may reveal a wider range of responses to increased inhibition among STN neurons. In such a model, beta rhythms could be transmitted to a subset of STN neurons whereas others would show longer pauses with stronger rebound bursts. Moreover, the GABA\textsubscript{B} synapse model used does not fully account for activation of extrasynaptic GABA\textsubscript{B}R due to GABA spillover \cite{galvan_differential_2004} which is mediated by tonic high-frequency \textit{and} coincident firing of afferents \cite{bevan_cellular_2006}. A model where multiple GABAergic synapses act on a shared pool of extrasynaptic GABA\textsubscript{B}R might increase the importance of synchronized pre-synaptic activity in switching STN neurons to a burst-firing mode.
+%
+%
+
+\subsubsection*{Neuronal firing patterns and their analysis}
+
+%
+The main sources of firing rate variability in the model were randomness in the input spiking patterns, the presence of surrogate Poisson spike sources in STN and GPe, membrane noise, and randomness in connection patterns and the position of synapses. However, as discussed above, these factors do not capture firing pattern variations arising from variability in morpho-electric cell types between and within sub-populations, and from sub-population specific projection patterns.
+
+%
+The effect of the correlation between cortical and striatal inputs to the network was explored by varying the relative phases of both populations when firing in a synchronous oscillatory pattern (Fig.~\ref{fig:exogenous_sweep-ctx-msn-phase_A-psd-currents} - \ref{fig:exogenous_sweep-ctx-msn-phase_B-rasters}). Uncorrelated firing between both populations was also explored (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}-\ref{fig:exogenous_ctx-resonance-example_B-rasters}). In reality, beta activity in both populations is likely to be correlated as the striatum receives topographic inputs from the same cortical areas projecting to the STN. Such correlation could lead to transient synchronization effects not explored here, that could promote or counteract additional oscillatory synchronization depending on the exact phase relationships.
+%
+%
+%
+%
+%
+The effect of varying connectivity patterns between neuronal populations was not directly explored here. The development of neural synchronization and oscillatory activty are known to be dependent on network topology \cite{zhao_synchronization_2011}, and this effect has previously been studied in a single compartment model of the STN-GPe network \cite{terman_activity_2002}. The network topology used in the present study is closest to the random, sparsely-connected topology in Terman et al., (2002) which was shown to develop synchronized bursting patterns at lower frequencies. Choosing different randomly-generated connection matrices did not qualitatively change the results, however altering the connection topology would likely lead to different synchronization properties. Moreover, it is known that connection patterns within the basal ganglia are altered with dopamine depletion, particularly within the striatum \cite{cho_dopamine_2002}, leading to a loss of input specificity in neuronal responses \cite{bronfeld_loss_2011}. These alterations in connection patterns and resulting effects on spike correlations were not taken into account as cortico-striatal connectivity was not considered in the model. As arkypallidal GPe neurons were not modelled, the pallido-striatal feedback loop was not captured. This additional feedback loop has also been suggested as a candidate pacemaker circuit for beta-band oscillations \cite{corbit_pallidostriatal_2016}, however, blocking of striatal inputs was not found to reduce the power of beta oscillations in rat GPe \cite{tachibana_subthalamo-pallidal_2011}.
+%
+
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+Phase synchronization between spike trains was measured by calculating the vector length
+of spike trains in the STN and GPe populations based on a band-pass filtered and Hilbert-transformed
+reference signal \cite{lachaux_measuring_1999}. This is a frequency-specific measure of
+phase synchronization and it was used here to measure spike synchronization in the beta band
+within populations. A measure of phase synchronization assumes that the signals are also
+oscillatory in nature, in contrast to alternative, more general measures of spike train
+synchronization. Because GPe neurons showed a stronger oscillatory characteristic and
+power in the beta band (see power spectral densities in Fig.~\ref{fig:endogenous_sweep-gmax-gpe-gpe_A-psd-currents},\ref{fig:endogenous_sweep-gaba-AB-gpe-stn_AC-psd-all},\ref{fig:exogenous_ctx-resonance-response_A-power},\ref{fig:exogenous_ctx-resonance-example_A-psd-currents}) this resulted in higher measures of phase synchronization in the GPe population
+compared to the STN. Were synchronization analysis to be performed over a broader
+frequency band, or without assuming oscillatory signals, different synchronization
+characteristics may be observed. For example, a frequency-dependent measure of
+synchronization could be obtained using the composite spike train coherence \cite{terry_how_2008},
+applied in a combinatorial fashion \cite{mcmanus_muscle_2016}.
+%
+%
+%
+%
+
+%
+%
+Burst detection was performed using a simple threshold on the ISIs and did not take
+into account variations in the background firing rate in the criterion for distinguishing
+bursts from background firing. Because of this, the detected burst rates in Fig.~\ref{fig:endogenous_sweep-gmax-gpe-stn_C-metrics},\ref{fig:endogenous_sweep-gmax-gpe-gpe_C-metrics},
+\ref{fig:exogenous_sweep-ctx-msn-phase_C-metrics} are strongly correlated with the
+mean population firing rates. Alternative burst detection algorithm exist that do take this
+into account. For instance, burst detection based on the Poisson surprise method \cite{legendy_bursts_1985}
+distinguishes bursts based on the probability of observing a given sequence of spikes
+in a random Poisson spike train. Such a burst detection algorithm would decrease the number of
+bursts observed at high background firing rates and would lead to a detection rate
+more strongly correlated with the CV measurements in Fig.~\ref{fig:endogenous_sweep-gmax-gpe-stn_C-metrics},
+\ref{fig:endogenous_sweep-gmax-gpe-gpe_C-metrics},\ref{fig:exogenous_sweep-ctx-msn-phase_C-metrics}.
+
+\subsubsection*{Model fitting}
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+
+The parameters representing biophysical quantities in the network model were based on
+experimentally reported values found in the literature where available (Section~\ref{sec:ch3-methods}). Synaptic strengths were hand-tuned to obtain population firing rates falling within experimentally
+reported ranges, and are therefore fitted in an \textit{ad hoc} manner rather than using a formalized
+optimization procedure and cost function. Besides the considerable computational resources
+required to perform numerical optimization with a large and detailed network model, a lack of
+publicly available electrophysiology data made the use of numerical optimization unsuitable
+for the purpose of this study.
+In previously published network models of the basal ganglia, optimization is most commonly performed
+at the level of neuron models, and the strength of synaptic inputs and bias currents
+are then hand-tuned (e.g. \cite{terman_activity_2002,kumar_role_2011,corbit_pallidostriatal_2016,lindahl_untangling_2016,fountas_role_2017}).
+The same approach was followed here, given that the neuron models used were optimized using
+multi-objective optimization approaches based on patch-clamp recordings \cite{gillies_membrane_2005,gunay_channel_2008}.
+Models consisting of single-compartment neurons are more amenable to numerical
+optimization due to their lower computational complexity (e.g. \cite{hahn_modeling_2010}),
+however the sparsity of data available to constrain optimizations compared to the number
+of parameters in the model, makes such optimization prone to overfitting.
+While the same can be said for hand-tuning based on data about mean population firing rates,
+two observations suggest that at least the behavior of the current model is not the
+result of an unstable local minimum in its parameter space. First, as indicated by the
+parameter sweeps of synaptic conductances (Fig.~\ref{fig:endogenous_sweep-gmax-ctx-stn_A-psd-currents}-
+\ref{fig:endogenous_sweep-gmax-gpe-stn_B-rasters-vectors}), there is a gradual transition
+in the network behavior, in terms of its firing rates and oscillation frequencies.
+Second, it was verified that altering the randomly-generated connection matrices
+while conserving the numbers of inputs to each cell did not strongly affect
+the observed firing rates, nor the oscillation or bursting patterns exhibited by the network.
+However, the network behavior may still be highly sensitive to other parameters,
+e.g. the biophysical parameters of the neuron models used.
+
+\subsubsection*{Relevance of beta-band oscillations}
+
+%
+Finally, while there is consistent evidence of increased beta-band oscillatory activity in Parkinson’s disease \cite{sharott_dopamine_2005,mallet_disrupted_2008} and a reduction of pathological beta-band activity with interventions that improve symptoms in patients and animal models of the disease \cite{kuhn_reduction_2006,weinberger_beta_2006,eusebio_deep_2011,ray_local_2008}, strong evidence in support of a causal role for pathological beta activity in the symptoms of Parkinson’s disease has yet to be established. Indeed, recent studies failed to find evidence of any causal link between artificially induced beta-band activity and motor impairment in parkinsonian rats \cite{swan_beta_2019}, nor between the reduction of beta-band activity and alleviation of motor symptoms \cite{pan_neuronal_2016}. A lack of causality, however, may not necessarily be incompatible with the use of beta-band oscillations as a clinical biomarker, particularly for akinetic-bradykinetic forms of Parkinson's disease at advanced stages of disease progression. Initial trials of adaptive or closed-loop deep brain stimulation strategies targeted at suppression of beta-band activity have been successful in demonstrating simultaneous reductions in patient symptoms \cite{little_adaptive_2013,velisar_dual_2019}.  Beta-band power may thus still be a suitable biomarker to indirectly gauge underlying physiological changes that are more directly related to network dysfunction such as alterations in synaptic strengths and functional connectivity within the network.
+
+%
+
+%
+\subsection{Conclusion}
+
+In summary, a biophysically detailed model of the parkinsonian STN-GPe network is presented which captures nonuniform distribution of ion channels and synapses in neuronal dendrites. The network model exhibited an intrinsic susceptibility to synchronous neural oscillations within the frequency range of pathological beta-band activity observed in Parkinson's disease. Oscillations in the autonomous STN-GPe network, however, were too weak to support a pacemaker role as the sole origin of beta-band oscillations in the wider BGTC network in Parkinson's disease. In particular in the STN, autonomous beta-band oscillations and phase locking of individual cells were weak unless slower GABA\textsubscript{B}-mediated currents were substantially reduced. Beta-band oscillations were considerably amplified by a relatively sparse cortical beta input, with clear resonance occurring within the beta frequency range. The frequency at which the resonant peak occurred increased with increasing ratio of excitatory to inhibitory STN inputs. beta-band oscillations were further amplified by striatal beta inputs that promoted anti-phase firing of cortex and GPe. These results support the cortical patterning and network resonance hypothesis for the generation of pathological beta-band oscillatory activity in Parkinson's disease in a multi-compartment model of the STN-GPe network. They also illustrate the potential of the pallido-striatal feedback loop in further amplifying beta oscillations within the network.
+%
+In the next chapter, the model presented here is extended to include axon models and the
+effects of DBS on beta-band oscillatory activity in the network are investigated.

@@ -1,0 +1,39 @@
+# TODO: add after publication
+ch_dbs_fem/
+
+# intermediate html files
+*.html
+
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+
+## Intermediate documents:
+*.dvi
+*.xdv
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+
+## luatex/tex4ht
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.tmp
+*.xref

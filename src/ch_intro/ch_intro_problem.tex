@@ -1,0 +1,251 @@
+%
+%
+%
+%
+%
+
+%
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+%
+%
+%
+%
+%
+
+
+%
+%
+
+%
+%
+Parkinson's disease (PD) is the second most prevalent neurodegenerative disease,
+affecting approximately 1\% of the global population over 65 years of age and 5\%
+of the population over the age of 85 \cite{deRijk1997prevalence}.
+It is associated with several motor and neuropsychiatric symptoms \cite{jankovic_parkinsons_2008},
+with the primary motor symptoms characterized by muscular rigidity leading to
+bradykinesia and akinesia, as well as tremor and postural instability.
+%
+Deep brain stimulation (DBS) is a clinically effective and reversible therapy
+to manage the motor symptoms of PD that is most commonly prescribed in late-stage PD
+after significant resistance to pharmacological treatment has developed
+%
+\cite{pizzolato_deep_2012,bronstein_deep_2011,weaver_bilateral_2009,benabid_deep_2009}.
+%
+%
+%
+DBS is also being considered as a viable treatment option for early-stage PD
+motor symptoms \cite{schuepbach_neurostimulation_2013,hacker_deep_2015} as well as
+other neurological and psychiatric disorders~\cite{lyons_deep_2011,krack_deep_2010}.
+%
+%
+
+%
+
+%
+%
+%
+Despite its clinical success and widespread adoption as a standard of care,
+DBS therapy still has several important shortcomings. On average, it offers
+only 40-50\% improvement in motor symptoms as assessed by the unified
+Parkinson's disease rating scale (UPDRS)
+\cite{chen2006deep,deuschl_randomized_2006,schuepbach_neurostimulation_2013,rabie_improvement_2016}.
+Moreover, the indications for DBS in PD are primarily
+akinetic-bradykinetic symptoms and tremor whereas the effectiveness is
+not clinically established for the treatment of axial symptoms such as freezing of gait,
+and for mood disturbances and cognitive symptoms \cite{eisenstein_acute_2014,merola_impulse_2017,huang_deep_2018}.
+Furthermore, tolerance to DBS therapy is developed in a subset of patients
+~\cite{kumar_long-term_2003,houeto_failure_2000}, necessitating frequent
+reprogramming of the stimulation parameters and different stimulation-induced
+side effects occur with varying rates of incidence~\cite{guehl_statistical_2007,benabid_deep_2009}.
+%
+
+\section{Thesis aims}
+
+%
+%
+Overall, the shortcomings of DBS are related to a lack of understanding of its underlying
+mechanisms. Although the direct cellular effects of DBS are better understood \cite{chiken_mechanism_2016,mcintyre_deep_2016,jakobs_cellular_2019}, the picture
+changes when neurons are embedded in a network and it is still unclear how DBS
+impacts the basal ganglia in terms of its network-level activity.
+This is of particular interest given that DBS is effectively a non-local intervention that
+affects activity patterns throughout the basal ganglia, both downstream and upstream of the stimulation site
+\cite{dorval_deep_2008,li_resonant_2007}. Hence a better understanding of how DBS
+interacts with BG network activity is needed in order to overcome its limitations
+and improve control over Parkinsonian symptoms and stimulation side effects.
+%
+%
+
+%
+%
+%
+Computational models provide a valuable tool to investigate the mechanism of action
+of DBS at both the cellular and network level. Mean-field models of neuronal
+populations and single-compartment neuron models are commonly used to answer
+questions about network synchronization, whereas multi-compartment cable models
+are used to study intracellular biophysical properties of individual neurons
+and the interaction with extracellular fields.
+However, it is becoming clear that macroscopic synchronization
+properties and features of neuronal spiking activity relevant to PD pathophysiology,
+such as exaggerated bursting, can depend on neuron's subcellular properties
+\cite{chan_hcn2_2004,gillies_membrane_2005,schultheiss_phase_2010,farries_biophysical_2012,crook_dendritic_1998,goldberg_response_2007}.
+%
+The effect of electrical stimulation on a neuron's output activity can vary depending
+on these same subcellular properties, which include non-uniform ion channel distributions,
+dendritic branching patterns, and the distribution of synapses over the cell
+\cite{rattay_which_2010,yousif_spatiotemporal_2012,steiner_connectivity_2019}.
+%
+Despite their importance, computational models of the basal ganglia
+focusing on pathophysiology and network interactions with DBS have so far not
+included these properties.
+%
+Moreover, there is now clear evidence that DBS is a network phenomenon \cite{mcintyre_network_2010}
+therefore network interactions must also be considered.
+
+%
+Therefore, the first aim of this thesis was to formulate a model of the basal ganglia
+network that captures both the essential biophysical properties that shape
+pathological neuronal unit and network activity, and the effects exerted by DBS
+upon the network. The second aim  was to investigate the
+local cellular and wider network-level effects of DBS upon the basal ganglia
+with the aim of better understanding its mechanism of action so that future
+therapies may be improved. Finally, the third aim of the thesis was to
+investigate what elements of the detailed biophysical model
+could be dispensed with to arrive at a compact model that retains its essential
+biophysical properties but is more computationally efficient and therefore more
+suitable for the exploration of parameter variations in the model.
+A reduced model enables the development of new closed-loop stimulation
+algorithms for DBS by exploring the parameter space of the network,
+electrode configuration, and stimulation parameters in a computationally efficient
+manner.
+%
+
+%
+Because experimental data about basal ganglia pathophysiology and neurobiology
+in the literature and available through public databases derives largely
+from rodent models of PD, the computational models developed for this thesis
+represent the rat brain. This allowed the use of experimentally validated
+biophysical parameters and existing neuron models, increasing biological realism
+of the models. Animal models are widely used to investigate PD pathophysiology
+and the effects of therapeutic interventions %
+because basal ganglia organization and physiology, and the way PD motor symptoms are
+manifested are very similar between species \cite{grillner_basal_2016,blesa_classic_2012}.
+Hence the insights into mechanisms of pathophysiology and mechanism of action of DBS
+obtained using the developed models are expected to be transferable to PD patients
+(see Section~\ref{sec:ch6-discussion-modeling-approach}).
+
+\section{Thesis overview}
+%
+The scientific literature relevant to addressing these problems is reviewed
+in Chapter~\ref{ch2:lit-review}. First Parkinson's disease is introduced and
+subsequently its pathophysiological features are discussed from the
+perspective of the cellular and subcellular level. Then, pathophysiology
+at the network-level is discussed with a focus on pathological synchronization
+of neuronal activity and the relation to Parkinsonian motor symptoms.
+Experimental and modeling studies focusing on the mechanisms of DBS are reviewed,
+and a final section reviews different approaches to computational modeling.
+
+%
+A new model of the subthalamo-pallidal network consisting of biophysically
+detailed cell models is presented in Chapter~\ref{ch3:detailed-model}.
+This network consists of a reciprocal loop between two nuclei of the
+basal ganglia that is considered key for the generation of pathological
+activity patterns and their disruption by DBS. The model is used to
+investigate how pathological oscillations and bursting can arise in this
+network through network interactions between its populations, and through
+the interaction between synaptic and intrinsic currents in dendritic structures.
+The model shows how phase locking of subthalamic and pallidal neurons and
+exaggerated bursting in subthalamic neurons can arise from the interaction
+of these currents when the balance of excitation and inhibition is changed
+and how phase locking is amplified under specific phase relationships between
+cortical and striatal beta-band inputs.
+%
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+In Chapter~\ref{ch4:dbs-model}, the cellular and network effects of DBS
+are investigated using the biophysically detailed model presented in the
+previous Chapter~\ref{ch3:detailed-model}. This is the first model where
+neurons are simultaneously
+affected by the applied electric field along their entire morphologies
+and embedded in a network model, so that both efferent and afferent axons
+to each neuron are susceptible to stimulation. This enables the characterization
+of cellular and network effects of DBS while stimulus-locked action potentials can
+propagate both orthodromically and antidromically along each axon, with synapses
+at the terminals exhibiting short-term plasticity affected by this stimulation.
+%
+Using the model, it is demonstrated how the dissociation between
+somatic and axonal stimulus-locked spiking in neurons is determined
+by the degree of short-term depression in excitatory and inhibitory synapses.
+%
+Furthermore, the model is used to investigate the effects of low-frequency
+stimulation phase-locked to the frequency of beta-band oscillations in
+cortical inputs to the network. By applying phase-locked DBS, it is shown
+how the suppression of oscillations in the network depends on the phase
+of stimulation by altering the relative phases of population spiking activity
+in the network. Simulation results reveal an optimal phase of stimulation
+for the suppression of beta-band oscillations which occurs when pulses
+are applied 180 degrees out-of-phase with respect to the onset of cortical bursts.
+
+%
+The biophysically detailed neuron models used in the network models presented in
+Chapters~\ref{ch3:detailed-model} and \ref{ch4:dbs-model} capture a high level of
+physiological detail and can simulate characteristic behaviours of subthalamic nucleus
+(STN) and external globus pallidus (GPe) neurons.
+However, the large number of neuronal compartments within the individual neuron
+models results in a high computational complexity which make the network model
+computationally expensive to simulate and unwieldy for the exploration of parameter
+variations in the network or stimulation protocol.
+%
+To address this problem, in Chapter~\ref{ch5:reduced-model} a derived network model
+is presented where reduced morphology neuron models are substituted for the original,
+detailed neuron models. First, a model reduction procedure is presented based on
+the collapsing of dendritic branches into equivalent cable structures. The reduction
+procedure is shown to conserve somatic responses and synchronization properties
+of detailed single neuron models.
+Then the resulting network model is used to show how key synchronization properties
+and neuronal firing patterns of the detailed network model are conserved, while differences
+are related to changes in the electrical properties of neurons introduced by the
+reduction procedure.
+
+%
+Finally, in Chapter~\ref{ch6:conclusions} the results presented in this thesis,
+its conclusions and contributions toward the understanding of DBS for the
+treatment of Parkinson's Disease are summarized. Future directions based on
+this research are also discussed.

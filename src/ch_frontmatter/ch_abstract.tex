@@ -1,0 +1,196 @@
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+
+
+The basal ganglia (BG) constitute a central brain region common to all mammals that
+underlies action selection and the coordination between goal-directed and habitual
+behaviors across cognitive domains. Pathological oscillatory and bursting activity
+throughout basal ganglia nuclei is associated with the motor symptoms of Parkinson’s
+disease. Increased power of beta-band (13-30 Hz) oscillations in particular is correlated
+with bradykinetic-akinetic symptoms. Deep brain stimulation (DBS) is
+an established clinical therapy to treat Parkinsonian motor symptoms in patients
+and is observed to regularize pathological spiking patterns arising as a result of the disease.
+%
+However, its mechanisms of action are not clearly understood and, as a result, 
+treatment is hampered by limitations including variable efficacy across patients
+and over the treatment period, behavioral side effects, and limited battery life
+as a result of high-frequency stimulation protocols.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+Because DBS affects many neural populations near, downstream, and
+upstream of the stimulation site, its effects on neuronal activity in the basal ganglia
+network are complex and unclear at present. Besides in vitro and in vivo experimentation,
+computational models provide a valuable tool to investigate BG pathophysiology
+and the mechanisms of action of DBS at both the cellular and network level.
+Network models of the BG comprised of simplified neuron models have revealed how 
+DBS can interact with intrinsically generated oscillations and how stimulus-induced
+action potentials can propagate orthodromically and antidromically away from the
+stimulated elements to affect population activity throughout the network.
+On the other hand, detailed biophysical neuron models have been used to show 
+how neuronal synchronization properties and spiking responses can depend on
+subcellular properties like spatial distributions of voltage-gated ion channels
+in dendrites. Moreover, they have revealed how the response to electrical stimulation
+depends on the placement of their morphologies in the electric field, and on the 
+interaction with those spatially distributed electrical properties.
+However, no computational models of the BG have so far reconciled these effects
+occurring at different spatial scales to account for the mechanisms of action
+of DBS operating simultaneously at the cellular and network level.
+%
+%
+%
+To address this problem, the primary aim of this thesis was to develop a detailed
+computational model of the basal ganglia network that can be used to investigate the
+pathophysiology of Parkinson’s disease and therapeutic interventions that aim to 
+regularize pathological activity.
+To achieve these aims, the computational model should capture both the essential 
+biophysical properties that shape pathological neuronal unit and network activity,
+and the effects exerted by DBS upon it.
+Moreover, the network implementation should leverage modern, parallel computing
+architectures to reduce computation time so that the network behavior can be investigated
+on reasonable time scales.
+%
+%
+%
+%
+The second aim  was to investigate the local cellular and wider 
+network-level effects of DBS upon the basal ganglia with the aim of better understanding
+its mechanism of action. Subsequently, the following aim was to use the resulting insights 
+to improve the efficacy of continuous DBS, and guide the development of closed-loop 
+adaptive stimulation protocols. Because of the finer temporal scales required
+to simulate network-DBS interactions resulting in increased computational requirements,
+the model should be implemented in a computationally efficient manner that allows
+time-efficient simulation of the network behavior under different parameter settings.
+Therefore, the final aim of the thesis was to investigate what elements of the detailed 
+biophysical model could be dispensed with to arrive at a compact model that retains
+its essential biophysical properties but consists of a lower number of state variables.
+%
+%
+Such a reduced model enables the development of new closed-loop stimulation
+algorithms for DBS by exploring the parameter space of the network,
+electrode configuration, and stimulation parameters in a computationally efficient
+manner.
+
+%
+
+%
+In the first study in this thesis, a biophysically detailed model of the
+subthalamo-pallidal (STN-GPe) network is presented. To capture both intrinsic cellular
+biophysics and interactions with extracellular electric fields, neurons were represented
+by branching morphology models that include dendritic ion channels. The use of detailed
+multi-compartment conductance-based neuron models allowed to take into consideration
+for the first time the interplay of active dendritic channel currents and synaptic
+currents affecting the integration of patterned inputs and shaping network activity.
+%
+%
+The model was used to investigate the development of beta-band synchrony and bursting within the STN-GPe network by changing the balance of excitation and inhibition in both nuclei, and by adding exogenous oscillatory inputs with varying phase relationships through the hyperdirect cortico-subthalamic and indirect striato-pallidal pathways. The model showed an intrinsic susceptibility to beta-band oscillations that was manifest in weak autonomously generated oscillations within the STN-GPe network and in selective amplification of exogenous beta-band synaptic inputs near the network's endogenous oscillation frequency. The frequency at which this resonance peak occurred was determined by the net level of excitatory drive to the network. Intrinsic or endogenously generated oscillations were too weak to support a pacemaker role for the STN-GPe network, however, they were considerably amplified by sparse cortical beta inputs and were further amplified by striatal beta inputs that promoted anti-phase firing of the cortex and GPe, resulting in maximum transient inhibition of STN neurons. 
+These results suggest that the strength of pathological beta-band oscillations can be modulated
+by altering the phase relationships between neural populations in the network.
+In summary, the model elucidates a mechanism of cortical patterning of the STN-GPe network through feedback inhibition whereby intrinsic susceptibility to beta-band oscillations can lead to phase locked spiking under parkinsonian conditions. These results point to resonance of endogenous oscillations with exogenous patterning of the STN-GPe network as a mechanism of pathological synchronization, and a role for the pallido-striatal feedback loop in amplifying beta oscillations.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+%
+In a second study, the detailed model of the STN-GPe network was extended to include a
+three-dimensional representation of axonal projections between the subthalamic nucleus and
+globus pallidus, and in the hyperdirect pathway originating in layer V pyramidal neurons
+in the cortex. A spatial dimension was added to the model by positioning cells in a 3D
+anatomical reconstruction of a rat brain and the model was used to elucidate the cellular
+and networks effects of DBS. This is the first study where cells consisting of detailed
+morphologies with many compartments are embedded in a network and subjected to electrical
+stimulation by DBS during ongoing network activity.
+%
+The model showed how STN and GPe neurons became progressively entrained
+to DBS as its amplitude was increased. It revealed
+how action potentials were initiated in the somatic region of STN neurons, and in the
+distal axonal region in GPe neurons. Stimulus-locked action potentials propagated 
+orthodromically along STN axons projecting to the GPe. Activation of GPe somata by DBS
+also occurred, due to antidromic propagation of action potentials initiated in GPe axons
+projecting to the STN. STN neuron firing patterns in response to DBS exhibited a
+decoupling between somatic and axonal spiking in a subpopulation of cells, and it was
+demonstrated how this decoupling increased when short-term depression in GPe-STN synapses
+was reduced. However, disabling synapses in the network indicated that the primary source
+of entrainment and excitation/inhibition of STN neurons in our model was direct activation
+of neurite structures rather than stimulus-locked synaptic currents.
+Finally, the mechanism of phase-locked low-frequency DBS was investigated and
+it was shown how the optimal phase for the suppression of beta-band oscillations resulted
+in a dispersed firing of STN neurons over the oscillation cycle.
+
+%
+In the final study, the detailed STN-GPe network model was reduced to a more compact and
+computationally efficient form for the purpose of parameter exploration and future
+optimization of DBS stimulation protocols. To achieve this, morphology reduction algorithms
+were applied to the constituent cells of the detailed network model. The reduction
+algorithms were based on previous algorithms that attempt to preserve synaptic integration
+properties mediated by dendritic active ion channels. However, the algorithms were
+adapted to preserve outward tapering of neurite diameters in order to improve the
+match in local input impedances.
+%
+It was shown that the reduced morphology neuron models preserved synaptic phase response
+curves and responses to current clamp protocols exhibited by the detailed cell models.
+The resulting network model
+represented a reduction in the number of state variables of 85.5 \% and computation time of
+79 \% compared to the detailed model. Moreover, key synchronization properties and neuronal
+firing patterns of the detailed network model were conserved, and differences were related
+to changes in the electrical properties of neurons introduced by the morphology reduction
+algorithms.
+
+
+%
+
+In summary, a novel biophysically detailed model of the STN-GPe network is presented in
+this thesis. The use of detailed multi-compartment conductance-based neuron models
+allowed to take into consideration for the first time the interplay of dendritic ionic
+and synaptic currents shaping pathological activity patterns, and distributed subcellular effects
+of DBS during ongoing network activity. The network model was optimized for parallel
+execution on distributed computer architectures so that the network behavior could be
+investigated on reasonable time scales. The model was used to gain new insights into the
+mechanisms underlying pathological oscillations in the basal ganglia in Parkinson’s
+disease and their suppression by DBS. First it was shown how the STN-GPe network develops
+an intrinsic susceptibility to beta-band oscillations in Parkinsonian conditions enabling
+it to phase-lock to cortical oscillations, and how this phase-locking can be strengthened
+or attenuated by specific phase relationships between beta-band inputs in the hyperdirect
+and indirect pathway. The model was further developed into a 3D anatomical model
+incorporating axon bundles between the STN and GPe and in the hyperdirect pathway. This
+model was used to elucidate mechanisms underlying somatic-axonal decoupling in the STN by
+high-frequency DBS, and antidromic activation of GPe neurons. Furthermore, the model
+yielded a new understanding into the mechanism of low-frequency phase-locked DBS and its
+relation to the suppression of beta-band oscillations in the local field potential. 
+The biophysically detailed network model will enable the development of multi-site and
+closed-loop stimulation protocols with improved efficacy in the future.
+Finally, using theoretical methods a reduced version of the model was derived that 
+preserved characteristic responses and synaptic phase response curves of individual cells,
+in addition to network synchronization properties and oscillatory activity.
+The reduced model can be used as a basis for time-efficient derivation and testing
+of closed-loop protocols and the examination of dynamics of large scale networks 
+using biophysically accurate models.

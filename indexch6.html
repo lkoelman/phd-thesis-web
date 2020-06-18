@@ -1,0 +1,448 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title>6 Conclusions</title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='index.css' type='text/css' rel='stylesheet' /> 
+<meta content='index.tex' name='src' /> 
+ <script type='text/javascript' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js' async='async'></script>  
+ 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML' type='text/javascript'></script> 
+<script src='https://hypothes.is/embed.js' type='text/javascript'></script><link href='css/scale.css' type='text/css' rel='stylesheet' /></head><body>
+   <!-- l. 248 --><div class='crosslinks'><p class='noindent'>[<a href='indexap1.html'>next</a>] [<a href='indexch5.html'>prev</a>] [<a href='indexch5.html#tailindexch5.html'>prev-tail</a>] [<a href='#tailindexch6.html'>tail</a>] [<a href='index.html#indexch6.html'>up</a>] </p></div>
+   <h2 class='chapterHead'><span class='titlemark'>Chapter 6</span><br /><a id='x11-870006'></a>Conclusions</h2>
+   <div class='chapterTOCS'>
+    <span class='sectionToc'>6.1 <a href='#x11-880006.1'>Summary of contributions</a></span>
+<br />     <span class='subsectionToc'>6.1.1 <a href='#x11-890006.1.1' id='QQ2-11-132'>Detailed STN-GPe network model</a></span>
+<br />     <span class='subsectionToc'>6.1.2 <a href='#x11-900006.1.2' id='QQ2-11-133'>DBS model</a></span>
+<br />     <span class='subsectionToc'>6.1.3 <a href='#x11-910006.1.3' id='QQ2-11-134'>Reduced STN-GPe network model</a></span>
+<br />    <span class='sectionToc'>6.2 <a href='#x11-920006.2'>Modeling approach</a></span>
+<br />    <span class='sectionToc'>6.3 <a href='#x11-930006.3'>Future research</a></span>
+<br />     <span class='subsectionToc'>6.3.1 <a href='#x11-940006.3.1' id='QQ2-11-137'>Extending the STN-GPe network model</a></span>
+<br />     <span class='subsectionToc'>6.3.2 <a href='#x11-950006.3.2' id='QQ2-11-138'>DBS model and protocols</a></span>
+<br />     <span class='subsectionToc'>6.3.3 <a href='#x11-960006.3.3' id='QQ2-11-139'>Data-driven biological modeling</a></span>
+<br />    <span class='sectionToc'>6.4 <a href='#x11-970006.4'>Closing remarks</a></span>
+   </div>
+<!-- l. 50 --><p class='indent'>   Next to in vivo experimentation, computational modeling is a valuable approach to test
+interventions in neuronal circuits <span class='cmti-10x-x-109'>in silico </span>that avoids the risks and costs associated
+with animal and human studies. Not only can it serve as a translational tool to
+bring insights from neuroscience to clinical applications, it can also serve as a safe
+environment for the design and testing of DBS control algorithms <span class='cite'>[<a href='indexli5.html#Xmodolo_model-driven_2011'>253</a>, <a href='indexli5.html#Xbeuter_closed-loop_2014'>32</a>, <a href='indexli5.html#Xhuys_computational_2016'>161</a>]</span>.
+Building on this approach, the primary aim of this thesis was to develop a detailed
+computational model of the basal ganglia network that can be used to investigate the
+pathophysiology of Parkinson’s disease and therapeutic interventions that aim to correct
+it. To achieve these aims, a key requirement of the computational model was that
+it captures the essential biophysical properties that shape pathological neuronal
+unit and network activity, and the effects exerted by DBS upon it. Moreover, the
+model should be implemented in a computationally efficient manner that allows
+time-efficient simulation of the network behavior under different parameter settings.
+The resulting model can then be used to elucidate mechanisms of pathophysiology
+and the mechanism of action of DBS, jointly at the cellular and network level. The
+insights gained using the model can be used in a translational fashion, to improve the
+efficacy of established DBS protocols and to guide the design of novel stimulation
+                                                                                
+
+                                                                                
+protocols.
+</p><!-- l. 72 --><p class='indent'>   A novel biophysically detailed model of the parkinsonian STN-GPe network was developed
+that meets the requirements set forth in the aims. The model was implemented for parallel
+execution across multiple processors. This enabled network simulations on time scales of
+several hours, and demonstrates the feasibility of biophysically detailed network modeling by
+leveraging distributed computer architectures. The model was used to investigate the
+mechanisms underlying the emergence of pathological beta-band oscillatory activity in the
+STN-GPe network, which is correlated with akinetic-bradykinetic motor symptoms of
+Parkinson’s disease. It was shown that the STN-GPe feedback loop has an intrinsic
+susceptibility to beta-band oscillations that is manifest in weak autonomously generated
+oscillations that are strengthened by resonant interactions with cortical beta-band oscillatory
+inputs. Resonance is established by phase-locking to cortical oscillatory inputs in the
+dopamine depleted condition and is further amplified by striatal beta inputs that promote
+anti-phase firing of the cortex and GPe. The deleterious phase relationships between
+population spiking activity in BG nuclei that enable strong phase locking are mediated by
+abnormal synaptic transmission and modulation of ion channel conductances by
+dopamine depletion. These changes affect the balance of excitation and inhibition in
+neurons, their excitability, and their effective time constants of synaptic integration.
+The detailed network model of the STN-GPe feedback loop was extended using 3D
+neuron morphologies positioned inside a 3D reconstruction of the rat brain and
+axon cable models were included for each cell. The resulting anatomically detailed
+network model was used to elucidate mechanism of local cellular activation by DBS,
+and of orthodromic and antidromic action potential propagation during ongoing
+parkinsonian network activity. The results revealed mixed excitatory/inhibitory
+effects of HFS DBS on STN somata depending on the orientations and positions of
+neural elements, and strong antidromic activation of GPe neurons. Moreover it was
+shown how the decoupling between somatic and axonal spiking in STN neurons was
+sensitive to differential short-term depression in the synapses of stimulated afferents.
+Furthermore, based on the insights about deleterious phase relationships in PD, a
+phase-locked DBS protocol was tested in the network that disrupts phase locking in STN
+neurons by changing the relative phases of afferent spiking activity. Phase-locked
+DBS consisted of low-frequency (20 Hz) pulses delivered in anti-phase relative to
+20 Hz cortical oscillatory inputs. The suppression of beta-band oscillations in the
+                                                                                
+
+                                                                                
+LFP using this low-frequency protocol suggests that phase-locked DBS could be an
+alternative to the established HFS DBS that is less disruptive to ongoing network
+activity.
+</p>
+   <h3 class='sectionHead'><span class='titlemark'>6.1   </span> <a id='x11-880006.1'></a>Summary of contributions</h3>
+<!-- l. 138 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>6.1.1   </span> <a id='x11-890006.1.1'></a>Detailed STN-GPe network model</h4>
+<!-- l. 140 --><p class='noindent'>The network model developed for this thesis was the first model of the STN-GPe network in
+the basal ganglia that consists of biophysically detailed multi-compartment neuron models.
+Despite the level of detail included in the model, because of its parallel implementation it does
+not come with a prohibitive cost in terms of execution time compared to networks consisting
+of single-compartment neuron models. The use of detailed multi-compartment neuron
+models allowed us to take into consideration for the first time the interplay of active
+dendritic channel currents and synaptic currents in shaping pathological unit and
+network activity. These interactions were captured by delivering synaptic inputs to
+precise locations in the dendritic trees where they activate locally expressed ion
+channels. This revealed how strong burst firing modes in the STN were replaced by
+sparser spiking and higher frequency beta-band activity depending on the balance of
+dendritic excitation and inhibition, which regulated the availability of burst-generating
+<!-- l. 162 --><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><mi>C</mi><msup><mrow><mi>a</mi></mrow><mrow><mn>2</mn><mo class='MathClass-bin'>+</mo></mrow></msup></math>
+channels.
+</p><!-- l. 170 --><p class='indent'>   The model showed an intrinsic susceptibility to beta-band oscillations that was manifest in
+weak autonomously generated oscillations within the reciprocally connected STN-GPe loop
+and in selective amplification of exogenous beta-band spiking inputs near the network’s
+endogenous oscillation frequency. Specifically, the frequency response of the STN-GPe network
+showed a resonance peak in the beta-band range and the frequency at which the peak
+occurred was determined by the ratio of excitation to inhibition in the STN. As
+this ratio decreased, which is supported experimentally by cortical de-afferentiation
+and strengthening of GPe synapses after dopamine depletion, the resonance peak
+                                                                                
+
+                                                                                
+increased in magnitude and shifted toward the lower beta-band range. Hence, the model
+hypothesizes a new mechanism by which beta-band resonance arises in the STN-GPe
+loop.
+</p><!-- l. 182 --><p class='indent'>   The model also provided new insights into the role of phase relationships and synaptic
+receptors in generating pathological activity. Autonomously generated oscillations were strong
+only when GPe-STN synaptic inputs were dominated by short time constant GABA<sub class='textsubscript'><span class='cmr-10'>A</span></sub>-receptor
+mediated currents while GABA<sub class='textsubscript'><span class='cmr-10'>B</span></sub>-mediated currents were weak. However, strong bursting in
+STN neurons required higher inhibition of the STN and the presence of slower GABA<sub class='textsubscript'><span class='cmr-10'>B</span></sub>
+mediated currents. This indicates an important role for GABA<sub class='textsubscript'><span class='cmr-10'>B</span></sub> receptors in the
+pathophysiology of Parkinson’s Disease in STN neurons. The weak autonomous oscillations in
+the presence of strong GABA<sub class='textsubscript'><span class='cmr-10'>B</span></sub> currents and bursting did not support a key pacemaker role for
+the STN-GPe network in the generation of beta-band oscillations. Moreover, beta-band
+resonance in the STN-GPe network could be either suppressed or amplified by beta-band
+striatal inputs to the GPe, depending on the phase relationships in the network. Resonance
+was amplified by striatal beta inputs that promoted anti-phase firing of the cortex and
+GPe, resulting in maximum transient inhibition of STN neurons. This highlights
+the role of phase relationships between populating spiking activity in shaping the
+interaction of beta-band oscillations converging onto the STN-GPe loop through different
+pathways.
+</p><!-- l. 203 --><p class='indent'>   The mechanism of oscillation in the model presented is consistent with that of previous
+models where alternating phases of excitation and inhibition in the delayed negative feedback
+loop consisting of STN and GPe give rise to a sustained oscillation pattern (see Section <a href='indexch3.html#x8-590003.4.2'>3.4.2<!-- tex4ht:ref: sec:ch3-disc:osc-mech-others  --></a>).
+However, the detailed model further illustrates the role of precisely timed excitation and
+inhibition in STN, orchestrated by the direct and indirect pathways, in transiently
+de-inactivating somatic and dendritic ion channels to establish strong phase-locking to its
+excitatory inputs. Moreover, it highlights the sensitivity of the oscillation and bursting
+patterns generated by the network to the excitation-inhibition balance in each population and
+synaptic current properties.
+</p><!-- l. 215 --><p class='indent'>   The model gives a mechanistic account of the generation of exaggerated oscillatory activity
+in the STN-GPe network that is poorly understood from experimental data alone, where the
+observable variables reflect the state of the network more indirectly. Moreover, the
+computational model allows precise control over variables that are hard to control in vivo or in
+vitro, such as the excitation-inhibition balance in cells and the phase relationships between
+                                                                                
+
+                                                                                
+spiking inputs to the network. This enables the investigation of the individual contributions of
+these variables to network pathophysiology, which is difficult to do in vitro or in
+vivo.
+</p><!-- l. 225 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>6.1.2   </span> <a id='x11-900006.1.2'></a>DBS model</h4>
+<!-- l. 231 --><p class='noindent'>To leverage the biophysically detailed network model for the understanding and design of DBS
+control algorithms, it was extended into a 3D anatomical model. The 3D model was
+constructed by placing cell morphologies within BG nuclei in an atlas-based reconstruction of
+the rat brain. Moreover, it included multi-compartment models of the axonal projections
+between the STN and GPe, and of the hyperdirect pathway originating in the cortex. This was
+the first study where the distributed effects of DBS on detailed neuronal morphologies were
+investigated during ongoing network activity. Importantly, this allowed us to characterize for
+the first time the effect of stimulus-locked action potentials in multiple fiber bundles,
+propagating orthodromically and antidromically along axons in the network and
+disrupting intrinsic population spiking both downstream and upstream of the stimulation
+site.
+</p><!-- l. 254 --><p class='indent'>   Simulation results indicated that antidromic recruitment of GPe neurons via the
+GPe-STN projection could play an important role in the network effects of DBS.
+Furthermore, the results further clarified seemingly contradictory data in the literature
+reporting either excitatory or inhibitory effects of DBS on somatic spiking activity.
+Entrainment of STN somata to HFS DBS was variable, and cells were either excited or
+inhibited, depending on local neurite orientations and location with respect to the
+electrode. Moreover, there were different degrees of dissociation between somatic and
+axonal spiking between neurons. The degree of dissociation was shown to depend
+on differential short-term depression in excitatory and inhibitory afferents to the
+STN, confirming existing hypotheses based on experimental recordings. Finally, the
+model gave new insights into the mechanism of closed-loop, phase-locked stimulation
+protocols that are emerging as candidates to replace traditional high-frequency DBS.
+Application of a low-frequency stimulation protocol that was phase-locked to the
+cortical beta-band oscillations entering the network revealed an optimal phase of
+                                                                                
+
+                                                                                
+stimulation for the suppression of beta-band oscillations in the LFP. Specifically,
+stimulating 180 degrees out-of-phase with respect to the onset of cortical bursts
+dispersed STN spiking throughout the oscillation period resulting in the suppression of
+phase-locking.
+</p><!-- l. 275 --><p class='indent'>   Hence, the model yielded new insights into the possible mechanisms of phase-locked
+stimulation, which is a promising candidate therapy for Parkinson’s disease that is
+actively being investigated <span class='cite'>[<a href='indexli5.html#Xholt_phase-dependent_2019'>155</a>]</span>. Moreover, the model and the resulting insights
+could be used in future studies to optimize the control parameters and electrode
+placements for phase-locked stimulation as well as other closed-loop DBS control
+algorithms
+</p><!-- l. 282 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>6.1.3   </span> <a id='x11-910006.1.3'></a>Reduced STN-GPe network model</h4>
+<!-- l. 288 --><p class='noindent'>To capture the biophysical properties that determine pathological neuronal activity in the
+STN-GPe network and its interaction with DBS, morphological neuron models were assumed
+to provide a sufficient level of detail. However, such models consist of a large number of state
+variables, which burden them with high computational complexity and potentially a
+superfluous level of detail. Because the aim was to create a model that provides the <span class='cmti-10x-x-109'>essential</span>
+level of detail to capture these properties, a reduced network model was developed
+based on the original detailed model. The reduced model had a lower number of
+state variables, determined by the number of neuronal compartments, and is more
+suitable for the exploration of parameter spaces in the network description and
+DBS protocols. Reduction of the network model followed a bottom-up approach, in
+contrast to established methods for reducing the number of state variables to represent
+neuronal network activity which are top-down, e.g. mean field models. The approach
+followed was to substitute reduced morphology models for the original cell models in
+the network. While the effect of morphology reduction on single-cell responses is
+studied in various cell types, this was the first study were its effect on network-level
+activity is investigated. Results showed that, while individual cell responses and
+synchronization properties could be preserved, the network-level activity and its response to
+synchronous inputs were subtly altered. Autonomous oscillations in the network,
+                                                                                
+
+                                                                                
+and resonance with oscillatory inputs were preserved. However, bursting was less
+pronounced, the strength of oscillations was increased, and there was a frequency shift
+in the resonance peak exhibited by the network. This was related to differences
+in the processing of synaptic inputs in the reduced neuron models as a results of
+changes in the electrical structures of the cells. The reduced network model can be
+extended in the future to incorporate the effects of DBS based on the findings in
+Chapter <span class='cmbx-10x-x-109'>??</span>.
+</p><!-- l. 322 --><p class='noindent'>
+</p>
+   <h3 class='sectionHead'><span class='titlemark'>6.2   </span> <a id='x11-920006.2'></a>Modeling approach</h3>
+<!-- l. 325 --><p class='noindent'>The modeling approach followed in this thesis was that of biophysically detailed,
+multi-compartment cable neuron models. The rationale for choosing this methodology was
+twofold. First, it allowed to capture the spatially distributed effect of the electric field on
+neuron morphologies, which depends strongly on second-order spatial gradients
+of the field along neurite elements <span class='cite'>[<a href='indexli5.html#Xrattay_basic_1999'>301</a>]</span> and possible interactions with dendritic
+voltage-gated ion channels <span class='cite'>[<a href='indexli5.html#Xrattay_which_2010'>302</a>]</span>. Second, modeling dendrites allows to take into account
+somato-dendritic interactions occurring in neurons as a result of the interplay between
+intrinsic and synaptic currents. These effects are known to underlie pathological
+bursting in STN neurons <span class='cite'>[<a href='indexli5.html#Xgillies_membrane_2005'>120</a>, <a href='indexli5.html#Xbeurrier_subthalamic_1999'>30</a>, <a href='indexli5.html#Xotsuka_excitatory_2001'>272</a>, <a href='indexli5.html#Xsong_characterization_2000'>336</a>]</span>, and influence the processing of synaptic
+inputs <span class='cite'>[<a href='indexli5.html#Xhanson_sodium_2004'>144</a>, <a href='indexli5.html#Xchan_hcn2_2004'>55</a>]</span>, as well as the synchronization properties of STN and GPe neurons
+<span class='cite'>[<a href='indexli5.html#Xschultheiss_phase_2010'>319</a>, <a href='indexli5.html#Xfarries_phase_2012'>101</a>]</span>.
+</p><!-- l. 339 --><p class='indent'>   Because of the biophysically detailed modeling approach, and the fact that most available
+experimental data about basal ganglia pathophysiology comes from rodent experiments,
+models were developed to represent the rat brain. This allowed the use of reconstructed
+neuron morphologies, detailed anatomical brain atlases, and experimentally validated
+biophysical parameters for the neuron and electrical models. The use of animal models for the
+investigation of PD pathophysiology and therapies is standard practice. Because of the
+evolutionary conservation of basal ganglia nuclei in vertebrates <span class='cite'>[<a href='indexli5.html#Xgrillner_basal_2016'>130</a>]</span>, the expression
+of Parkinsonian pathophysiology after dopaminergic lesioning, and many motor
+and non-motor symptoms are replicated between species <span class='cite'>[<a href='indexli5.html#Xblesa_classic_2012'>37</a>]</span>. Moreover, evidence
+suggests that the mechanism for generation of pathological oscillatory activity is
+                                                                                
+
+                                                                                
+conserved between rodents and primates <span class='cite'>[<a href='indexli5.html#Xsherman_neural_2016'>330</a>]</span>. If this is indeed the case, then insights
+into the mechanisms of pathological synchronization, as presented in this thesis,
+should remain valid. Although differences in brain anatomy between species require
+different electrode configuration and placement, stimulation protocols designed to
+desynchronize neural populations based on these insights should be expected to be
+transferable.
+</p><!-- l. 369 --><p class='indent'>   The approach to model fitting was to start from available cell models that were already
+fitted to electrophysiology data, and subsequently constrain the resulting network model using
+available data about synaptic physiology and connection patterns reported in the
+neurophysiology literature. This was followed by hand-tuning of synaptic weights to obtain
+mean population firing rates in agreement with experimentally reported data in rats. This
+hand-tuning procedure is <span class='cmti-10x-x-109'>ad hoc</span>, in contrast to established numerical optimization
+routines, and is used widely in the field of computational neuroscience. The main
+obstacles to numerical optimization are a lack of high-quality datasets available for
+model fitting with standardized descriptions of experimental conditions and the
+computational resources required to evaluate large network models in each step of an
+optimization procedure. In addition, little is known about the convergence properties of
+optimization procuedures for network models with high-dimensional parameter landscapes
+consisting of parameters that have heterogeneous non-linear effects on network dynamics
+and cost functions that balance many, possibly competing objectives. The lack of
+such high-quality datasets in combination with the lack of suitable optimization
+routines with guaranteed convergence properties, and of established regularization
+techniques leads to a high risk of overfitting. This problem is compounded in detailed
+models by the higher number of free parameters, particularly those that cannot be
+constrained due to a lack of experimental data, leading to higher model variance. On the
+other hand, biophysically detailed models have the advantage that their variables
+have a direct relationship to biophysical quantities and can therefore more easily be
+compared to experimental data. Because of the explicit modeling of biophysical
+processes, unrealistic parameter values may result in non-biological behaviors occurring
+only in vitro, such as depolarization block occurring when excitatory inputs are too
+strong. Hence, unlike in abstract neuron models, unrealistic parameter values can be
+identified and rejected more easily. This property reduces the likelihood that the models
+presented here are severely overfit with respect to synaptic weights, the primary free
+                                                                                
+
+                                                                                
+parameters. Moreover, parameter sweeps were performed where possible to inspect
+the network behaviour in the local region of the parameter landscape, along axes
+corresponding to synaptic weight parameters belonging to one projection type. At least along
+these axes, the networks showed gradual transitions in their behavior indicating that
+hand-tuned parameters did not correspond to unstable local minima. Similar controls
+were carried out by altering the randomly-generated connection matrices. However,
+network activity patterns as shown in this thesis could be highly sensitive to other
+parameters. The introduction of structured connectivity patterns for example can
+strongly influence oscillation patterns, as shown in an early model of the STN-GPe
+network <span class='cite'>[<a href='indexli5.html#Xterman_activity_2002'>349</a>]</span>. A second important source of variability in network behaviour is
+the neuron models used, and how well their biophysical properties capture the in
+vivo distribution of neuron responses within a population. This is an active area of
+research, and it is well known that multi-objective optimization methods typically used
+for neuron model fitting can generate many candidate parameter sets that score
+equally well on the objective function <span class='cite'>[<a href='indexli5.html#Xvan_geit_automated_2008'>360</a>]</span>, but show difference responses to novel
+stimulation patterns. Similarly, these equally performing model candidates may
+also show different synchronization properties and lead to different network activity
+patterns.
+</p><!-- l. 450 --><p class='noindent'>
+</p>
+   <h3 class='sectionHead'><span class='titlemark'>6.3   </span> <a id='x11-930006.3'></a>Future research</h3>
+<!-- l. 455 --><p class='noindent'>The network model used as the basis of the three modeling studies in this thesis consists of the
+two interconnected nuclei where parkinsonian pathophysiology is most prominent and where
+DBS has proven to be the most effective. Although the network model captured a high degree
+of biophysical detail, many directions can be explored to extend the model for further
+optimization and design of DBS protocols.
+</p><!-- l. 462 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>6.3.1   </span> <a id='x11-940006.3.1'></a>Extending the STN-GPe network model</h4>
+                                                                                
+
+                                                                                
+<!-- l. 472 --><p class='noindent'>In order to understand the relation between neural activity patterns and parkinsonian motor
+symptoms, the output stages of the basal ganglia projecting to motor command structures in
+the brain stem and cortex should be modeled. Only when the link between basal ganglia
+activity and motor processing can be made, can stimulation protocols truly be optimized in
+terms of their ability to restore normal motor-related activity. To achieve this, a functional
+dimension should be added to network models by imposing relationships between
+the inputs and outputs of the network that represent motor-related activity and
+processing. This could be achieved based on neural recordings at the input and
+output stages, and using learning rules for spiking neural networks that modify
+synaptic weights <span class='cite'>[<a href='indexli5.html#Xabbott_building_2016'>3</a>]</span> to learn input-output relationship that satisfy particular motor
+requirements. Such a functional understanding would enable better strategies for
+neuromodulation, incorporating specific cost functions in terms of the activity patterns that
+should be restored in the network. One major challenge is that learning rules for
+biological spiking neural networks are not well understood, and that they would have
+to optimize multiple cost functions. Besides input-output relationships, biological
+constraints on activity patterns exhibited by the network should be satisfied. To
+address this challenge, learning methods for complex cost functions in structured
+architectures developed for non-spiking neural networks are being reconciled with
+those for spiking networks <span class='cite'>[<a href='indexli5.html#Xmarblestone_toward_2016'>229</a>, <a href='indexli5.html#Xabbott_building_2016'>3</a>, <a href='indexli5.html#Xdepasquale_using_2016'>81</a>]</span>. This should enhance the understanding
+of the relationship between parkinsonian pathophysiology and the disruption of
+motor processing, and should lead to the development of more effective stimulation
+protocols.
+</p><!-- l. 499 --><p class='indent'>   A second way to extend the presented network models, is to integrate the multiple
+feedback loops in the basal ganglia-thalamocortical network that are thought to play a role in
+the generation and propagation of pathological oscillations. In particular the thalamo-cortical
+loop is considered to be a key feedback loop <span class='cite'>[<a href='indexli5.html#Xpavlides_computational_2015'>278</a>, <a href='indexli5.html#Xreis_thalamocortical_2019'>306</a>]</span> and links the core basal ganglia nuclei
+of the GP and STN to the cortex, which is believed to drive the generation of pathological
+beta-band oscillations <span class='cite'>[<a href='indexli5.html#Xsherman_neural_2016'>330</a>]</span> and is key to its suppression <span class='cite'>[<a href='indexli5.html#Xli_resonant_2007'>203</a>, <a href='indexli5.html#Xli_therapeutic_2012'>202</a>]</span>. Modeling the feedback
+loops rather than including cortical beta-band activity as an external input will allow
+investigation of the effect of multiple circuit resonances in the basal ganglia and how these are
+affected by DBS.
+                                                                                
+
+                                                                                
+</p><!-- l. 513 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>6.3.2   </span> <a id='x11-950006.3.2'></a>DBS model and protocols</h4>
+<!-- l. 531 --><p class='noindent'>To improve efficacy of existing high-frequency DBS protocols, the model presented in
+Chapter (<span class='cmbx-10x-x-109'>??</span>) can be used to investigate optimal placement of electrodes and contact
+activation, in combination with a more detailed volume conductor model taking into account
+different tissue properties. This would allow more precise targeting of neuronal elements
+and investigation of their differential contributions to the modulation of network
+activity.
+</p><!-- l. 539 --><p class='indent'>   Furthermore, the analysis of STN-GPe network activity in Chapter <a href='indexch3.html#x8-410003'>3<!-- tex4ht:ref: ch3:detailed-model  --></a> and the application
+of phase-locked stimulation in Chapter <span class='cmbx-10x-x-109'>??</span> suggested that altering phase-relationships between
+basal ganglia nuclei is a promising method to attenuate pathological oscillations. Indeed,
+preliminary data in rats shows that phase-locked stimulation in the STN can desynchronize
+local neuronal activity within several stimulation cycles <span class='cite'>[<a href='indexli5.html#Xholt_phase-dependent_2019'>155</a>]</span>. Moreover, multi-site HFS
+designed to disrupt phase relationships within populations is more effective that continuous
+high-frequency DBS in parkinsonian monkeys <span class='cite'>[<a href='indexli5.html#Xtass_coordinated_2012'>347</a>]</span>. The current model could be used to
+investigate multi-site phase-locked stimulation protocols that alter phase-relationships
+by activating different neuronal elements, with mixed orthodromic and antidromic
+propagation effects, in a way which would not be possible with simpler single cell
+models.
+</p><!-- l. 553 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>6.3.3   </span> <a id='x11-960006.3.3'></a>Data-driven biological modeling</h4>
+<!-- l. 573 --><p class='noindent'>A key issue that needs to be addressed in future models is that of biological variability in
+cellular properties and, in particular, how it is affected by dopamine depletion in Parkinson’s
+disease. First, there is considerable heterogeneity in morpho-electric cell types in the brain
+<span class='cite'>[<a href='indexli5.html#Xramaswamy_neocortical_2015'>298</a>, <a href='indexli5.html#Xzeng_neuronal_2017'>379</a>]</span>, including within basal ganglia nuclei <span class='cite'>[<a href='indexli5.html#Xmallet_dichotomous_2012'>225</a>, <a href='indexli5.html#Xsharott_different_2009'>324</a>, <a href='indexli5.html#Xsharott_population_2017'>326</a>]</span>. Subtypes of cells can have
+different morphological properties, ion channel expression, intracellular signaling pathways,
+and take part in fine-grained connection motifs within brain nuclei. All these properties
+contribute to variability in responses and firing patterns in these neurons, which reflect their
+different functional roles in the network. However, network models more often than not consist
+                                                                                
+
+                                                                                
+of identical copies of the same cell model within nuclei with uniform connection motifs. If this
+diversity in cellular properties is not captured, the emergent activity patterns and the
+network’s responses to interventions may not reflect critical features of the biological
+network in vivo. The problem of variability can be addressed using high-throughput
+electrophysiology methods such as automated patch-clamp, and optimization procedures for
+the automatic construction of neuron models based on large datasets <span class='cite'>[<a href='indexli5.html#Xgouwens_systematic_2018'>125</a>, <a href='indexli5.html#Xpozzorini_automated_2015'>292</a>]</span>.
+Large-scale simultaneous extracellular recordings could also be used to validate the
+network model behavior. In this thesis, spiking patterns in the network were validated
+based on reported population firing rates and manual tuning of synaptic connection
+strengths. However, using the aforementioned learning rules that adapt synaptic
+weights based on complex cost functions, this process could be automated and the fit
+could be improved by including complex measures based on signal and spike train
+analysis.
+</p><!-- l. 602 --><p class='indent'>   A second area where data-driven modeling will be key to the success of network models in
+designing anti-parkinsonian interventions is the mapping of physiological changes in the basal
+ganglia following dopamine depletion, and capturing them in models. Dopamine depletion
+affects a variety of signaling cascades involved in regulating ion channel function and the
+expression of membrane-bound proteins, synaptic remodeling, and dendritic branching.
+However, these changes are often not characterized in a robust quantitative manner but
+instead known through sparse observations in unclear experimental conditions. Larger
+datasets and the development of standards for experimental data collection and
+reporting can help to quantify the effects of these changes on cellular dynamics.
+Network models can then help to relate this to large-scale network dynamics and motor
+processing.
+</p><!-- l. 615 --><p class='indent'>   In summary, data-driven modeling is essential to accelerate the iterative cycle of
+model-based hypothesis generation, hypothesis testing, and model refinement. The
+speed up of this process will be facilitated by the development and adoption of
+new technologies for high-throughput data collection and processing in quantitative
+biology.
+</p><!-- l. 620 --><p class='noindent'>
+</p>
+                                                                                
+
+                                                                                
+   <h3 class='sectionHead'><span class='titlemark'>6.4   </span> <a id='x11-970006.4'></a>Closing remarks</h3>
+<!-- l. 628 --><p class='noindent'>The work presented in this thesis demonstrates that valuable insights about neuronal
+network dynamics and network mechanisms of neurostimulation can be obtained using
+biophysically detailed models. Despite the effort to capture the wealth of biophysical data
+available about BG physiology and neurobiology, the models can be extended to include
+additional data and biological processes that could reveal new dynamics arising
+from the interplay of biophysical processes at different scales. In particular, the role
+of biochemical signaling cascades and the dynamics of neurotransmitter release,
+receptor binding, and synaptic integration in different classes of synapses remain
+under-explored. Given the advent of big data platforms as pioneered by the <a href='https://www.humanbrainproject.eu'>Human
+Brain Project</a> and <a href='https://portal.brain-map.org/'>Allen Brain Atlas</a>, incorporation of this level of detail is possible
+on a scale that has not been feasible before now. Moreover, biophysically detailed
+modeling will undoubtedly become more appealing in the future, with the availability of
+next-generation simulators that exploit parallel computing architectures <span class='cite'>[<a href='indexli5.html#Xakar_arbor_2019'>12</a>, <a href='indexli5.html#Xkumbhar_coreneuron_2019'>194</a>]</span>. The work
+presented in this thesis can be a stepping stone for researchers wishing to go down
+this path to develop future therapies for managing the symptoms of neurological
+disorders.
+                                                                                
+
+                                                                                
+</p>
+   <!-- l. 258 --><div class='crosslinks'><p class='noindent'>[<a href='indexap1.html'>next</a>] [<a href='indexch5.html'>prev</a>] [<a href='indexch5.html#tailindexch5.html'>prev-tail</a>] [<a href='indexch6.html'>front</a>] [<a href='index.html#indexch6.html'>up</a>] </p></div>
+<!-- l. 258 --><p class='indent'>   <a id='tailindexch6.html'></a>  </p> 
+</body> 
+</html>

@@ -1,0 +1,1151 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title>2 Literature review</title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='index.css' type='text/css' rel='stylesheet' /> 
+<meta content='index.tex' name='src' /> 
+ <script type='text/javascript' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js' async='async'></script>  
+ 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML' type='text/javascript'></script> 
+<script src='https://hypothes.is/embed.js' type='text/javascript'></script><link href='css/scale.css' type='text/css' rel='stylesheet' /></head><body>
+   <!-- l. 221 --><div class='crosslinks'><p class='noindent'>[<a href='indexch3.html'>next</a>] [<a href='indexch1.html'>prev</a>] [<a href='indexch1.html#tailindexch1.html'>prev-tail</a>] [<a href='#tailindexch2.html'>tail</a>] [<a href='index.html#indexch2.html'>up</a>] </p></div>
+   <h2 class='chapterHead'><span class='titlemark'>Chapter 2</span><br /><a id='x7-120002'></a>Literature review</h2>
+   <div class='chapterTOCS'>
+    <span class='sectionToc'>2.1 <a href='#x7-130002.1'>Introduction</a></span>
+<br />    <span class='sectionToc'>2.2 <a href='#x7-140002.2'>Parkinson’s disease</a></span>
+<br />     <span class='subsectionToc'>2.2.1 <a href='#x7-150002.2.1' id='QQ2-7-15'>Symptoms</a></span>
+<br />     <span class='subsectionToc'>2.2.2 <a href='#x7-160002.2.2' id='QQ2-7-16'>Treatments</a></span>
+<br />    <span class='sectionToc'>2.3 <a href='#x7-170002.3'>The basal ganglia</a></span>
+<br />     <span class='subsectionToc'>2.3.1 <a href='#x7-180002.3.1' id='QQ2-7-20'>Projection patterns and pathways</a></span>
+<br />     <span class='subsectionToc'>2.3.2 <a href='#x7-210002.3.2' id='QQ2-7-24'>Effects of dopamine depletion</a></span>
+<br />     <span class='subsectionToc'>2.3.3 <a href='#x7-250002.3.3' id='QQ2-7-32'>Pathological firing patterns and oscillations</a></span>
+<br />    <span class='sectionToc'>2.4 <a href='#x7-270002.4'>Mechanism of action of DBS</a></span>
+<br />    <span class='sectionToc'>2.5 <a href='#x7-280002.5'>Approaches to computational modeling of the basal ganglia and DBS</a></span>
+<br />     <span class='subsectionToc'>2.5.1 <a href='#x7-290002.5.1' id='QQ2-7-37'>Network models of pathological oscillations</a></span>
+<br />     <span class='subsectionToc'>2.5.2 <a href='#x7-330002.5.2' id='QQ2-7-41'>Modeling DBS mechanisms of action</a></span>
+<br />     <span class='subsectionToc'>2.5.3 <a href='#x7-400002.5.3' id='QQ2-7-48'>Limitations of computational models</a></span>
+   </div>
+   <h3 class='sectionHead'><span class='titlemark'>2.1   </span> <a id='x7-130002.1'></a>Introduction</h3>
+<!-- l. 11 --><p class='noindent'>The underlying motivation for the research undertaken in this thesis is to improve the
+outcomes of deep brain stimulation therapy for Parkinson’s disease. This requires
+an understanding of the neurobiological underpinnings of the disease and the role
+of deep brain stimulation, historically and within the course of treatment for PD
+patients. To this end, the neuro-anatomical substrate for PD, the basal ganglia, and
+the primary pathological features will first be introduced. They will be presented
+both from a cellular/molecular perspective and from a network perspective, as local
+physiological changes become manifest in aberrant network interactions reflected in
+cognitive/behavioral symptoms. Insights into the mechanisms of DBS will also be
+reviewed from both these perspectives, and finally it it shown how computational
+modeling can bridge the gaps between these different ways of understanding the
+disease.
+                                                                                
+
+                                                                                
+</p><!-- l. 27 --><p class='noindent'>
+</p>
+   <h3 class='sectionHead'><span class='titlemark'>2.2   </span> <a id='x7-140002.2'></a>Parkinson’s disease</h3>
+<!-- l. 34 --><p class='noindent'>Parkinson’s disease is a complex neurodegenerative disease that is difficult to diagnose in the
+early stages and has distinct clinical manifestations across patients and over the
+course of disease progression. It is associated with several motor and neuropsychiatric
+symptoms <span class='cite'>[<a href='indexli5.html#Xjankovic_parkinsons_2008'>166</a>]</span>, with the primary motor symptoms characterized by muscular rigidity
+leading to bradykinesia and akinesia, as well as tremor and postural instability.
+These symptoms can become severely debilitating depending on the state of disease
+progression, leading to a significant reduction in quality of life and high socio-economic
+burden <span class='cite'>[<a href='indexli5.html#Xgustavsson2011cost'>136</a>, <a href='indexli5.html#Xwittchen2011size'>372</a>, <a href='indexli5.html#Xolesen2012economic'>268</a>]</span>.
+</p><!-- l. 45 --><p class='indent'>   The root cause of Parkinsonism is the degeneration of dopamine-secreting neurons in the
+substantia nigra pars compacta (SNc), one of the nuclei of the basal ganglia (BG),
+which is triggered by both genetic and environmental factors <span class='cite'>[<a href='indexli5.html#Xkalia_parkinsons_2015'>171</a>]</span>. Because the SNc
+innervates other structures in the basal ganglia, where the secreted dopamine serves
+mainly as a neuromodulator regulating brain plasticity and cell excitability, the loss of
+dopaminergic neurons leads to widespread structural and functional changes throughout
+basal ganglia thalamo-cortical circuits. This has led Parkinson’s sisease to become
+characterized as a network dysfunction <span class='cite'>[<a href='indexli5.html#Xmcintyre_network_2010'>240</a>]</span>. Indeed, the basal ganglia are a central
+node in motor, associative, and limbic networks <span class='cite'>[<a href='indexli5.html#Xjahanshahi_frontostriatosubthalamicpallidal_2015'>163</a>]</span>. Its role has been associated
+mainly with action selection and sequencing, and coordinating the interaction between
+deliberate/goal-directed and habitual/automatic behaviors across cognitive domains. In
+the latter role, the BG rewires itself using reinforcement learning with dopamine
+functioning as a reward signal and is believed to subserve the learning or transfer of
+slow, deliberate to fast automatic behaviors. This central and integrative nature of
+the BG may explain the seemingly unrelated features of Parkinsonism which span
+motor and mood disorders, problems with memory and attention, and inhibitory
+control.
+</p><!-- l. 66 --><p class='noindent'>
+                                                                                
+
+                                                                                
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>2.2.1   </span> <a id='x7-150002.2.1'></a>Symptoms</h4>
+<!-- l. 77 --><p class='noindent'>The clinical features of Parkinson’s disease include both motor and non-motor symptoms.
+Non-motor symptoms commonly occur in early PD, and before motor symptoms are manifest
+<span class='cite'>[<a href='indexli5.html#Xpostuma_identifying_2012'>291</a>, <a href='indexli5.html#Xkhoo_spectrum_2013'>179</a>]</span>. They include sensory and sleep abnormalities, psychiatric symptoms, autonomic
+dysfunction, pain and fatigue <span class='cite'>[<a href='indexli5.html#Xchaudhuri_non-motor_2006'>58</a>, <a href='indexli5.html#Xkhoo_spectrum_2013'>179</a>]</span>. The cardinal motor symptoms of PD are resting
+tremor, muscular rigidity, bradykinesia/akinesia, postural instability and gait disturbances.
+While these features occur in different combinations between patients, the consensus is that
+there are two major clusters of symptoms, corresponding to PD subtypes <span class='cite'>[<a href='indexli5.html#Xmarras_parkinsons_2013'>230</a>]</span>. These
+subtypes are tremor-dominant and non-tremor dominant PD, with the latter characterized
+mainly by akinetic-bradykinetic symptoms, postural instability, and rigidity. The resting
+tremor characteristic of tremor-dominant PD is often difficult to separate from essential
+tremor, which is characterized more by kinetic and postural tremor <span class='cite'>[<a href='indexli5.html#Xbhidayasiri_differential_2005'>36</a>]</span>. Resting tremor
+manifests itself in uncontrollable shaking mainly in the distal parts of the limbs (hands,
+fingers, feet) and occurs within the frequency bands 4-6 Hz or 8-11 Hz <span class='cite'>[<a href='indexli5.html#Xkoller_tremors_1989'>186</a>, <a href='indexli5.html#Xmoustafa_motor_2016'>258</a>]</span>. While
+symptoms falling in the two subtypes of PD are not correlated to each other <span class='cite'>[<a href='indexli5.html#Xlouis_clinical_2001'>215</a>]</span>,
+tremor-dominant patients were found to transition to a mixed or akinesia dominant
+phenotype in 15-28 %, respectively 46-50 % of cases <span class='cite'>[<a href='indexli5.html#Xvoncoelin_motor_2015'>363</a>]</span>. The bradykinesia and
+akinesia characteristic of non-tremor-dominant PD is a slowness of movement or
+inability to move that manifests itself both in the planning/initiation and execution
+phase <span class='cite'>[<a href='indexli5.html#Xberardelli_pathophysiology_2001'>28</a>]</span>. Notably, its severity is dependent on emotional state and is reduced
+when the patient is presented with an external trigger or cue, suggesting that motor
+programs are intact but difficult to access <span class='cite'>[<a href='indexli5.html#Xjankovic_parkinsons_2008'>166</a>]</span>. Moreover, compared to tremor,
+bradykinesia/akinesia and rigidity correlate more strongly with dopamine loss in the BG
+<span class='cite'>[<a href='indexli5.html#Xalbin_functional_1989'>13</a>, <a href='indexli5.html#Xhelmich_cerebral_2012'>149</a>, <a href='indexli5.html#Xrodriguez-oroz_initial_2009'>307</a>]</span> and with pathological neuronal activity patterns in BG structures
+characteristic of PD, such as increased beta-band oscillatory activity and bursting
+<span class='cite'>[<a href='indexli5.html#Xmoran_subthalamic_2008'>254</a>, <a href='indexli5.html#Xsharott_activity_2014'>323</a>]</span>.
+</p><!-- l. 112 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>2.2.2   </span> <a id='x7-160002.2.2'></a>Treatments</h4>
+<!-- l. 115 --><p class='noindent'>The primary treatment from Parkinson’s disease is dopamine replacement therapy in the form
+                                                                                
+
+                                                                                
+of the dopamine precursor levodopa or dopaminergic agonists. However, chronic dopamine
+replacement therapy typically introduces new symptoms such as levodopa-induces dyskinesias
+and on-off state fluctuations where the responsiveness to medication and severity of
+motor symptoms fluctuate over time. Deep brain stimulation (DBS) is a clinically
+effective and safe alternative therapy to manage the motor symptoms of PD that
+is most commonly prescribed under these circumstances, when pharmacological
+treatment alone is no longer effective <span class='cite'>[<a href='indexli5.html#Xpizzolato_deep_2012'>286</a>, <a href='indexli5.html#Xbronstein_deep_2011'>41</a>, <a href='indexli5.html#Xweaver_bilateral_2009'>367</a>, <a href='indexli5.html#Xbenabid_deep_2009'>27</a>]</span>. However, the spectrum of
+indications for DBS is expanding beyond resistance to pharmacological treatment to
+early-stage motor symptoms of PD <span class='cite'>[<a href='indexli5.html#Xschuepbach_neurostimulation_2013'>318</a>, <a href='indexli5.html#Xhacker_deep_2015'>138</a>]</span> as well other neurological and psychiatric
+disorders <span class='cite'>[<a href='indexli5.html#Xlyons_deep_2011'>217</a>, <a href='indexli5.html#Xkrack_deep_2010'>187</a>]</span> such as obsessive-compulsive disorder <span class='cite'>[<a href='indexli5.html#Xgreenberg_deep_2010'>128</a>]</span> and treatment-resistant
+depression <span class='cite'>[<a href='indexli5.html#Xmayberg_deep_2005'>233</a>]</span>.
+</p><!-- l. 133 --><p class='indent'>   DBS was developed initially as a safer and reversible alternative for the ablation (lesioning)
+of deep brain structures and consists instead of chronic stimulation of these structures using
+implanted electrodes. Continuous high-frequency stimulation is typically administered in the
+STN or internal globus pallidus (GPi) for the treatment of Parkinsonian motor symptoms, or
+in the thalamus specifically for treating tremor <span class='cite'>[<a href='indexli5.html#Xwichmann_deep_2016'>371</a>]</span>. The current clinical standard is
+high-frequency DBS, where pulses are delivered continuously at a frequency between 130-180
+Hz, on a patient-specific basis <span class='cite'>[<a href='indexli5.html#Xmoro_impact_2002'>256</a>, <a href='indexli5.html#Xtimmermann_ten-hertz_2004'>352</a>, <a href='indexli5.html#Xlimousin_effect_1995'>206</a>]</span>. However in recent years, adaptive stimulation
+protocols have been trialled on patients and proven effective at improving motor symptoms
+<span class='cite'>[<a href='indexli5.html#Xlittle_adaptive_2013'>210</a>, <a href='indexli5.html#Xcagnan_stimulating_2017'>53</a>]</span>, with potentially improved outcomes compared to continuous high-frequency
+DBS <span class='cite'>[<a href='indexli5.html#Xlittle_adaptive_2016'>211</a>]</span>. Such adaptive protocols are event-driven, triggered by monitoring a
+biomarker associated with motor symptoms such as oscillatory power in the local field
+potential <span class='cite'>[<a href='indexli5.html#Xlittle_adaptive_2013'>210</a>]</span> or the phase of the tremor signal recorded using an accelerometer
+<span class='cite'>[<a href='indexli5.html#Xcagnan_stimulating_2017'>53</a>]</span>.
+</p><!-- l. 149 --><p class='indent'>   Besides DBS therapy, various forms of transcranial magnetic and electrical stimulation
+(TMS; tES, respectively) were shown to be effective at improving Parkinsonian motor
+symptoms <span class='cite'>[<a href='indexli5.html#Xgoodwill_using_2017'>124</a>]</span>. These stimulation modalities provide a potential non-invasive alternative to
+DBS, which requires invasive surgery, and work by delivering electrical currents to brain tissue
+directly or by inducing them indirectly through magnetic induction. Using repetitive
+transcranial magnetic stimuation, both low-frequency (0.2 Hz, <span class='cite'>[<a href='indexli5.html#Xshimamoto_therapeutic_2001'>331</a>]</span>) and high-frequency (25
+Hz, <span class='cite'>[<a href='indexli5.html#Xkhedr_effect_2006'>178</a>]</span>) stimulation protocols proved effective at improving motor symptoms. A
+meta-analysis showed that tES was as effective as TMS at improving motor scores,
+increasing potential clinical viability of due to reduced costs and size of the equipment
+                                                                                
+
+                                                                                
+<span class='cite'>[<a href='indexli5.html#Xgoodwill_using_2017'>124</a>]</span>.
+</p><!-- l. 161 --><p class='indent'>   Despite promising results of these alternative stimulation modalities in experimental
+settings, DBS remains the standard of care, next to drug therapy, due to its effectiveness at
+controlling symptoms and possibility chronic administration using an implantable pulse
+generator. However, DBS therapy still has several important shortcomings. On average, it
+offers only 40-50% improvement in motor symptoms as assessed by the unified Parkinson’s
+disease rating scale (UPDRS) <span class='cite'>[<a href='indexli5.html#Xchen2006deep'>59</a>, <a href='indexli5.html#Xschuepbach_neurostimulation_2013'>318</a>]</span>. Moreover, the indications for DBS applied to targets
+in the BG are primarily akinetic-bradykinetic symptoms and tremor whereas it is ineffective
+for the treatment of axial symptoms such as freezing of gait, and for mood disturbances and
+cognitive symptoms <span class='cite'>[<a href='indexli5.html#Xeisenstein_acute_2014'>92</a>, <a href='indexli5.html#Xmerola_impulse_2017'>245</a>]</span>. Although the scope of DBS is being expanded to other targets
+in the brain to treat such symptoms <span class='cite'>[<a href='indexli5.html#Xthevathasan_pedunculopontine_2011'>351</a>]</span>, treatment is not yet clinically established as
+the efficacy is not robust over time <span class='cite'>[<a href='indexli5.html#Xhuang_deep_2018'>159</a>]</span>. The development of tolerance to DBS is
+not uncommon <span class='cite'>[<a href='indexli5.html#Xkumar_long-term_2003'>192</a>, <a href='indexli5.html#Xhoueto_failure_2000'>157</a>]</span>, necessitating frequent reprogramming of the stimulation
+parameters which remains a largely empirical procedure, is costly, and time consuming.
+Moreover, there is a range of stimulation-induced side effects with varying rate of
+incidence, ranging from dyskinesias (involuntary movements) to mood disturbances
+<span class='cite'>[<a href='indexli5.html#Xguehl_statistical_2007'>131</a>, <a href='indexli5.html#Xbenabid_deep_2009'>27</a>]</span>.
+</p><!-- l. 183 --><p class='noindent'>
+</p>
+   <h3 class='sectionHead'><span class='titlemark'>2.3   </span> <a id='x7-170002.3'></a>The basal ganglia</h3>
+<!-- l. 197 --><p class='noindent'>The basal ganglia consist of four subcortical nuclei of which the structure and interconnectivity is
+conserved throughout the vertebrate evolutionary line <span class='cite'>[<a href='indexli5.html#Xgrillner_basal_2016'>130</a>]</span>. These nuclei are the striatum,
+globus pallidus, subthalamic nucleus, and substantia nigra (Fig. <a href='#x7-170011'>2.1<!-- tex4ht:ref: fig:bg_anatomy  --></a>). In primates, the dorsal
+part of the striatum is further subdivided into a head and a tail: the <span class='cmti-10x-x-109'>putamen </span>and <span class='cmti-10x-x-109'>caudate</span>,
+and the globus pallidus is divided into an external and internal part (GPe and GPi,
+respectively). The substantia nigra, finally, is divided into the <span class='cmti-10x-x-109'>pars reticulata </span>(SNr) and <span class='cmti-10x-x-109'>pars
+</span><span class='cmti-10x-x-109'>compacta </span>(SNc).
+</p>
+   <figure class='figure'> 
+
+                                                                                
+
+                                                                                
+<a id='x7-170011'></a>
+                                                                                
+
+                                                                                
+<!-- l. 213 --><p class='noindent'><img alt='PIC' width='313' src='ch_background_literature/figs/BG_anatomy_wikicommons.jpg' height='313' />
+</p>
+<figcaption class='caption'><span class='id'>Figure 2.1:</span><span class='content'><span class='cmbx-10x-x-109'>Anatomy of the basal ganglia. </span>Subcortical nuclei of the basal ganglia and
+thalamus by <span class='cite'>[<a href='indexli5.html#Xlim_how_2014'>205</a>]</span>, licensed under <a href='https://creativecommons.org/licenses/by/3.0/deed.en'>CC BY 3.0</a>. </span></figcaption><!-- tex4ht:label?: x7-170011  -->
+                                                                                
+
+                                                                                
+   </figure>
+   <figure class='figure'> 
+
+                                                                                
+
+                                                                                
+<a id='x7-170022'></a>
+                                                                                
+
+                                                                                
+<!-- l. 227 --><p class='noindent'><img alt='PIC' width='418' src='ch_background_literature/figs/BG_loops-cognitive.png' height='418' />
+</p>
+<figcaption class='caption'><span class='id'>Figure 2.2:</span><span class='content'><span class='cmbx-10x-x-109'>Functional subdivisions of the basal ganglia-thalamocortical loops.</span>
+Reprinted from <span class='cite'>[<a href='indexli5.html#Xrodriguez-oroz_initial_2009'>307</a>]</span>, Copyright (2009), with permission from Elsevier. </span></figcaption><!-- tex4ht:label?: x7-170022  -->
+                                                                                
+
+                                                                                
+   </figure>
+   <h4 class='subsectionHead'><span class='titlemark'>2.3.1   </span> <a id='x7-180002.3.1'></a>Projection patterns and pathways</h4>
+<!-- l. 242 --><p class='noindent'>As shown in Fig. <a href='#x7-170022'>2.2<!-- tex4ht:ref: fig:bg_loops-subdivisions  --></a>, the BG are organized in parallel loops corresponding to different
+functional-cognitive domains. These basal ganglia-thalamocortical (BGTC) loops start from
+distinct functional regions in the cortex and project topographically throughout the BG
+starting in the striatum, the major input structure. The output structures of the BG are the
+GPi and SNr, which target thalamic nuclei and areas of the brain stem. Through the
+thalamus, the BG projects back to its input regions but it also has direct control over spinal
+motor circuits via the brain stem. Although the topographic organization of the BG ensures a
+high degree of segregation between loops <span class='cite'>[<a href='indexli5.html#Xalexander_parallel_1986'>14</a>]</span>, a sharp reduction in numbers of neurons and
+axons from input to output also results in significant convergence of information along BG
+pathways <span class='cite'>[<a href='indexli5.html#Xkandel_principles_2013'>173</a>]</span>.
+</p>
+   <figure class='figure'> 
+
+                                                                                
+
+                                                                                
+<a id='x7-180013'></a>
+                                                                                
+
+                                                                                
+<!-- l. 259 --><p class='noindent'><img alt='PIC' width='418' src='ch_background_literature/figs/Redgrave2007_BG_diagram_Scholarpedia.png' height='418' />
+</p>
+<figcaption class='caption'><span class='id'>Figure 2.3:</span><span class='content'><span class='cmbx-10x-x-109'>Major projections and pathways of the basal ganglia </span>by <span class='cite'>[<a href='indexli5.html#Xredgrave_basal_2007'>305</a>]</span>, licensed
+under <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US'>CC BY-NC-SA 3.0</a>. <span class='cmbx-10x-x-109'>A</span>: Traditional dual pathway model of the BG. <span class='cmbx-10x-x-109'>B</span>: Updated
+connection patterns in the BG based on recent anatomical investigations. </span></figcaption><!-- tex4ht:label?: x7-180013  -->
+                                                                                
+
+                                                                                
+   </figure>
+<!-- l. 269 --><p class='indent'>   The major projections of the basal ganglia are shown in Fig. <a href='#x7-180013'>2.3<!-- tex4ht:ref: fig:bg_pathways-projections  --></a>. Most projection neurons
+in the BG have an inhibitory effect on their targets (Fig. <a href='#x7-180013'>2.3<!-- tex4ht:ref: fig:bg_pathways-projections  --></a>, blue arrows), using the
+neurotransmitter GABA. Moreover, because neurons in the output nuclei, the GPi and
+SNr, are tonically active, the BG keeps its targets in the brain stem and thalamus
+under constant inhibition. This tonic inhibition can be transiently lifted or increased
+by a control system implemented by the other BG nuclei and driven by cortical
+activity.
+</p>
+   <h5 class='likesubsubsectionHead'><a id='x7-190002.3.1'></a>Dual pathway model</h5>
+<!-- l. 280 --><p class='noindent'>A classical and influential model, the <span class='cmti-10x-x-109'>dual pathway model </span><span class='cite'>[<a href='indexli5.html#Xalbin_functional_1989'>13</a>]</span>, posits a simple mechanism
+where two pathways exert an opposing influence on the output nuclei (GPi/SNr): A <span class='cmti-10x-x-109'>direct
+</span><span class='cmti-10x-x-109'>pathway</span>, originating in striatal medium spiny neurons (MSN) expressing D1-type dopamine
+receptors (D1R), projects directly to the output nucleus (GPi) and disinhibits BG targets.
+Another, <span class='cmti-10x-x-109'>indirect pathway </span>originating in D2 receptor (D2R) expressing MSN inhibits the GPe,
+itself a source of tonic inhibition to GPi/SNr, and therefore has a net excitatory
+effect on BG targets. The direct and indirect pathways have a push-pull influence on
+GPi/SNr activity: they are also called the <span class='cmti-10x-x-109'>go </span>and <span class='cmti-10x-x-109'>no-go </span>pathways as their activation
+facilitates and suppresses specific motor behaviors, respectively <span class='cite'>[<a href='indexli5.html#Xkravitz_regulation_2010'>188</a>]</span>, by regulating the
+degree of inhibition over motor targets in cortex and brain stem circuits. This <span class='cmti-10x-x-109'>gating</span>
+activity is resolved primarily in the striatum, where sensorimotor inputs from cortex
+and contextual information about ongoing actions from thalamus are integrated
+<span class='cite'>[<a href='indexli5.html#Xjin_shaping_2015'>167</a>, <a href='indexli5.html#Xjahanshahi_frontostriatosubthalamicpallidal_2015'>163</a>]</span>.
+</p><!-- l. 297 --><p class='noindent'>
+</p>
+   <h5 class='likesubsubsectionHead'><a id='x7-200002.3.1'></a>Extended Dual Pathway Model</h5>
+<!-- l. 298 --><p class='noindent'>While this dual pathway model has generally withstood experimental validation <span class='cite'>[<a href='indexli5.html#Xcalabresi_direct_2014'>54</a>, <a href='indexli5.html#Xfriend_working_2014'>112</a>]</span>,
+subsequent anatomical and physiological studies have revealed a more complex organization of
+BG circuitry (Fig. <a href='#x7-180013'>2.3<!-- tex4ht:ref: fig:bg_pathways-projections  --></a>.B) <span class='cite'>[<a href='indexli5.html#Xmallet_dichotomous_2012'>225</a>, <a href='indexli5.html#Xnambu_functional_2002'>260</a>, <a href='indexli5.html#Xcalabresi_direct_2014'>54</a>]</span>. Of particular importance is the <span class='cmti-10x-x-109'>hyperdirect pathway</span>,
+projecting directly from the cortex to the STN, bypassing the striatum <span class='cite'>[<a href='indexli5.html#Xnambu_dual_1996'>259</a>]</span>. This projection
+                                                                                
+
+                                                                                
+provides a low-latency pathway to the GPi/SNr that underlies fast inhibition of BG targets
+and rapid termination of motor activities <span class='cite'>[<a href='indexli5.html#Xnambu_functional_2002'>260</a>]</span>. This pathway has received significant attention
+in the context of PD because it is believed to play a key role in transmitting pathological
+activity from the cortex to the STN, and in its suppression through activation by DBS
+<span class='cite'>[<a href='indexli5.html#Xmackinnon_stimulation_2005'>218</a>, <a href='indexli5.html#Xli_resonant_2007'>203</a>, <a href='indexli5.html#Xgradinaru_optical_2009'>126</a>, <a href='indexli5.html#Xli_therapeutic_2012'>202</a>]</span>.
+</p><!-- l. 312 --><p class='indent'>   Another set of projections crucial to the understanding of PD pathophysiology is SNc
+innervation of the other BG nuclei, with the densest projections targeting the striatum
+(Fig. <a href='#x7-180013'>2.3<!-- tex4ht:ref: fig:bg_pathways-projections  --></a>, green arrows). These projections use the neurotransmitter dopamine, acting as a
+neuromodulator on its targets. There it regulates synaptic plasticity and neuronal excitability
+through second messenger systems after binding G-protein coupled receptors of
+the D1 and D2 families. During normal function, the SNc mediates reinforcement
+learning in the BG by providing a phasic dopamine signal that codes for a reward
+prediction error <span class='cite'>[<a href='indexli5.html#Xbayer_midbrain_2005'>25</a>]</span>. Its primary role is to strengthen neural pathways in the BG
+that contributed to better-than-expected outcomes during everyday activities. This
+reinforcing of pathways and associated behaviors is thought to underlie the acquisition
+of habitual behaviors and motor sequences and operates by modulating neuronal
+excitability and synaptic strengths in the BG, primarily between the cortex and
+striatum.
+</p><!-- l. 358 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>2.3.2   </span> <a id='x7-210002.3.2'></a>Effects of dopamine depletion</h4>
+<!-- l. 389 --><p class='noindent'>In PD, the dopaminergic cells of the SNc degenerate, resulting in a disruption to dopaminergic
+innervation of the rest of the BG. This lack of dopamine leads to widespread structural and
+functional changes throughout basal ganglia thalamo-cortical circuits, reflected in altered
+neuronal activity patterns and the various motor and non-motor symptoms of PD. In this
+section, the main neurobiological changes induced by DA depletion will be summarized
+for each BG nucleus. In the following section, it will be discussed how distributed
+changes in BG network pathophysiology are thought to arise as a result of these local
+changes.
+</p><!-- l. 401 --><p class='noindent'>
+                                                                                
+
+                                                                                
+</p>
+   <h5 class='likesubsubsectionHead'><a id='x7-220002.3.2'></a>STN</h5>
+<!-- l. 404 --><p class='noindent'>Dopamine depletion induces changes in axonal innervation of the STN and in synaptic
+transmission onto STN neurons (Table <a href='#x7-220011'>2.1<!-- tex4ht:ref: tab:dd-connectivy_stn-ctx  --></a>-<a href='#x7-220022'>2.2<!-- tex4ht:ref: tab:dd-connectivy_stn-gpe  --></a>). The dynamics of synaptic transmission are
+altered presynaptically, through changes in the dynamics of synaptic release <span class='cite'>[<a href='indexli5.html#Xbaufreton_d2-like_2008'>23</a>]</span>, and
+postsynaptically, by modulating the subunit composition of synaptic receptors <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>]</span> and
+altering dendritic branching and spine formation <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>, <a href='indexli5.html#Xwang_impaired_2018'>364</a>]</span>. Moreover, synaptic plasticity in the
+STN is impaired, resulting in the inability of homeostatic mechanisms to balance excitatory
+and inhibitory transmission to STN neurons <span class='cite'>[<a href='indexli5.html#Xchu_heterosynaptic_2015'>63</a>, <a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>. Strengthening of GPe synapses
+<span class='cite'>[<a href='indexli5.html#Xfan_proliferation_2012'>99</a>, <a href='indexli5.html#Xchu_heterosynaptic_2015'>63</a>, <a href='indexli5.html#Xbaufreton_d2-like_2008'>23</a>, <a href='indexli5.html#Xshen_dopamine_2005'>328</a>]</span> , in combination with faster AMPAR-mediated PSC <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>, increased coupling
+of glutamergic synapses to intrinsic calcium ion channels <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>, <a href='indexli5.html#Xramanathan_d2-like_2008'>297</a>]</span>, and decreased conductance
+of channels responsible for intrinsic pacemaking of STN neurons <span class='cite'>[<a href='indexli5.html#Xloucif_depolarisation_2008'>214</a>, <a href='indexli5.html#Xzhu_pharmacological_2002'>384</a>, <a href='indexli5.html#Xmciver_maladaptive_2019'>242</a>]</span> are thought
+to lead to a situation where STN neurons are more susceptible to patterning by alternating
+phases of rhythmic excitatory and inhibitory post-synaptic potentials (EPSP and IPSP,
+respectively; <span class='cite'>[<a href='indexli5.html#Xbaufreton_enhancement_2005'>21</a>, <a href='indexli5.html#Xhallworth_globus_2005'>140</a>, <a href='indexli5.html#Xbevan_cellular_2006'>33</a>, <a href='indexli5.html#Xmallet_disrupted_2008'>224</a>, <a href='indexli5.html#Xmallet_dichotomous_2012'>225</a>, <a href='indexli5.html#Xchu_heterosynaptic_2015'>63</a>]</span>).
+                                                                                
+
+                                                                                
+</p><!-- l. 426 --><p class='indent'>   <a id='x7-220011'></a></p><figure class='float'>
+                                                                                
+
+                                                                                
+<figcaption class='caption'><span class='id'>Table 2.1:</span><span class='content'><span class='cmbx-10x-x-109'>Effects of dopamine depletion on synaptic transmission in the STN.</span></span></figcaption><!-- tex4ht:label?: x7-220011  -->
+<div class='tabular'>
+ <table class='tabular' cellspacing='0' id='TBL-2' cellpadding='0'><colgroup id='TBL-2-1g'><col id='TBL-2-1' /><col id='TBL-2-2' /><col id='TBL-2-3' /><col id='TBL-2-4' /></colgroup><tr id='TBL-2-1-'><td class='td11' id='TBL-2-1-1' style='text-align:left;'> <!-- l. 431 --><p class='noindent'>Source   </p></td><td class='td11' id='TBL-2-1-2' style='text-align:left;'> <!-- l. 431 --><p class='noindent'>Feature                </p></td><td class='td11' id='TBL-2-1-3' style='text-align:left;'> <!-- l. 431 --><p class='noindent'>Effect dopamine depletion                        </p></td><td class='td11' id='TBL-2-1-4' style='text-align:left;'> <!-- l. 431 --><p class='noindent'>Experiment conditions                             </p></td>
+</tr><tr id='TBL-2-2-'><td class='td11' id='TBL-2-2-1' style='text-align:left;'> <!-- l. 432 --><p class='noindent'>CTX      </p></td><td class='td11' id='TBL-2-2-2' style='text-align:left;'> <!-- l. 432 --><p class='noindent'>Synaptic currents   </p></td><td class='td11' id='TBL-2-2-3' style='text-align:left;'> <!-- l. 432 --><p class='noindent'>increased      AMPA-mediated      current;
+  decreased NMDA-mediated current            </p></td><td class='td11' id='TBL-2-2-4' style='text-align:left;'> <!-- l. 432 --><p class='noindent'>6-OHDA  lesioned  rats,  brain  slices,  bath
+  application of neurotransmitters <span class='cite'>[<a href='indexli5.html#Xshen_dopamine_2005'>328</a>]</span>         </p></td>
+</tr><tr id='TBL-2-3-'><td class='td11' id='TBL-2-3-1' style='text-align:left;'> <!-- l. 433 --><p class='noindent'>CTX      </p></td><td class='td11' id='TBL-2-3-2' style='text-align:left;'> <!-- l. 433 --><p class='noindent'>Synaptic currents   </p></td><td class='td11' id='TBL-2-3-3' style='text-align:left;'> <!-- l. 433 --><p class='noindent'>amplitude  of  AMPAR-mediated  current
+  reduced  by  factor  3;  restored  by  NMDA
+  knockdown; no change in AMPAR:NMDAR
+  ratio                                                    </p></td><td class='td11' id='TBL-2-3-4' style='text-align:left;'> <!-- l. 433 --><p class='noindent'>6-OHDA   lesioned   mice,   brain   slices,
+  optogenetic stimulation <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>                      </p></td>
+</tr><tr id='TBL-2-4-'><td class='td11' id='TBL-2-4-1' style='text-align:left;'> <!-- l. 434 --><p class='noindent'>CTX      </p></td><td class='td11' id='TBL-2-4-2' style='text-align:left;'> <!-- l. 434 --><p class='noindent'>Synaptic contacts   </p></td><td class='td11' id='TBL-2-4-3' style='text-align:left;'> <!-- l. 434 --><p class='noindent'>decrease   in   synaptic   contacts;   loss   of
+  dendritic branching and spines                  </p></td><td class='td11' id='TBL-2-4-4' style='text-align:left;'> <!-- l. 434 --><p class='noindent'>6-OHDA  lesioned  mice,  brain  slices  <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>;
+  6-OHDA lesioned rat <span class='cite'>[<a href='indexli5.html#Xwang_impaired_2018'>364</a>]</span>; MPTP lesioned
+  monkeys <span class='cite'>[<a href='indexli5.html#Xmathai_reduced_2015'>231</a>]</span>                                        </p></td>
+</tr><tr id='TBL-2-5-'><td class='td11' id='TBL-2-5-1' style='text-align:left;'> <!-- l. 435 --><p class='noindent'>CTX      </p></td><td class='td11' id='TBL-2-5-2' style='text-align:left;'> <!-- l. 435 --><p class='noindent'>AMPA     synapse
+  subunit
+  composition          </p></td><td class='td11' id='TBL-2-5-3' style='text-align:left;'> <!-- l. 435 --><p class='noindent'>reduced  Glu2A  subunit  expression;  faster
+  AMPA-mediated PSC                             </p></td><td class='td11' id='TBL-2-5-4' style='text-align:left;'> <!-- l. 435 --><p class='noindent'>6-OHDA lesioned mice, brain slices <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>      </p></td>
+</tr><tr id='TBL-2-6-'><td class='td11' id='TBL-2-6-1' style='text-align:left;'> <!-- l. 436 --><p class='noindent'>CTX      </p></td><td class='td11' id='TBL-2-6-2' style='text-align:left;'> <!-- l. 436 --><p class='noindent'>Synaptic plasticity  </p></td><td class='td11' id='TBL-2-6-3' style='text-align:left;'> <!-- l. 436 --><p class='noindent'>LTD of CTX-STN tranmission is impaired:
+  no LTD when NMDAR activated; but no
+  changes in STD                                      </p></td><td class='td11' id='TBL-2-6-4' style='text-align:left;'> <!-- l. 436 --><p class='noindent'>6-OHDA lesioned mice, brain slices <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>      </p></td>
+</tr><tr id='TBL-2-7-'><td class='td11' id='TBL-2-7-1' style='text-align:left;'> <!-- l. 437 --><p class='noindent'>CTX,
+  GPe       </p></td><td class='td11' id='TBL-2-7-2' style='text-align:left;'> <!-- l. 437 --><p class='noindent'>Synaptic plasticity  </p></td><td class='td11' id='TBL-2-7-3' style='text-align:left;'> <!-- l. 437 --><p class='noindent'>hLTP: Strength of CTX-STN and GPe-STN
+  transmission normally balance each other;
+  this  effect  is  contingent  on  NMDAR  and
+  impaired by DD                                     </p></td><td class='td11' id='TBL-2-7-4' style='text-align:left;'> <!-- l. 437 --><p class='noindent'>6-OHDA lesioned mice, brain slices <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>, <a href='indexli5.html#Xchu_heterosynaptic_2015'>63</a>]</span>  </p></td>
+</tr><tr id='TBL-2-8-'><td class='td11' id='TBL-2-8-1' style='text-align:left;'> <!-- l. 438 --><p class='noindent'>CTX,
+  GPe       </p></td><td class='td11' id='TBL-2-8-2' style='text-align:left;'> <!-- l. 438 --><p class='noindent'>Synaptic plasticity  </p></td><td class='td11' id='TBL-2-8-3' style='text-align:left;'> <!-- l. 438 --><p class='noindent'>in DD, GPe-STN transmission is maximally
+  strengthened by impaired hLTP; the ratio
+  of CTX-STN to GPe-STN transmission is
+  reduced                                                </p></td><td class='td11' id='TBL-2-8-4' style='text-align:left;'> <!-- l. 438 --><p class='noindent'>6-OHDA lesioned mice, brain slices <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>, <a href='indexli5.html#Xchu_heterosynaptic_2015'>63</a>]</span>  </p></td>
+
+</tr></table>
+</div>
+                                                                                
+
+                                                                                
+   </figure>
+                                                                                
+
+                                                                                
+<!-- l. 447 --><p class='indent'>   <a id='x7-220022'></a></p><figure class='float'>
+                                                                                
+
+                                                                                
+<figcaption class='caption'><span class='id'>Table 2.2:</span><span class='content'><span class='cmbx-10x-x-109'>Effects of dopamine depletion on GPe-STN synaptic transmission.</span></span></figcaption><!-- tex4ht:label?: x7-220022  -->
+<div class='tabular'>
+ <table class='tabular' cellspacing='0' id='TBL-3' cellpadding='0'><colgroup id='TBL-3-1g'><col id='TBL-3-1' /><col id='TBL-3-2' /><col id='TBL-3-3' /><col id='TBL-3-4' /></colgroup><tr id='TBL-3-1-'><td class='td11' id='TBL-3-1-1' style='text-align:left;'> <!-- l. 451 --><p class='noindent'>Source   </p></td><td class='td11' id='TBL-3-1-2' style='text-align:left;'> <!-- l. 451 --><p class='noindent'>Feature                </p></td><td class='td11' id='TBL-3-1-3' style='text-align:left;'> <!-- l. 451 --><p class='noindent'>Effect dopamine depletion                        </p></td><td class='td11' id='TBL-3-1-4' style='text-align:left;'> <!-- l. 451 --><p class='noindent'>Experiment conditions                             </p></td>
+</tr><tr id='TBL-3-2-'><td class='td11' id='TBL-3-2-1' style='text-align:left;'> <!-- l. 452 --><p class='noindent'>CTX,
+  GPe       </p></td><td class='td11' id='TBL-3-2-2' style='text-align:left;'> <!-- l. 452 --><p class='noindent'>Synaptic plasticity  </p></td><td class='td11' id='TBL-3-2-3' style='text-align:left;'> <!-- l. 452 --><p class='noindent'>hLTP: Strength of CTX-STN and GPe-STN
+  transmission normally balance each other;
+  this  effect  is  contingent  on  NMDAR  and
+  impaired by DD                                     </p></td><td class='td11' id='TBL-3-2-4' style='text-align:left;'> <!-- l. 452 --><p class='noindent'>6-OHDA lesioned mice, brain slices <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>, <a href='indexli5.html#Xchu_heterosynaptic_2015'>63</a>]</span>  </p></td>
+</tr><tr id='TBL-3-3-'><td class='td11' id='TBL-3-3-1' style='text-align:left;'> <!-- l. 453 --><p class='noindent'>CTX,
+  GPe       </p></td><td class='td11' id='TBL-3-3-2' style='text-align:left;'> <!-- l. 453 --><p class='noindent'>Synaptic plasticity  </p></td><td class='td11' id='TBL-3-3-3' style='text-align:left;'> <!-- l. 453 --><p class='noindent'>in DD, GPe-STN transmission is maximally
+  strengthened by impaired hLTP; the ratio
+  of CTX-STN to GPe-STN transmission is
+  reduced                                                </p></td><td class='td11' id='TBL-3-3-4' style='text-align:left;'> <!-- l. 453 --><p class='noindent'>6-OHDA lesioned mice, brain slices <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>, <a href='indexli5.html#Xchu_heterosynaptic_2015'>63</a>]</span>  </p></td>
+</tr><tr id='TBL-3-4-'><td class='td11' id='TBL-3-4-1' style='text-align:left;'> <!-- l. 454 --><p class='noindent'>GPe       </p></td><td class='td11' id='TBL-3-4-2' style='text-align:left;'> <!-- l. 454 --><p class='noindent'>Synaptic currents   </p></td><td class='td11' id='TBL-3-4-3' style='text-align:left;'> <!-- l. 454 --><p class='noindent'>Increased   release   probability,   frequency,
+  decay kinetics of GPe-STN synapses.          </p></td><td class='td11' id='TBL-3-4-4' style='text-align:left;'> <!-- l. 454 --><p class='noindent'>6-OHDA lesioned rats, brain slices <span class='cite'>[<a href='indexli5.html#Xfan_proliferation_2012'>99</a>, <a href='indexli5.html#Xbaufreton_d2-like_2008'>23</a>,
+   <a href='indexli5.html#Xshen_presynaptic_2000'>327</a>]</span>                                                   </p></td>
+</tr><tr id='TBL-3-5-'><td class='td11' id='TBL-3-5-1' style='text-align:left;'> <!-- l. 455 --><p class='noindent'>GPe       </p></td><td class='td11' id='TBL-3-5-2' style='text-align:left;'> <!-- l. 455 --><p class='noindent'>Synaptic contacts   </p></td><td class='td11' id='TBL-3-5-3' style='text-align:left;'> <!-- l. 455 --><p class='noindent'>Increase   in   the   number   of   GPE-STN
+  synapses                                               </p></td><td class='td11' id='TBL-3-5-4' style='text-align:left;'> <!-- l. 455 --><p class='noindent'>6-OHDA lesioned rats, brain slices <span class='cite'>[<a href='indexli5.html#Xfan_proliferation_2012'>99</a>, <a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>  </p></td>
+</tr><tr id='TBL-3-6-'><td class='td11' id='TBL-3-6-1' style='text-align:left;'> <!-- l. 456 --><p class='noindent'>GPe       </p></td><td class='td11' id='TBL-3-6-2' style='text-align:left;'> <!-- l. 456 --><p class='noindent'>Synaptic currents   </p></td><td class='td11' id='TBL-3-6-3' style='text-align:left;'> <!-- l. 456 --><p class='noindent'>increased  GABAA  and  GABAB-mediated
+  currents                                                </p></td><td class='td11' id='TBL-3-6-4' style='text-align:left;'> <!-- l. 456 --><p class='noindent'>6-OHDA lesioned rats, brain slices <span class='cite'>[<a href='indexli5.html#Xshen_dopamine_2005'>328</a>]</span>      </p></td>
+
+</tr></table>
+</div>
+                                                                                
+
+                                                                                
+   </figure>
+                                                                                
+
+                                                                                
+<!-- l. 466 --><p class='indent'>   <a id='x7-220033'></a></p><figure class='float'>
+                                                                                
+
+                                                                                
+<figcaption class='caption'><span class='id'>Table 2.3:</span><span class='content'><span class='cmbx-10x-x-109'>Effects of dopamine depletion on intrinsic STN neuron properties.</span></span></figcaption><!-- tex4ht:label?: x7-220033  -->
+                                                                                
+
+                                                                                
+<div class='adjustbox' id='adjustbox-1'> <!-- tex4ht:inline --><div class='tabular'>
+ <table class='tabular' cellspacing='0' id='TBL-4' cellpadding='0'><colgroup id='TBL-4-1g'><col id='TBL-4-1' /><col id='TBL-4-2' /><col id='TBL-4-3' /><col id='TBL-4-4' /><col id='TBL-4-5' /></colgroup><tr id='TBL-4-1-'><td class='td11' id='TBL-4-1-1' style='text-align:left;'> <!-- l. 471 --><p class='noindent'>Feature        </p></td><td class='td11' id='TBL-4-1-2' style='text-align:left;'> <!-- l. 471 --><p class='noindent'>Causes         </p></td><td class='td11' id='TBL-4-1-3' style='text-align:left;'> <!-- l. 471 --><p class='noindent'>DD-induced changes       </p></td><td class='td11' id='TBL-4-1-4' style='text-align:left;'> <!-- l. 471 --><p class='noindent'>Physiological effects        </p></td><td class='td11' id='TBL-4-1-5' style='text-align:left;'> <!-- l. 471 --><p class='noindent'>Experimental setting                       </p></td>
+</tr><tr id='TBL-4-2-'><td class='td11' id='TBL-4-2-1' style='text-align:left;'> <!-- l. 472 --><p class='noindent'>AMPA
+  synapse
+  subunit
+  composition   </p></td><td class='td11' id='TBL-4-2-2' style='text-align:left;'> <!-- l. 472 --><p class='noindent'>CTX           </p></td><td class='td11' id='TBL-4-2-3' style='text-align:left;'> <!-- l. 472 --><p class='noindent'>reduced  Glu2A  subunit
+  expression                     </p></td><td class='td11' id='TBL-4-2-4' style='text-align:left;'> <!-- l. 472 --><p class='noindent'>increased    permeability
+  to Ca2+                       </p></td><td class='td11' id='TBL-4-2-5' style='text-align:left;'> <!-- l. 472 --><p class='noindent'>6-OHDA  lesioned  mice,  brain  slices
+  <span class='cite'>[<a href='indexli5.html#Xchu_loss_2017'>64</a>]</span>                                              </p></td>
+</tr><tr id='TBL-4-3-'><td class='td11' id='TBL-4-3-1' style='text-align:left;'> <!-- l. 473 --><p class='noindent'>ion  channel
+  expression     </p></td><td class='td11' id='TBL-4-3-2' style='text-align:left;'> <!-- l. 473 --><p class='noindent'>reduced
+  D2R
+  activation     </p></td><td class='td11' id='TBL-4-3-3' style='text-align:left;'> <!-- l. 473 --><p class='noindent'>increased             SKCa
+  conductance      through
+  increased
+  Cav2.2   activation   and
+  Ca2+ coupling.              </p></td><td class='td11' id='TBL-4-3-4' style='text-align:left;'> <!-- l. 473 --><p class='noindent'>reduced        excitability
+  and bursting, less linear
+  response.                      </p></td><td class='td11' id='TBL-4-3-5' style='text-align:left;'> <!-- l. 473 --><p class='noindent'><span class='cite'>[<a href='indexli5.html#Xramanathan_d2-like_2008'>297</a>]</span>                                            </p></td>
+</tr><tr id='TBL-4-4-'><td class='td11' id='TBL-4-4-1' style='text-align:left;'> <!-- l. 474 --><p class='noindent'>ion  channel
+  expression     </p></td><td class='td11' id='TBL-4-4-2' style='text-align:left;'> <!-- l. 474 --><p class='noindent'>reduced
+  D1R
+  activation     </p></td><td class='td11' id='TBL-4-4-3' style='text-align:left;'> <!-- l. 474 --><p class='noindent'>reduced  conductance  of
+  depolarizing          HCN
+  channel                        </p></td><td class='td11' id='TBL-4-4-4' style='text-align:left;'> <!-- l. 474 --><p class='noindent'>reduced
+  recovery from inhibition;
+  increased de-inactivation
+  of
+  CaT channels; increased
+  rebound bursting           </p></td><td class='td11' id='TBL-4-4-5' style='text-align:left;'> <!-- l. 474 --><p class='noindent'><span class='cite'>[<a href='indexli5.html#Xloucif_depolarisation_2008'>214</a>, <a href='indexli5.html#Xyang_d2_2016'>375</a>, <a href='indexli5.html#Xbaufreton_d2-like_2008'>23</a>, <a href='indexli5.html#Xzhu_pharmacological_2002'>384</a>, <a href='indexli5.html#Xshen_synaptic_2003'>329</a>, <a href='indexli5.html#Xatherton_selective_2010'>18</a>, <a href='indexli5.html#Xbaufreton_d5_2003'>24</a>,
+   <a href='indexli5.html#Xfloran_dopamine_2004'>107</a>]</span>                                           </p></td>
+</tr><tr id='TBL-4-5-'><td class='td11' id='TBL-4-5-1' style='text-align:left;'> <!-- l. 475 --><p class='noindent'>ion  channel
+  expression     </p></td><td class='td11' id='TBL-4-5-2' style='text-align:left;'> <!-- l. 475 --><p class='noindent'>reduced
+  D5R
+  activation     </p></td><td class='td11' id='TBL-4-5-3' style='text-align:left;'> <!-- l. 475 --><p class='noindent'>reduced   Cav1   channel
+  conductance                  </p></td><td class='td11' id='TBL-4-5-4' style='text-align:left;'> <!-- l. 475 --><p class='noindent'>reduced excitability and
+  bursting                       </p></td><td class='td11' id='TBL-4-5-5' style='text-align:left;'> <!-- l. 475 --><p class='noindent'><span class='cite'>[<a href='indexli5.html#Xbaufreton_d5_2003'>24</a>, <a href='indexli5.html#Xchetrit_inhibiting_2013'>60</a>]</span>                                        </p></td>
+</tr><tr id='TBL-4-6-'><td class='td11' id='TBL-4-6-1' style='text-align:left;'> <!-- l. 477 --><p class='noindent'>ion  channel
+  expression     </p></td><td class='td11' id='TBL-4-6-2' style='text-align:left;'> <!-- l. 477 --><p class='noindent'>D1R/D5R
+  mediated
+  activation of
+  cAMP/PKA
+  pathway       </p></td><td class='td11' id='TBL-4-6-3' style='text-align:left;'> <!-- l. 477 --><p class='noindent'>reduced   activation   of
+  cyclic-nucleotide    gated
+  (CNG)        non-specific
+  cation channel               </p></td><td class='td11' id='TBL-4-6-4' style='text-align:left;'> <!-- l. 477 --><p class='noindent'>reduced excitability and
+  spontaneous activity       </p></td><td class='td11' id='TBL-4-6-5' style='text-align:left;'> <!-- l. 477 --><p class='noindent'><span class='cite'>[<a href='indexli5.html#Xloucif_depolarisation_2008'>214</a>]</span>                                            </p></td>
+</tr><tr id='TBL-4-7-'><td class='td11' id='TBL-4-7-1' style='text-align:left;'> <!-- l. 479 --><p class='noindent'>ion  channel
+  activation      </p></td><td class='td11' id='TBL-4-7-2' style='text-align:left;'> <!-- l. 479 --><p class='noindent'>           </p></td><td class='td11' id='TBL-4-7-3' style='text-align:left;'> <!-- l. 479 --><p class='noindent'>increased conductance of
+  voltage-independent K+
+  channels                       </p></td><td class='td11' id='TBL-4-7-4' style='text-align:left;'> <!-- l. 479 --><p class='noindent'>reduced excitability and
+  spontaneous activity       </p></td><td class='td11' id='TBL-4-7-5' style='text-align:left;'> <!-- l. 479 --><p class='noindent'><span class='cite'>[<a href='indexli5.html#Xzhu_pharmacological_2002'>384</a>]</span>                                            </p></td>
+</tr><tr id='TBL-4-8-'><td class='td11' id='TBL-4-8-1' style='text-align:left;'> <!-- l. 480 --><p class='noindent'>ion  channel
+  activation      </p></td><td class='td11' id='TBL-4-8-2' style='text-align:left;'> <!-- l. 480 --><p class='noindent'>increased
+  hyperpolarization
+  of        STN
+  neurons        </p></td><td class='td11' id='TBL-4-8-3' style='text-align:left;'> <!-- l. 480 --><p class='noindent'>voltage-dependent
+  de-inactivation
+  of  CaT,  CaL  channels,
+  NMDAR-dependent
+  activation     of     CAN
+  channels                       </p></td><td class='td11' id='TBL-4-8-4' style='text-align:left;'> <!-- l. 480 --><p class='noindent'>increased bursting          </p></td><td class='td11' id='TBL-4-8-5' style='text-align:left;'> <!-- l. 480 --><p class='noindent'><span class='cite'>[<a href='indexli5.html#Xbeurrier_subthalamic_1999'>30</a>, <a href='indexli5.html#Xzhu_nmda_2005'>383</a>]</span>                                       </p></td>
+</tr><tr id='TBL-4-9-'><td class='td11' id='TBL-4-9-1' style='text-align:left;'> <!-- l. 481 --><p class='noindent'>ion  channel
+  activation      </p></td><td class='td11' id='TBL-4-9-2' style='text-align:left;'> <!-- l. 481 --><p class='noindent'>disinhibition
+  by GPe        </p></td><td class='td11' id='TBL-4-9-3' style='text-align:left;'> <!-- l. 481 --><p class='noindent'>homeostatic
+  upregulation             of
+  <!-- l. 481 --><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><msub><mrow><mi>K</mi></mrow><mrow><mi mathvariant='italic'>ATP</mi> </mrow></msub></math>
+  channel    mediated    by
+  NMDAR activation        </p></td><td class='td11' id='TBL-4-9-4' style='text-align:left;'> <!-- l. 481 --><p class='noindent'>reduced      autonomous
+  activity                        </p></td><td class='td11' id='TBL-4-9-5' style='text-align:left;'> <!-- l. 481 --><p class='noindent'><span class='cite'>[<a href='indexli5.html#Xmciver_maladaptive_2019'>242</a>]</span>                                            </p></td>
+</tr></table>
+                                                                                
+
+                                                                                
+</div> </div>
+                                                                                
+
+                                                                                
+   </figure>
+   <h5 class='likesubsubsectionHead'><a id='x7-230002.3.2'></a>GPe</h5>
+<!-- l. 496 --><p class='noindent'>In the GPe, dopamine depletion leads to increased GABAergic transmission due to
+strengthening of GPe-GPe collaterals <span class='cite'>[<a href='indexli5.html#Xmiguelez_altered_2012'>248</a>, <a href='indexli5.html#Xwatanabe_presynaptic_2009'>366</a>]</span>, and increased transmission through the
+striatal indirect pathway because of elevated iMSN activity <span class='cite'>[<a href='indexli5.html#Xmallet_cortical_2006'>222</a>, <a href='indexli5.html#Xkita_cortical_2011'>181</a>]</span>, an increase in the
+number of functionally active MSN-GPe synapses <span class='cite'>[<a href='indexli5.html#Xingham_plasticity_1997'>162</a>]</span>, and an increase in their initial
+release probability <span class='cite'>[<a href='indexli5.html#Xshin_dopamine_2003'>333</a>, <a href='indexli5.html#Xcooper_dopamine_2001'>66</a>]</span>. Glutamergic transmission from the STN is strengthened
+<span class='cite'>[<a href='indexli5.html#Xmatsui_activation_2003'>232</a>, <a href='indexli5.html#Xhernandez_control_2006'>151</a>, <a href='indexli5.html#Xjohnson_gaba-_1997'>169</a>, <a href='indexli5.html#Xkita_globus_2007'>183</a>]</span> and intrinsic cellular properties of GPe neurons are also affected.
+Importantly, the expression of HCN channels is downregulated after DD <span class='cite'>[<a href='indexli5.html#Xchan_hcn_2011'>56</a>]</span>, resulting in
+decreased autonomous pacemaking and a decreased ability of IPSP to reset GPe pacemaking
+<span class='cite'>[<a href='indexli5.html#Xchan_hcn2_2004'>55</a>]</span>.
+</p><!-- l. 513 --><p class='noindent'>
+</p>
+   <h5 class='likesubsubsectionHead'><a id='x7-240002.3.2'></a>Striatum</h5>
+<!-- l. 516 --><p class='noindent'>The striatum is one of the primary sites of dopaminergic innervation in the BG,
+where phasic dopamine release modulates synaptic plasticity and plays a role in
+learning motor behaviors. The main role of dopamine is to strengthen cortico-striatal
+synapses of the direct pathway, facilitating interruption of the tonic inhibition of motor
+targets by GPi/SNr, and to weaken those in the indirect pathway (both pro-kinetic
+changes). The loss of dopamine reverses this effect, weakening the direct pathway and
+strengthening the indirect pathway, both anti-kinetic changes (Table <a href='#x7-240014'>2.4<!-- tex4ht:ref: tab:dd-striatum-phys  --></a>). This results in
+homeostatic adaptations at multiple levels <span class='cite'>[<a href='indexli5.html#Xzhai_striatal_2018'>380</a>]</span>. In the indirect pathway, for example,
+the strengthening of existing CTX-iMSN synapses leads to a compensatory loss of
+dendritic arborization and pruning of spines <span class='cite'>[<a href='indexli5.html#Xfieblinger_cell_2014'>104</a>, <a href='indexli5.html#Xsuarez_l-dopa_2014'>340</a>, <a href='indexli5.html#Xday_selective_2006'>75</a>]</span>, but an increase in iMSN
+intrinsic excitability <span class='cite'>[<a href='indexli5.html#Xhernandez-lopez_d2_2000'>152</a>, <a href='indexli5.html#Xday_selective_2006'>75</a>]</span>. Moreover, striatal FSI shift their projections from dMSN
+to iMSN <span class='cite'>[<a href='indexli5.html#Xgittis_rapid_2011'>122</a>]</span>, and the GPe-MSN backprojection mediated by GPe arkypallidal
+neurons is strengthened <span class='cite'>[<a href='indexli5.html#Xcorbit_pallidostriatal_2016'>67</a>]</span>, leading to increased inhibition of iMSN of the indirect
+pathway.
+                                                                                
+
+                                                                                
+</p><!-- l. 536 --><p class='indent'>   <a id='x7-240014'></a></p><figure class='float'>
+                                                                                
+
+                                                                                
+<figcaption class='caption'><span class='id'>Table 2.4:</span><span class='content'><span class='cmbx-10x-x-109'>Effects of dopamine depletion on Striatum neurophysiology.</span></span></figcaption><!-- tex4ht:label?: x7-240014  -->
+<div class='adjustbox' id='adjustbox-2'> <!-- tex4ht:inline --><div class='tabular'>
+ <table class='tabular' cellspacing='0' id='TBL-5' cellpadding='0'><colgroup id='TBL-5-1g'><col id='TBL-5-1' /><col id='TBL-5-2' /><col id='TBL-5-3' /><col id='TBL-5-4' /></colgroup><tr id='TBL-5-1-'><td class='td11' id='TBL-5-1-1' style='text-align:left;'> <!-- l. 542 --><p class='noindent'>Population
+  /
+  Projection </p> </td> <td class='td11' id='TBL-5-1-2' style='text-align:left;'> <!-- l. 542 --><p class='noindent'>Feature                </p></td><td class='td11' id='TBL-5-1-3' style='text-align:left;'> <!-- l. 542 --><p class='noindent'>Effect dopamine depletion                        </p></td><td class='td11' id='TBL-5-1-4' style='text-align:left;'> <!-- l. 542 --><p class='noindent'>Experiment conditions                             </p></td>
+
+</tr><tr id='TBL-5-2-'><td class='td11' id='TBL-5-2-1' style='text-align:left;'> <!-- l. 544 --><p class='noindent'>iMSN     </p></td><td class='td11' id='TBL-5-2-2' style='text-align:left;'> <!-- l. 544 --><p class='noindent'>spontaneous
+  activity                </p></td><td class='td11' id='TBL-5-2-3' style='text-align:left;'> <!-- l. 544 --><p class='noindent'>firing rates increased                               </p></td><td class='td11' id='TBL-5-2-4' style='text-align:left;'> <!-- l. 544 --><p class='noindent'>6-OHDA lesioned rats, mice, monkeys <span class='cite'>[<a href='indexli5.html#Xmallet_cortical_2006'>222</a>,
+   <a href='indexli5.html#Xkita_cortical_2011'>181</a>, <a href='indexli5.html#Xday_selective_2006'>75</a>, <a href='indexli5.html#Xfieblinger_cell_2014'>104</a>]</span>                                       </p></td>
+</tr><tr id='TBL-5-3-'><td class='td11' id='TBL-5-3-1' style='text-align:left;'> <!-- l. 546 --><p class='noindent'>Ctx-iMSN </p> </td> <td class='td11' id='TBL-5-3-2' style='text-align:left;'> <!-- l. 546 --><p class='noindent'>synaptic contacts   </p></td><td class='td11' id='TBL-5-3-3' style='text-align:left;'> <!-- l. 546 --><p class='noindent'>loss   of   glutamergic   synapses,   dendritic
+  spines, arborization                                 </p></td><td class='td11' id='TBL-5-3-4' style='text-align:left;'> <!-- l. 546 --><p class='noindent'>6-OHDA lesioned rats, mice, monkeys <span class='cite'>[<a href='indexli5.html#Xday_selective_2006'>75</a>,
+   <a href='indexli5.html#Xfieblinger_cell_2014'>104</a>, <a href='indexli5.html#Xsuarez_l-dopa_2014'>340</a>]</span>                                             </p></td>
+</tr><tr id='TBL-5-4-'><td class='td11' id='TBL-5-4-1' style='text-align:left;'> <!-- l. 548 --><p class='noindent'>MSN-MSN </p> </td> <td class='td11' id='TBL-5-4-2' style='text-align:left;'> <!-- l. 548 --><p class='noindent'>synaptic  strength,
+  contacts               </p></td><td class='td11' id='TBL-5-4-3' style='text-align:left;'> <!-- l. 548 --><p class='noindent'>reduced    connection    probability,    iPSC
+  amplitude                                             </p></td><td class='td11' id='TBL-5-4-4' style='text-align:left;'> <!-- l. 548 --><p class='noindent'>6-OHDA lesioned mice <span class='cite'>[<a href='indexli5.html#Xtaverna_recurrent_2008'>348</a>]</span>                     </p></td>
+</tr><tr id='TBL-5-5-'><td class='td11' id='TBL-5-5-1' style='text-align:left;'> <!-- l. 550 --><p class='noindent'>FSI-iMSN </p> </td> <td class='td11' id='TBL-5-5-2' style='text-align:left;'> <!-- l. 550 --><p class='noindent'>synaptic strength   </p></td><td class='td11' id='TBL-5-5-3' style='text-align:left;'> <!-- l. 550 --><p class='noindent'>increased connection probability                </p></td><td class='td11' id='TBL-5-5-4' style='text-align:left;'> <!-- l. 550 --><p class='noindent'>6-OHDA lesioned mice <span class='cite'>[<a href='indexli5.html#Xgittis_rapid_2011'>122</a>]</span>                     </p></td>
+</tr><tr id='TBL-5-6-'><td class='td11' id='TBL-5-6-1' style='text-align:left;'> <!-- l. 552 --><p class='noindent'>GPe-iMSN </p> </td> <td class='td11' id='TBL-5-6-2' style='text-align:left;'> <!-- l. 552 --><p class='noindent'>synaptic  strength,
+  contacts               </p></td><td class='td11' id='TBL-5-6-3' style='text-align:left;'> <!-- l. 552 --><p class='noindent'>increased connection probability, IPSC       </p></td><td class='td11' id='TBL-5-6-4' style='text-align:left;'> <!-- l. 552 --><p class='noindent'>6-OHDA lesioned mice <span class='cite'>[<a href='indexli5.html#Xcorbit_pallidostriatal_2016'>67</a>]</span>                       </p></td>
+</tr></table>
+</div> </div>
+                                                                                
+
+                                                                                
+   </figure>
+   <h4 class='subsectionHead'><span class='titlemark'>2.3.3   </span> <a id='x7-250002.3.3'></a>Pathological firing patterns and oscillations</h4>
+<!-- l. 593 --><p class='noindent'>In the traditional understanding of BG pathophysiology in Parkinson’s disease, the
+synaptic plasticity changes induced by dopamine loss (discussed in Section <a href='#x7-210002.3.2'>2.3.2<!-- tex4ht:ref: sec:ch2-dd-effects  --></a>) result
+in an imbalance in activity in the direct and indirect pathways of the BG. Under
+this hypothesis (<span class='cmti-10x-x-109'>rate model </span>of PD), this imbalance leads to hyperactivity of the
+BG output nuclei in the GPi/SNr resulting in the hypokinetic motor symptoms
+of PD <span class='cite'>[<a href='indexli5.html#Xdelong_primate_1990'>80</a>, <a href='indexli5.html#Xalbin_functional_1989'>13</a>]</span>. However, while changes in neuronal firing rates in the striatum,
+GPe, and STN largely agree with this hypothesis <span class='cite'>[<a href='indexli5.html#Xgalvan_alterations_2015'>117</a>]</span>, later studies showed that
+alterations in firing patterns rather than rates may have a stronger relation to the
+motor symptoms of PD <span class='cite'>[<a href='indexli5.html#Xlevy_high-frequency_2000'>201</a>, <a href='indexli5.html#Xbrown_dopamine_2001'>44</a>, <a href='indexli5.html#Xbrown_abnormal_2007'>43</a>, <a href='indexli5.html#Xsanders_parkinsonism-related_2013'>314</a>, <a href='indexli5.html#Xsharott_activity_2014'>323</a>, <a href='indexli5.html#Xpan_neuronal_2016'>273</a>, <a href='indexli5.html#Xkita_cortical_2011'>181</a>]</span>. In particular, dopamine
+depletion has been associated with a loss of specificity in neuronal responses <span class='cite'>[<a href='indexli5.html#Xbronfeld_loss_2011'>40</a>]</span>,
+characterized by increased synchrony in neuronal activity within and between nuclei
+<span class='cite'>[<a href='indexli5.html#Xbergman_physiological_1998'>29</a>, <a href='indexli5.html#Xdostrovsky_oscillatory_2004'>88</a>, <a href='indexli5.html#Xbronte-stewart_stn_2009'>42</a>, <a href='indexli5.html#Xhammond_pathological_2007'>142</a>, <a href='indexli5.html#Xlevy_high-frequency_2000'>201</a>, <a href='indexli5.html#Xheimer_dopamine_2002'>148</a>]</span> and exaggerated oscillatory activity throughout the BG
+<span class='cite'>[<a href='indexli5.html#Xsharott_dopamine_2005'>325</a>, <a href='indexli5.html#Xmallet_disrupted_2008'>224</a>, <a href='indexli5.html#Xkuhn_high-frequency_2008'>189</a>, <a href='indexli5.html#Xbrown_dopamine_2001'>44</a>, <a href='indexli5.html#Xbrown_abnormal_2007'>43</a>]</span>.
+</p><!-- l. 609 --><p class='indent'>   During normal brain function, oscillatory synchronization is believed to play a key role in
+communication between brain regions by temporally coordinating firing patterns <span class='cite'>[<a href='indexli5.html#Xengel_dynamic_2001'>94</a>, <a href='indexli5.html#Xwomelsdorf_modulation_2007'>373</a>]</span>. In
+the BG for instance, transient beta-band synchronization occurs in healthy patients and
+animals <span class='cite'>[<a href='indexli5.html#Xpfurtscheller_post-movement_1996'>282</a>, <a href='indexli5.html#Xleventhal_basal_2012'>200</a>, <a href='indexli5.html#Xwessel_stop-related_2016'>370</a>, <a href='indexli5.html#Xlipski_dynamics_2017'>208</a>, <a href='indexli5.html#Xkhanna_beta_2017'>177</a>]</span> and is thought to underlie the suppression of competing
+motor plans (global motor suppression) in favor of the active motor program (status
+quo) during sensory cue utilization <span class='cite'>[<a href='indexli5.html#Xgilbertson_existing_2005'>118</a>, <a href='indexli5.html#Xleventhal_basal_2012'>200</a>, <a href='indexli5.html#Xfeingold_bursts_2015'>102</a>]</span>. Conversely, phasic movement is
+correlated with a reduction in cortico-muscular coherence in the beta-band <span class='cite'>[<a href='indexli5.html#Xbrown_cortical_1998'>45</a>]</span>.
+Hence beta band power in the BGTC and motor circuits has been interpreted as a
+global stop signal that delays movement execution while sensory information is still
+being processed in preparation for the activation of a motor program (buying time
+hypothesis, <span class='cite'>[<a href='indexli5.html#Xfrank_hold_2006'>109</a>]</span>). However in Parkinson’s disease, exaggerated synchronization
+occurring in the form of prolonged and more frequent beta bursts are linked to the
+disruption of normal sensorimotor processing and correlate with motor impairment
+<span class='cite'>[<a href='indexli5.html#Xtinkhauser_modulatory_2017'>353</a>, <a href='indexli5.html#Xtinkhauser_beta_2017'>354</a>]</span>.
+</p><!-- l. 634 --><p class='indent'>   Indeed, beta-band (13-30 Hz) oscillations in the BG are consistently strengthened with
+dopamine depletion, both in individuals with PD and in parkinsonian animal models
+                                                                                
+
+                                                                                
+<span class='cite'>[<a href='indexli5.html#Xsharott_dopamine_2005'>325</a>, <a href='indexli5.html#Xmallet_disrupted_2008'>224</a>, <a href='indexli5.html#Xkuhn_high-frequency_2008'>189</a>]</span>, and are reduced by deep brain stimulation and pharmacological interventions
+that alleviate parkinsonian motor symptoms <span class='cite'>[<a href='indexli5.html#Xkuhn_reduction_2006'>190</a>, <a href='indexli5.html#Xweinberger_beta_2006'>369</a>, <a href='indexli5.html#Xeusebio_deep_2011'>97</a>, <a href='indexli5.html#Xray_local_2008'>303</a>]</span>. The magnitude of
+subthalamic nucleus local field potential beta oscillations is also correlated with
+the severity and degree of improvement of bradykinetic/akinetic motor symptoms
+and rigidity <span class='cite'>[<a href='indexli5.html#Xkuhn_reduction_2006'>190</a>, <a href='indexli5.html#Xbronte-stewart_stn_2009'>42</a>, <a href='indexli5.html#Xneumann_subthalamic_2016'>262</a>]</span>. Although beta-band oscillations may not be causal to
+bradykinetic/akinetic symptoms <span class='cite'>[<a href='indexli5.html#Xleblois_late_2007'>197</a>, <a href='indexli5.html#Xsyed_oscillatory_2012'>342</a>, <a href='indexli5.html#Xdevergnas_relationship_2014'>85</a>, <a href='indexli5.html#Xpan_neuronal_2016'>273</a>]</span>, they offer potential as a biomarker for
+symptom severity and the underlying network pathophysiology in advanced Parkinson’s
+Disease <span class='cite'>[<a href='indexli5.html#Xrosin_closed-loop_2011'>311</a>, <a href='indexli5.html#Xlittle_adaptive_2013'>210</a>]</span>. Other studies have found that sub-beta-band oscillations
+(<!-- l. 650 --><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'> <mo class='MathClass-rel'>&lt;</mo></math> 13
+Hz) in the LFP are correlated with bradykinetic-akinetic and axial symptoms of PD <span class='cite'>[<a href='indexli5.html#Xsharott_activity_2014'>323</a>, <a href='indexli5.html#Xdevergnas_relationship_2014'>85</a>]</span>.
+This frequency band overlaps with the frequency range of Parkinsonian tremor (4-7 Hz,
+<span class='cite'>[<a href='indexli5.html#Xkoller_tremors_1989'>186</a>, <a href='indexli5.html#Xmoustafa_motor_2016'>258</a>]</span>). Tremor-related activity has been observed in the STN in single cell and multi-unit
+spiking activity <span class='cite'>[<a href='indexli5.html#Xmagarinos-ascone_subthalamic_2000'>219</a>, <a href='indexli5.html#Xamtage_tremor-correlated_2008'>15</a>]</span>, and in local field potentials <span class='cite'>[<a href='indexli5.html#Xreck_characterisation_2009'>304</a>, <a href='indexli5.html#Xtass_causal_2010'>344</a>]</span>. Finaly, gamma band
+(<!-- l. 666 --><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'> <mo class='MathClass-rel'>&gt;</mo></math> 30
+Hz) oscillations in the BG and thalamic receiving areas of the BG are reported as pro-kinetic
+in PD patients and correlated positively with movement and DA administration in several
+studies <span class='cite'>[<a href='indexli5.html#Xkempf_gamma_2009'>176</a>, <a href='indexli5.html#Xkammermeier_effects_2016'>172</a>, <a href='indexli5.html#Xdevergnas_relationship_2014'>85</a>, <a href='indexli5.html#Xbrown_dopamine_2001'>44</a>]</span>.
+</p><!-- l. 673 --><p class='noindent'>
+</p>
+   <h5 class='subsubsectionHead'><a id='x7-260002.3.3'></a>Mechanisms of oscillations</h5>
+<!-- l. 682 --><p class='noindent'>The origin of exaggerated beta-band oscillations in the dopamine-depleted BGTC network,
+however, remains unclear. The most prominent hypotheses emphasize the importance of
+dopamine-modulated strengthening of particular feedback loops within the BGTC network.
+Computational models have provided a valuable tool with which to explore various hypotheses
+regarding the mechanisms by which oscillatory activity with the network is generated.
+Different models have placed the origin of beta and sub-beta-band oscillations in the
+STN-GPe network <span class='cite'>[<a href='indexli5.html#Xterman_activity_2002'>349</a>, <a href='indexli5.html#Xgillies_neuroinformatics_2007'>121</a>, <a href='indexli5.html#Xholgado_conditions_2010'>154</a>, <a href='indexli5.html#Xpavlides_improved_2012'>279</a>]</span>, in cortical and thalamo-cortical circuits
+<span class='cite'>[<a href='indexli5.html#Xsherman_neural_2016'>330</a>, <a href='indexli5.html#Xreis_thalamocortical_2019'>306</a>, <a href='indexli5.html#Xpavlides_computational_2015'>278</a>, <a href='indexli5.html#Xliu_neural_2017'>213</a>]</span>, in striatal or pallidostriatal circuits <span class='cite'>[<a href='indexli5.html#Xmccarthy_striatal_2011'>235</a>, <a href='indexli5.html#Xcorbit_pallidostriatal_2016'>67</a>, <a href='indexli5.html#Xdamodaran_desynchronization_2015'>70</a>]</span>, or in the full BGTC
+loop <span class='cite'>[<a href='indexli5.html#Xpavlides_computational_2015'>278</a>, <a href='indexli5.html#Xkumaravelu_biophysical_2016'>193</a>, <a href='indexli5.html#Xleblois_competition_2006'>196</a>, <a href='indexli5.html#Xkang_interaction_2013'>174</a>]</span>. These models show that under many conditions the network is
+prone to oscillate, through intrinsic pacemaking or susceptibility to an extrinsic
+rhythm.
+</p><!-- l. 700 --><p class='indent'>   The reciprocally connected subthalamo-pallidal (STN-GPe) network is a key site in the
+                                                                                
+
+                                                                                
+basal ganglia in which beta-band oscillations are manifest in Parkinson’s disease <span class='cite'>[<a href='indexli5.html#Xmallet_parkinsonian_2008'>223</a>, <a href='indexli5.html#Xmallet_disrupted_2008'>224</a>]</span>.
+This network was an early focus of modelling studies due to its reciprocally connected
+structure and ability to generate low frequency oscillations in tissue cultures <span class='cite'>[<a href='indexli5.html#Xplenz_basal_1999'>287</a>]</span>. Models of
+the STN-GPe as a pacemaker initially focused on the generation of low frequency oscillations
+within the frequency range of parkinsonian tremor <span class='cite'>[<a href='indexli5.html#Xgillies_subthalamic-pallidal_2002'>119</a>, <a href='indexli5.html#Xterman_activity_2002'>349</a>]</span>, with focus shifting to the
+beta-band with increasing evidence of a link between beta activity and parkinsonian motor
+symptoms <span class='cite'>[<a href='indexli5.html#Xholgado_conditions_2010'>154</a>, <a href='indexli5.html#Xpavlides_improved_2012'>279</a>]</span>.
+</p><!-- l. 712 --><p class='indent'>   More recent experimental evidence suggests that, rather than the STN-GPe network
+operating in a pacemaking mode, patterning by cortex may play a critical role in
+the generation of pathological beta-band oscillations in Parkinson’s disease. This is
+supported by observations of high functional coupling between cortex and STN
+<span class='cite'>[<a href='indexli5.html#Xmallet_parkinsonian_2008'>223</a>, <a href='indexli5.html#Xmagill_brain_2004'>220</a>, <a href='indexli5.html#Xmoran_alterations_2011'>255</a>, <a href='indexli5.html#Xsharott_dopamine_2005'>325</a>, <a href='indexli5.html#Xlitvak_resting_2011'>212</a>, <a href='indexli5.html#Xstein_beta_2013'>337</a>]</span>, and that oscillatory activity in STN-GPe is contingent on
+inputs from the cortex and can be abolished by disrupting them <span class='cite'>[<a href='indexli5.html#Xdrouot_functional_2004'>91</a>, <a href='indexli5.html#Xmagill_dopamine_2001'>221</a>, <a href='indexli5.html#Xtachibana_subthalamo-pallidal_2011'>343</a>]</span>. Cortical
+patterning of the STN-GPe network by means of feedback inhibition provides a proposed
+mechanism for this functional coupling <span class='cite'>[<a href='indexli5.html#Xbaufreton_enhancement_2005'>21</a>, <a href='indexli5.html#Xbevan_cellular_2006'>33</a>, <a href='indexli5.html#Xtachibana_subthalamo-pallidal_2011'>343</a>, <a href='indexli5.html#Xmallet_parkinsonian_2008'>223</a>, <a href='indexli5.html#Xmallet_dichotomous_2012'>225</a>]</span>. According to this
+hypothesis, weak oscillatory activity entering the BG network via cortico-STN and/or
+cortico-striatal afferents is amplified in the STN-GPe network when feedback inhibition
+from the GPe is offset in phase with cortical excitation. Several mechanisms have
+been hypothesized to contribute to the increased susceptibility of the STN-GPe
+feedback loop to oscillatory entrainment after dopamine depletion. First, the increased
+effectiveness of GPe IPSP in hyperpolarizing STN neurons leads to stronger
+coupling of STN spikes to cortical EPSP, as a result of the higher availability of
+<!-- l. 727 --><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><mi mathvariant='italic'>Na</mi><mo class='MathClass-bin'>+</mo></math> and
+<!-- l. 727 --><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><mi>C</mi><msup><mrow><mi>a</mi></mrow><mrow><mn>2</mn><mo class='MathClass-bin'>+</mo></mrow></msup></math>
+channels that enable low-latency responses and rebound spiking <span class='cite'>[<a href='indexli5.html#Xbaufreton_enhancement_2005'>21</a>, <a href='indexli5.html#Xhallworth_globus_2005'>140</a>, <a href='indexli5.html#Xhallworth_apamin-sensitive_2003'>141</a>, <a href='indexli5.html#Xotsuka_excitatory_2001'>272</a>]</span>. Second,
+after DD both STN and GPe neurons undergo changes in ion channel expression that
+decrease autonomous pacemaking and de-linearizes their current-firing rate response
+<span class='cite'>[<a href='indexli5.html#Xloucif_depolarisation_2008'>214</a>, <a href='indexli5.html#Xzhu_pharmacological_2002'>384</a>, <a href='indexli5.html#Xmciver_chemogenetic_2018'>243</a>, <a href='indexli5.html#Xmciver_maladaptive_2019'>242</a>, <a href='indexli5.html#Xchan_hcn_2011'>56</a>]</span>. Finally, striatal iMSN become functionally decoupled from cortical
+motor inputs through de-afferentiation and dendritic shrinkage and increase their spontaneous
+activity: this decreases their ability to precisely interrupt GPe neuron activity and results in a
+phase shift in GPe neuron spiking activity relative to CTX afferents to the STN
+<span class='cite'>[<a href='indexli5.html#Xday_selective_2006'>75</a>, <a href='indexli5.html#Xbaufreton_enhancement_2005'>21</a>, <a href='indexli5.html#Xmallet_cortical_2006'>222</a>, <a href='indexli5.html#Xmallet_parkinsonian_2008'>223</a>, <a href='indexli5.html#Xmallet_dichotomous_2012'>225</a>]</span>. Feedback-mediated oscillations that are hypothesized to arise as a
+result of these physiological changes have been observed in vivo <span class='cite'>[<a href='indexli5.html#Xpaz_rhythmic_2005'>280</a>]</span> and in slices
+                                                                                
+
+                                                                                
+<span class='cite'>[<a href='indexli5.html#Xbaufreton_enhancement_2005'>21</a>]</span>. However, computational models have not yet been used to investigate how
+pathological activity may arise as a result of the combined effect of such changes
+in neurophysiology and cell morphology. Moreover, the ability of the network to
+generate autonomous oscillations and its resonant response properties are still poorly
+understood.
+</p><!-- l. 746 --><p class='noindent'>
+</p>
+   <h3 class='sectionHead'><span class='titlemark'>2.4   </span> <a id='x7-270002.4'></a>Mechanism of action of DBS</h3>
+<!-- l. 763 --><p class='noindent'>Despite its clinical success and widespread adoption, the mechanism of action of DBS remains
+unclear, both at the cellular and network level (Fig. <a href='#x7-270014'>2.4<!-- tex4ht:ref: fig:dbs-local-effects  --></a>). At the cellular level, the interaction
+of the electric field generated by the implanted electrode with the polarizable neuronal
+membrane can produce complex effects depending on local electrical membrane properties,
+neurite geometries and their orientation in the electric field <span class='cite'>[<a href='indexli5.html#Xranck_which_1975'>299</a>, <a href='indexli5.html#Xnowak_axons_1998'>265</a>, <a href='indexli5.html#Xjohnson_quantifying_2008'>168</a>, <a href='indexli5.html#Xyousif_evaluating_2010'>377</a>]</span>. In addition,
+the indirect effects resulting from the modulation of local neurochemistry through
+neurotransmitter and gliotransmitter release are poorly understood <span class='cite'>[<a href='indexli5.html#Xmcintyre_deep_2016'>237</a>]</span>. The mechanism of
+action at the network level is also unclear, with high-frequency spiking patterns in stimulated
+neurons propagating both orthodromically and antidromically <span class='cite'>[<a href='indexli5.html#Xli_resonant_2007'>203</a>]</span> along the axons, affecting
+synaptic filtering properties downstream <span class='cite'>[<a href='indexli5.html#Xrosenbaum_axonal_2014'>308</a>]</span>, and resulting in spike collision or somatic
+invasion upstream <span class='cite'>[<a href='indexli5.html#Xli_therapeutic_2012'>202</a>, <a href='indexli5.html#Xkang_effects_2014'>175</a>]</span>.
+</p>
+   <figure class='figure'> 
+
+                                                                                
+
+                                                                                
+<a id='x7-270014'></a>
+                                                                                
+
+                                                                                
+<!-- l. 781 --><p class='noindent'><img alt='PIC' width='418' src='ch_background_literature/figs/JakobsLozano2018_CellularEffectsDBS_50pc.jpg' height='418' />
+</p>
+<figcaption class='caption'><span class='id'>Figure 2.4:</span><span class='content'><span class='cmbx-10x-x-109'>Factors contributing to net effects of DBS </span>by <span class='cite'>[<a href='indexli5.html#Xjakobs_cellular_2019'>165</a>]</span>, licensed under
+<a href='https://creativecommons.org/licenses/by/4.0/'>CC-BY 4.0</a></span></figcaption><!-- tex4ht:label?: x7-270014  -->
+                                                                                
+
+                                                                                
+   </figure>
+<!-- l. 798 --><p class='indent'>   At the cellular level both excitatory and inhibitory responses have been observed in
+stimulated neurons in response to DBS, mediated by different mechanisms. Stimulation of
+local GABAergic and glutamergic afferents can produce both types of responses
+<span class='cite'>[<a href='indexli5.html#Xlee_neurotransmitter_2004'>198</a>, <a href='indexli5.html#Xanderson_mechanisms_2004'>17</a>]</span>, including multiphasic ones <span class='cite'>[<a href='indexli5.html#Xbar-gad_complex_2004'>20</a>, <a href='indexli5.html#Xerez_short-term_2009'>95</a>, <a href='indexli5.html#Xmccairn_deep_2009'>234</a>, <a href='indexli5.html#Xkita_cortical_2011'>181</a>]</span>. Direct effects on the membrane
+voltage can trigger spikes through the activation of voltage-gated Na channels <span class='cite'>[<a href='indexli5.html#Xmcintyre_deep_2016'>237</a>]</span>,
+but can also cause depolarization block, and inactivation of ion channels over time
+<span class='cite'>[<a href='indexli5.html#Xbeurrier_high-frequency_2001'>31</a>, <a href='indexli5.html#Xdo_sodium_2004'>86</a>, <a href='indexli5.html#Xshin_high_2007'>332</a>]</span>.
+</p><!-- l. 808 --><p class='indent'>   Overall, the experimental evidence supports the hypothesis that the net effect of DBS on
+somatic activity depends on the relative glutamate/GABA composition of activated axon
+terminals on the target neurons <span class='cite'>[<a href='indexli5.html#Xchiken_mechanism_2016'>61</a>]</span>. In the STN, GABAergic synapses outweigh glutamergic
+ones <span class='cite'>[<a href='indexli5.html#Xparent_functional_1995-1'>274</a>]</span> but they exhibit varying degrees of short-term depression or facilitation at different
+time scales, which is engaged by high frequency stimulation <span class='cite'>[<a href='indexli5.html#Xatherton_short-term_2013'>19</a>, <a href='indexli5.html#Xfroux_d5_2018'>113</a>, <a href='indexli5.html#Xsteiner_connectivity_2019'>338</a>, <a href='indexli5.html#Xmilosevic_neuronal_2018'>249</a>]</span>. Differential
+depression in combination with variability in the number of afferents activated during
+stimulation and the unreliability of high-frequency recruitment <span class='cite'>[<a href='indexli5.html#Xzheng_axonal_2011'>382</a>, <a href='indexli5.html#Xrosenbaum_axonal_2014'>308</a>]</span> complicates making
+straightforward predictions of the net effect of activation. Inhibitory synapses on STN neurons
+were previously found to exhibit lower levels of depression during DBS compared to excitatory
+synapses <span class='cite'>[<a href='indexli5.html#Xsteiner_connectivity_2019'>338</a>]</span>. Moreover, inhibitory currents mediated by metabotropic GABA<sub class='textsubscript'><span class='cmr-10'>B</span></sub>
+receptors are enhanced by high-frequency coincident excitation of GABAergic afferents
+<span class='cite'>[<a href='indexli5.html#Xbevan_cellular_2006'>33</a>]</span>, likely contributing to a net inhibitory effect of high-frequency DBS on STN
+neurons. In support of this, recent experiments have shown that prolonged silent
+periods in STN neurons are triggered by high-frequency stimulation (HFS) and that
+the length of silent periods correlated with improved clinical outcome <span class='cite'>[<a href='indexli5.html#Xmilosevic_neuronal_2018'>249</a>]</span>. This
+inhibition of STN somata was hypothesized to be caused by activation of GABA<sub class='textsubscript'><span class='cmr-10'>B</span></sub>
+receptors <span class='cite'>[<a href='indexli5.html#Xmilosevic_neuronal_2018'>249</a>]</span> or by an altered balance of excitation and inhibition during DBS,
+mediated by differential short-term depression of GABAergic and glutamergic synapses
+<span class='cite'>[<a href='indexli5.html#Xsteiner_connectivity_2019'>338</a>]</span>.
+</p><!-- l. 843 --><p class='indent'>   Consistent with these experimental observations computational models predict an
+inhibitory effect of DBS on somatic spiking, mediated by activation of presynaptic terminals,
+whereas axons are likely to become entrained to the HFS pulse train, dependent on their
+orientation to and distance from the electrode <span class='cite'>[<a href='indexli5.html#Xmcintyre_cellular_2004'>236</a>, <a href='indexli5.html#Xmiocinovic_computational_2006'>250</a>]</span>. This leads to a dissociation
+between inputs and output in the STN, where the axonal outputs are overridden by a
+constant-frequency pulse train with near-zero information content (‘information lesion’
+                                                                                
+
+                                                                                
+hypothesis, <span class='cite'>[<a href='indexli5.html#Xgrill_deep_2004'>129</a>]</span>). Moreover, the terminals of stimulated axons can be driven to depression by
+synaptic vesicle depletion as a result of high-frequency release, contributing to a disruption in
+information transmission <span class='cite'>[<a href='indexli5.html#Xrosenbaum_axonal_2014'>308</a>]</span>. The information lesion is thought to be partial,
+since action potentials are not triggered with 100% reliability in response to each
+DBS pulse, and movement-related discharges are still observed in the target nuclei
+<span class='cite'>[<a href='indexli5.html#Xagnesi_deep_2013'>9</a>, <a href='indexli5.html#Xzimnik_movement-related_2015'>385</a>]</span>.
+</p><!-- l. 859 --><p class='indent'>   This high-frequency activation of efferents with ensuing synaptic effects downstream
+seems to play an important role in establishing the therapeutic effects of DBS. An
+optogenetic stimulation study in behaving rats showed that direct inhibition of STN
+neurons had no effect on motor symptoms, whereas high frequency stimulation of
+excitatory afferents reduced spiking of STN neurons and robustly improved motor
+symptoms <span class='cite'>[<a href='indexli5.html#Xgradinaru_optical_2009'>126</a>]</span>. While direct high-frequency stimulation of STN somata was not
+effective at improving symptoms in that study, the experiment was repeated in a
+later study using faster opsin proteins, better at following high-frequency optical
+activation, did find robust symptom improvement with 130 Hz direct stimulation
+<span class='cite'>[<a href='indexli5.html#Xyu_frequency-specific_2020'>378</a>]</span>.
+</p><!-- l. 873 --><p class='indent'>   Besides efferent axons, afferent axons to the stimulated nucleus are also entrained by
+DBS, and antidromically traveling action potentials are believed to contribute to
+network desynchronization and therapeutic effects of DBS <span class='cite'>[<a href='indexli5.html#Xli_resonant_2007'>203</a>, <a href='indexli5.html#Xli_therapeutic_2012'>202</a>]</span>. Antidromically
+propagating action potentials have been observed in cortex-STN afferents <span class='cite'>[<a href='indexli5.html#Xli_resonant_2007'>203</a>]</span> and
+there is indirect evidence that they are triggered in GPe-STN axons <span class='cite'>[<a href='indexli5.html#Xhashimoto_stimulation_2003'>146</a>, <a href='indexli5.html#Xagnesi_fidelity_2015'>10</a>]</span>. They
+can collide with orthodromically traveling action potentials or invade the soma,
+thereby altering spiking patterns in the upstream circuit. However it is not currently
+understood how each of these effects contribute to the therapeutic effects of DBS
+<span class='cite'>[<a href='indexli5.html#Xjakobs_cellular_2019'>165</a>]</span>.
+</p>
+   <h3 class='sectionHead'><span class='titlemark'>2.5   </span> <a id='x7-280002.5'></a>Approaches to computational modeling of the basal ganglia and DBS</h3>
+<!-- l. 915 --><p class='noindent'>As outlined in Section <a href='#x7-260002.3.3'>2.3.3<!-- tex4ht:ref: sec:ch2-oscillation-mechanisms  --></a> - <a href='#x7-270002.4'>2.4<!-- tex4ht:ref: sec:ch2-dbs-mechanisms  --></a>, computational modeling is a valuable tool to investigate
+brain dynamics at different spatial and temporal scales. Next to in vivo and in vitro
+experimentation, it provides complementary methods to understand neuronal circuit
+function and provide access to parameters that are difficult or impossible to measure
+                                                                                
+
+                                                                                
+or alter in biological experiments. Moreover, by providing simultaneous access to
+large numbers of variables that may span entire neuronal networks they provide
+a means to discover complex interactions using large-scale multivariate analysis
+techniques. When the aim is the design and optimization of deep brain stimulation
+protocols, it has the additional benefit of offering a safe and cost-efficient environment
+for implementing them compared to laboratory or clinical settings. In this way,
+modeling can be used in concert with experimental data gathering in the iterative
+process of generating model-driven predictions, experimental verification, and model
+refinement.
+</p><!-- l. 937 --><p class='indent'>   In the current section, an overview of different modeling approaches to investigate BG
+network dysfunction and the effects of DBS will be presented. For the purpose of categorizing
+computational modeling methods, several dimensions can be distinguished. One useful
+dimension is the level of abstraction to describe neural systems, which is tightly related to the
+spatial and temporal scale of phenomena described by the model equations. This
+dimension ranges from detailed biophysical models of intracellular signaling and
+membrane dynamics to mean field models of neural populations. At the lower end,
+equations represent chemical reactions and transitions between structural conformations
+in membrane-bound proteins, while at the upper end they represent fluctuations
+in the mean firing rates or membrane potentials of entire neural populations. A
+second useful dimension is the type of questions addressed using the model, on a
+spectrum of mechanistic-physical questions to computational-cognitive questions about
+brain function. At one end of this spectrum, mechanistic models focus on explaining
+biophysical aspects of brain function such as the dynamics of neuronal spike generation, of
+neurochemical reactions, and the generation of and interaction with extracellular
+electric field. At the other end, computational-cognitive neuroscience models focus on
+explaining the computations performed by the brain in support of cognitive function, and
+the role of different anatomical pathways and connection patterns. Although these
+dimensions are not entirely orthogonal, they form a useful guide to navigate the
+landscape of modeling studies into brain function and basal ganglia function in
+particular. Because the aims of this thesis include giving a mechanistic account of BG
+pathophysiology and its interaction with DBS, the focus will be on models that cover these
+questions.
+                                                                                
+
+                                                                                
+</p><!-- l. 968 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>2.5.1   </span> <a id='x7-290002.5.1'></a>Network models of pathological oscillations</h4>
+<!-- l. 978 --><p class='noindent'>It is still unclear how exaggerated oscillations throughout BGTC networks seen in PD
+and linked to motor symptoms are generated. While the modern view of the basal
+ganglia shows the existence of multiple feedback loops within the network (Fig. <a href='#x7-180013'>2.3<!-- tex4ht:ref: fig:bg_pathways-projections  --></a>),
+initial studies focused on the sub-network formed by the reciprocally connected
+STN and GPe as a source of oscillatory activity. This was based on experimental
+grounds, because experiments in tissue cultures showed an intrinsic ability to produce
+synchronized, low-frequency (0.4-1.8 Hz) oscillatory bursting activity <span class='cite'>[<a href='indexli5.html#Xplenz_basal_1999'>287</a>]</span>, and
+on theoretical grounds, due to the negative feedback structure of the STN-GPe
+loop.
+</p><!-- l. 988 --><p class='noindent'>
+</p>
+   <h5 class='subsubsectionHead'><a id='x7-300002.5.1'></a>Models of the STN-GPe network</h5>
+<!-- l. 990 --><p class='noindent'>The same mechanism of oscillatory bursting, mediated by alternating phases of
+excitation and inhibition and rebound bursting in the STN, was modeled using
+single-compartment conductance-based neuron models by <span class='cite'>[<a href='indexli5.html#Xterman_activity_2002'>349</a>]</span> and shown to generate
+tremor-frequency oscillations (3-8 Hz). Successive models focused on the generation of
+sub-beta and beta-band oscillations by the STN-GPe loop using mean field models
+<span class='cite'>[<a href='indexli5.html#Xgillies_subthalamic-pallidal_2002'>119</a>, <a href='indexli5.html#Xholgado_conditions_2010'>154</a>, <a href='indexli5.html#Xpavlides_improved_2012'>279</a>, <a href='indexli5.html#Xpasillas-lepine_delay-induced_2013'>277</a>, <a href='indexli5.html#Xdavidson_analysis_2016'>71</a>]</span>, and using spiking models <span class='cite'>[<a href='indexli5.html#Xpark_neural_2011'>276</a>, <a href='indexli5.html#Xkumar_role_2011'>191</a>, <a href='indexli5.html#Xmandali_spiking_2015'>227</a>, <a href='indexli5.html#Xmerrison-hort_emergence_2013'>246</a>, <a href='indexli5.html#Xahn_synchronized_2016'>11</a>, <a href='indexli5.html#Xwei_role_2015'>368</a>, <a href='indexli5.html#Xschwab_sparse_2016'>321</a>]</span>,
+supported by the increasing evidence of a link between beta-band activity and PD motor
+symptoms.
+</p><!-- l. 999 --><p class='indent'>   The necessary conditions for the emergence of strong oscillatory activity in the
+STN-GPe network have been reported in different computational studies as increased
+reciprocal connection strength between the STN and GPe <span class='cite'>[<a href='indexli5.html#Xterman_activity_2002'>349</a>, <a href='indexli5.html#Xholgado_conditions_2010'>154</a>, <a href='indexli5.html#Xpavlides_improved_2012'>279</a>, <a href='indexli5.html#Xpark_neural_2011'>276</a>, <a href='indexli5.html#Xwei_role_2015'>368</a>]</span>,
+increased striatal inhibition of the GPe <span class='cite'>[<a href='indexli5.html#Xterman_activity_2002'>349</a>, <a href='indexli5.html#Xkumar_role_2011'>191</a>, <a href='indexli5.html#Xholgado_conditions_2010'>154</a>, <a href='indexli5.html#Xvan_albada_mean-field_2009'>359</a>]</span> and the presence of
+strong cortical excitation of the STN <span class='cite'>[<a href='indexli5.html#Xkumar_role_2011'>191</a>, <a href='indexli5.html#Xnevado-holgado_effective_2014'>263</a>]</span>. The latter two conditions work in a
+synchrony-promoting manner by decreasing GPe firing rates, thereby increasing
+the excitation:inhibition ratio in STN neurons and allowing for the build-up of an
+excitatory phase in STN neurons, which is later interrupted by a wave of feedback
+inhibition by the GPe. Some models additionally required intra-STN lateral excitation
+                                                                                
+
+                                                                                
+for the loop to generate oscillations <span class='cite'>[<a href='indexli5.html#Xgillies_subthalamic-pallidal_2002'>119</a>, <a href='indexli5.html#Xmandali_spiking_2015'>227</a>]</span> although the experimental evidence
+for this is mixed <span class='cite'>[<a href='indexli5.html#Xsteiner_connectivity_2019'>338</a>]</span>. Moreover, the role of intra-pallidal inhibition is unclear:
+in the study of <span class='cite'>[<a href='indexli5.html#Xterman_activity_2002'>349</a>]</span> strong lateral inhibition desynchronized activity in the loop
+whereas lateral GPe-GPe inhibition measured experimentally is strengthened after
+DD <span class='cite'>[<a href='indexli5.html#Xmiguelez_altered_2012'>248</a>, <a href='indexli5.html#Xwatanabe_presynaptic_2009'>366</a>]</span>. A spiking model of the STN-GPe network resolved this paradox by
+suggesting that increased lateral inhibition might be counteracted by increased gap
+junction-mediated connectivity between GPe neurons after DD <span class='cite'>[<a href='indexli5.html#Xschwab_sparse_2016'>321</a>]</span>, which has
+some experimental support <span class='cite'>[<a href='indexli5.html#Xrash_immunogold_2000'>300</a>, <a href='indexli5.html#Xschwab_pallidal_2014'>320</a>, <a href='indexli5.html#Xphookan_gap_2015'>283</a>]</span>. Another explanation is provided by
+a mean field model by <span class='cite'>[<a href='indexli5.html#Xliu_neural_2017'>213</a>]</span> where strong GPe lateral inhibition promotes upper
+beta-band (21-35Hz) oscillations and weak inhibition favors lower beta-band (12-20Hz)
+oscillations.
+</p><!-- l. 1031 --><p class='noindent'>
+</p>
+   <h5 class='subsubsectionHead'><a id='x7-310002.5.1'></a>Extended BG network models</h5>
+<!-- l. 1038 --><p class='noindent'>Other network models have placed the origin of beta-band and sub-beta oscillations in cortical
+and thalamo-cortical circuits <span class='cite'>[<a href='indexli5.html#Xsherman_neural_2016'>330</a>, <a href='indexli5.html#Xpavlides_computational_2015'>278</a>, <a href='indexli5.html#Xreis_thalamocortical_2019'>306</a>, <a href='indexli5.html#Xliu_neural_2017'>213</a>]</span>, through interactions in the entire BGTC
+network <span class='cite'>[<a href='indexli5.html#Xpavlides_computational_2015'>278</a>, <a href='indexli5.html#Xkumaravelu_biophysical_2016'>193</a>, <a href='indexli5.html#Xleblois_competition_2006'>196</a>, <a href='indexli5.html#Xkang_interaction_2013'>174</a>, <a href='indexli5.html#Xvan_albada_mean-field_2009'>359</a>]</span>, or locally in striatal or pallidostriatal circuits
+<span class='cite'>[<a href='indexli5.html#Xmccarthy_striatal_2011'>235</a>, <a href='indexli5.html#Xcorbit_pallidostriatal_2016'>67</a>, <a href='indexli5.html#Xdamodaran_desynchronization_2015'>70</a>]</span>. In the thalamo-cortical origin hypothesis, beta-band activity originates through
+reciprocal interactions between cortex and thalamus <span class='cite'>[<a href='indexli5.html#Xsherman_neural_2016'>330</a>, <a href='indexli5.html#Xreis_thalamocortical_2019'>306</a>]</span> which then resonates in the
+STN-GPe feedback loop <span class='cite'>[<a href='indexli5.html#Xpavlides_computational_2015'>278</a>]</span>. Alternatively, oscillations arise through resonant interactions
+between oscillations in the long loop through the hyperdirect pathway (CTX-STN-GPi-THA)
+and in the STN-GPe loop <span class='cite'>[<a href='indexli5.html#Xkang_interaction_2013'>174</a>, <a href='indexli5.html#Xpavlides_computational_2015'>278</a>]</span>, as well as loops formed by the direct and
+indirect pathway cortico-striatal projections <span class='cite'>[<a href='indexli5.html#Xvan_albada_mean-field_2009'>359</a>]</span>. The transient nature of beta-band
+synchronization has also been investigated in several models <span class='cite'>[<a href='indexli5.html#Xpark_fine_2010'>275</a>, <a href='indexli5.html#Xpark_neural_2011'>276</a>, <a href='indexli5.html#Xsherman_neural_2016'>330</a>, <a href='indexli5.html#Xmirzaei_sensorimotor_2017'>252</a>]</span>. <span class='cite'>[<a href='indexli5.html#Xsherman_neural_2016'>330</a>]</span>
+showed that transient beta-band oscillations in cortical magnetoencephalography data
+could be explained in a cortical network model consisting of biophysically-based
+multi-compartment neuron models as arising from the disruption of broad excitatory
+drive to proximal dendrites of pyramidal neurons by strong distal drive over one
+beta period. Sub-cortically, <span class='cite'>[<a href='indexli5.html#Xmirzaei_sensorimotor_2017'>252</a>]</span> showed that transient beta-band oscillations in the
+STN-GPe network arose spontaneously when sensorimotor activity recorded from
+rats was fed into the model through the hyperdirect and indirect pathways. In the
+striatal origin hypothesis, a model by <span class='cite'>[<a href='indexli5.html#Xmccarthy_striatal_2011'>235</a>]</span> hypothesized that synchronized beta-band
+                                                                                
+
+                                                                                
+oscillations arise from exaggerated collateral inhibition between striatal MSN that
+inactivates intrinsic M-currents, leading to synchronized phases of excitation <span class='cite'>[<a href='indexli5.html#Xmccarthy_striatal_2011'>235</a>]</span>.
+Subsequent models attributed the origin of beta band oscillations in the BG to the
+synchronized interruption of iMSN neuron activity by inhibitory interneurons <span class='cite'>[<a href='indexli5.html#Xdamodaran_desynchronization_2015'>70</a>, <a href='indexli5.html#Xcorbit_pallidostriatal_2016'>67</a>]</span> which
+facilitate the transfer of cortical beta-band oscillations between MSN <span class='cite'>[<a href='indexli5.html#Xbelic_interplay_2017'>26</a>]</span>, with
+synchronization promoted by GPe-Striatal feedback through arkypallidal neurons
+<span class='cite'>[<a href='indexli5.html#Xcorbit_pallidostriatal_2016'>67</a>]</span>.
+</p><!-- l. 1083 --><p class='noindent'>
+</p>
+   <h5 class='subsubsectionHead'><a id='x7-320002.5.1'></a>Parameter sensitivity of oscillations</h5>
+<!-- l. 1086 --><p class='noindent'>The oscillation frequency of (sub-loops of) the BGTC network has been shown to be sensitive
+to different model parameters in previous computational models. In mean field models of the
+STN-GPe loop the oscillation frequency showed a strong sensitivity to transmission delays and
+neuronal membrane time constants <span class='cite'>[<a href='indexli5.html#Xholgado_conditions_2010'>154</a>, <a href='indexli5.html#Xlienard_beta-band_2017'>204</a>]</span>, and a weaker sensitivity to coupling strengths
+<span class='cite'>[<a href='indexli5.html#Xholgado_conditions_2010'>154</a>, <a href='indexli5.html#Xpavlides_computational_2015'>278</a>, <a href='indexli5.html#Xliu_neural_2017'>213</a>]</span>, also demonstrated in a spiking model <span class='cite'>[<a href='indexli5.html#Xwei_role_2015'>368</a>]</span>. One way that disparate findings
+in terms of transmission delays and the emergent oscillations can be reconciled is by noting the
+difference between effective transmission delays in different modeling frameworks.
+In a biophysically detailed model for example, the effective transmission delay is
+the sum of the axonal propagation delay, synaptic release and binding delays, and
+dendritic integration time <span class='cite'>[<a href='indexli5.html#Xkumar_role_2011'>191</a>]</span>. In single compartment neuron models, the dendritic
+integration time is absent, whereas in mean-field models commonly only an axonal
+propagation time is included. Furthermore, the ’coupling strengths’ that determine the
+amount of excitation or inhibition that a neuronal population receives from the source
+population of a projection are determined by different factors, further confounding
+comparisons between models. Next to the synaptic weights (peak synaptic conductance in
+conductance-based models), the background firing rate of the source population, and the
+relative amount of afferents from the source population compared to other sources on
+the target neurons all determine the effective coupling strengths between neuronal
+populations.
+</p><!-- l. 1112 --><p class='noindent'>
+                                                                                
+
+                                                                                
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>2.5.2   </span> <a id='x7-330002.5.2'></a>Modeling DBS mechanisms of action</h4>
+<!-- l. 1137 --><p class='noindent'>Various modeling approaches have been used to investigate the mechanisms of action of DBS,
+depending on the nature of the questions addressed. To study the local effects of cellular and
+axonal stimulation by DBS, models of the electric field surrounding the electrode lead during
+DBS have been coupled to multi-compartment neuronal cable models (field-cable models)
+<span class='cite'>[<a href='indexli5.html#Xmcintyre_cellular_2004'>236</a>, <a href='indexli5.html#Xmcintyre_electric_2004'>241</a>, <a href='indexli5.html#Xmiocinovic_computational_2006'>250</a>, <a href='indexli5.html#Xjohnson_quantifying_2008'>168</a>, <a href='indexli5.html#Xyousif_evaluating_2010'>377</a>, <a href='indexli5.html#Xyousif_spatiotemporal_2012'>376</a>, <a href='indexli5.html#Xkang_effects_2014'>175</a>, <a href='indexli5.html#Xanderson_action_2018'>16</a>]</span>. Some studies have also combined this method
+applied to a subset of neurons represented by cable models with other neurons represented by
+single-compartment models in order to study the network effects of DBS <span class='cite'>[<a href='indexli5.html#Xkang_effects_2014'>175</a>, <a href='indexli5.html#Xanderson_action_2018'>16</a>]</span>.
+However, typically simplifications are made in modeling the effect of DBS on neuronal
+activity when investigating the network effects of DBS or the spatial extent of axonal
+activation.
+</p><!-- l. 1153 --><p class='indent'>   Building on detailed electric field models, driving force models approximate the
+driving force exerted by the electric field on neuronal membrane voltages by a single
+membrane current per compartment that is a spatial function of the electric field
+<span class='cite'>[<a href='indexli5.html#Xrattay_basic_1999'>301</a>, <a href='indexli5.html#Xwarman_modeling_1992'>365</a>, <a href='indexli5.html#Xpeterson_predicting_2011'>281</a>]</span>. The simplest formulation is the <span class='cmti-10x-x-109'>activating function </span>method where
+the driving force is equal to the second spatial derivative of the electric field along
+a neurite element<span class='cite'>[<a href='indexli5.html#Xrattay_basic_1999'>301</a>]</span>. This result is derived from the cable equation, where the
+second spatial derivative of the field is equal to the direct contribution of the field to
+membrane depolarization. Driving force models allow representing the effect of DBS
+by equivalent intracellular current sources that are derived from detailed electric
+field models without modifying the typical cable equations to include additional
+extracellular layers. This results in higher computational efficiency in solving the cable
+equations, so that computational resources can be directed towards simulating larger
+networks. Network models making use of single-compartment neuron models commonly
+resort to a more drastic simplification where the driving force on the membrane
+voltage is a membrane current that is directly proportional to the applied electrode
+current <span class='cite'>[<a href='indexli5.html#Xfeng_optimal_2007'>103</a>, <a href='indexli5.html#Xrubin_high_2004'>312</a>, <a href='indexli5.html#Xhahn_modeling_2010'>139</a>, <a href='indexli5.html#Xpirini_computational_2009'>285</a>, <a href='indexli5.html#Xkang_interaction_2013'>174</a>, <a href='indexli5.html#Xkumaravelu_biophysical_2016'>193</a>]</span>. The motivation for this simplification is that
+the net effect of DBS on a multi-compartment, spatially extended cable neuron
+model may be represented by a single equivalent current if the neuron dynamics is
+lumped together in a single compartment. However, the dependence of this equivalent
+current on the geometry and biophysics of the extended model is typically not taken
+into account. An alternative method that is commonly used to simulate DBS in
+                                                                                
+
+                                                                                
+network models is to deliver stimulus-locked spikes to synapses at axon terminals
+that are assumed to be stimulated <span class='cite'>[<a href='indexli5.html#Xhahn_modeling_2010'>139</a>, <a href='indexli5.html#Xguo_thalamocortical_2008'>135</a>, <a href='indexli5.html#Xmcintyre_cellular_2004'>236</a>, <a href='indexli5.html#Xmiocinovic_computational_2006'>250</a>]</span>. However these methods do
+not allow the effect of variations in the amplitude of the applied electric field to be
+examined.
+</p><!-- l. 1185 --><p class='indent'>   Finally, mean field models of neuronal populations are commonly used for the
+design and testing of DBS control algorithms because of their ease of analysis due to
+the low number of state variables, analytical tractability, and low computational
+complexity.
+</p><!-- l. 1191 --><p class='noindent'>
+</p>
+   <h5 class='subsubsectionHead'><a id='x7-340002.5.2'></a>Models of isolated neuronal activation</h5>
+<!-- l. 1198 --><p class='noindent'>One strand of research has focused on quantifying the extent of neuronal activation around the
+DBS electrode, and how subcellular neuronal elements respond to DBS. The focus in these
+studies is not on the network effects of DBS, but rather on the relation between
+stimulus parameters, electrode geometry, and the spatial extent over which different
+neuronal elements are activated by DBS. These questions are typically addressed using
+field-cable and driving force models, and using predictors trained using these models
+<span class='cite'>[<a href='indexli5.html#Xgunalan_quantifying_2018'>132</a>]</span>.
+</p><!-- l. 1206 --><p class='indent'>   A common first step in field-cable models and driving force models is to calculate the
+electric field in the tissue surrounding the DBS electrode. This is done using volume conductor
+models, which can take either an analytical form or are solved numerically, using finite element
+modeling (FEM) techniques. Volume conductor models have been widely used to show how
+the field distribution during DBS is affected by the electrode placement and geometry,
+properties of the electrode-tissue interface, and heterogeneous and anisotropic electrical
+properties of brain tissue and how this affects the spatial extent of neural elements activated
+<span class='cite'>[<a href='indexli5.html#Xbossetti_analysis_2008'>39</a>, <a href='indexli5.html#Xbutson_tissue_2005'>49</a>, <a href='indexli5.html#Xgrant_effect_2010'>127</a>, <a href='indexli5.html#Xschmidt_single_2013'>317</a>, <a href='indexli5.html#Xschmidt_single_2013'>317</a>, <a href='indexli5.html#Xhowell_role_2017'>158</a>, <a href='indexli5.html#Xastrom_influence_2012'>1</a>]</span>
+</p><!-- l. 1218 --><p class='indent'>   Field-cable and driving force models of extracellular stimulation revealed that axons are
+the primary targets for direct activation by DBS rather than somatic and dendritic elements
+<span class='cite'>[<a href='indexli5.html#Xnowak_axons_1998'>265</a>, <a href='indexli5.html#Xnowak_axons_1998-1'>266</a>, <a href='indexli5.html#Xmcintyre_excitation_1999'>238</a>, <a href='indexli5.html#Xmcintyre_selective_2000'>239</a>, <a href='indexli5.html#Xmcintyre_cellular_2004'>236</a>, <a href='indexli5.html#Xmcintyre_electric_2004'>241</a>, <a href='indexli5.html#Xyousif_spatiotemporal_2012'>376</a>]</span>. The influence on somatic activity in BG neurons is
+generally inhibitory, reducing the background firing rate but rarely resulting in complete
+inhibition <span class='cite'>[<a href='indexli5.html#Xmcintyre_cellular_2004'>236</a>, <a href='indexli5.html#Xmiocinovic_computational_2006'>250</a>, <a href='indexli5.html#Xjohnson_quantifying_2008'>168</a>]</span>. These studies show that inhibition is primarily an indirect effect
+mediated by the activation of inhibitory pre-synaptic terminals that are more densely
+                                                                                
+
+                                                                                
+distributed close to the soma compared to excitatory terminals. Besides the influence of
+synaptic activation, stimulation of the dendrites and soma can also cause changes in somatic
+background activity through the activation of voltage-gated ion channels <span class='cite'>[<a href='indexli5.html#Xjohnson_quantifying_2008'>168</a>, <a href='indexli5.html#Xrattay_which_2010'>302</a>, <a href='indexli5.html#Xyousif_evaluating_2010'>377</a>, <a href='indexli5.html#Xyousif_spatiotemporal_2012'>376</a>]</span>.
+The observed inhibitory effect of DBS is generally calculated with respect to the baseline
+firing rate without DBS, and does not exclude the occurrence of stimulus-locked
+firing in somata. For example, in a model of GPi DBS that included variability
+in cell positioning, activation of excitatory and inhibitory synapses, and dendritic
+voltage-gated channels, mixed effects were seen with 42% of cells showing mild to
+strong somatic stimulus-locking and 57% showing complete or partial inhibition
+<span class='cite'>[<a href='indexli5.html#Xjohnson_quantifying_2008'>168</a>]</span>.
+</p><!-- l. 1239 --><p class='indent'>   Field-cable models are also used to build estimators of the volume of tissue where axons
+are activated by DBS (VTA). In the original formulation, axonal cable models without cell
+bodies attached were positioned perpendicularly to the electrode in a rectangular grid, and the
+volume containing axons where action potentials were triggered was calculated for a specific
+set of DBS parameters <span class='cite'>[<a href='indexli5.html#Xbutson_role_2006'>50</a>]</span>. By first calculating threshold values for the driving force required
+to activate axons, this method can be used to rapidly calculate regions of activation and
+explore stimulus parameters without solving the extended, multi-layer cable equations
+<span class='cite'>[<a href='indexli5.html#Xbutson_role_2006'>50</a>, <a href='indexli5.html#Xbutson_patient-specific_2007'>48</a>]</span>. Moreover, different classes of predictors such as artificial neural networks
+(ANN) can be trained on FC-based VTA to further speed up this process <span class='cite'>[<a href='indexli5.html#Xchaturvedi_artificial_2013'>57</a>]</span>. In
+combination with VTA methods, the estimation of electrical tissue properties based on
+magnetic resonance imaging (MRI) data enables the use of VTA predictions on a
+patient-specific basis <span class='cite'>[<a href='indexli5.html#Xbutson_patient-specific_2007'>48</a>, <a href='indexli5.html#Xastrom_method_2009'>2</a>]</span>. This allows direct use of VTA models in the clinic
+for DBS lead positioning and stimulation parameters selection, with the goal of
+activating targeted axon bundles and minimizing the activation of other structures
+<span class='cite'>[<a href='indexli5.html#Xsakas_stimexplorer_2007'>47</a>, <a href='indexli5.html#Xsakas_cicerone_2007'>251</a>, <a href='indexli5.html#Xfrankemolle_reversing_2010'>111</a>, <a href='indexli5.html#Xnoecker_stimvision_2018'>264</a>]</span>.
+</p><!-- l. 1263 --><p class='noindent'>
+</p>
+   <h5 class='subsubsectionHead'><a id='x7-350002.5.2'></a>Spiking network models of DBS</h5>
+<!-- l. 1271 --><p class='noindent'>In parallel with models of isolated neurons, network models of biophysically-based spiking
+neuron models have been used extensively to study the network effects of DBS. In the original
+dual pathway model of the BG by <span class='cite'>[<a href='indexli5.html#Xalbin_functional_1989'>13</a>]</span> (Fig. <a href='#x7-180013'>2.3<!-- tex4ht:ref: fig:bg_pathways-projections  --></a>.A), the effect of DBS was initially
+understood as a silencing of the STN that had become overactive as a result of
+                                                                                
+
+                                                                                
+increased striatal inhibition of the GPe in the indirect pathway <span class='cite'>[<a href='indexli5.html#Xlittle_computational_2015'>209</a>]</span>. However, based on
+the later findings of somatic-axonal decoupling and axonal entrainment by DBS
+<span class='cite'>[<a href='indexli5.html#Xhashimoto_stimulation_2003'>146</a>, <a href='indexli5.html#Xmcintyre_cellular_2004'>236</a>, <a href='indexli5.html#Xmiocinovic_computational_2006'>250</a>]</span> this interpretation was hard to maintain, as STN DBS would lead to
+increased excitation of the GPi. This paradox can be resolved by recent findings
+demonstrating profound short-term depression (STD) at axon terminals entrained by HFS
+DBS <span class='cite'>[<a href='indexli5.html#Xrosenbaum_axonal_2014'>308</a>]</span>, demonstrating that the dual pathway model is still useful for reasoning
+about BG activity. Later network modeling studies have taken various approaches at
+explaining the network effects of different DBS protocols, which can be distinguished
+based on the biomarkers that they attempt to control or restore to pre-parkinsonian
+levels.
+</p>
+<!-- l. 1289 --><p class='noindent'><span class='paragraphHead'><a id='x7-360002.5.2'></a><span class='cmbx-10x-x-109'>Thalamic relay fidelity</span></span>
+   An early strand of modeling studies focused on regularizing the exaggerated
+bursting activity in the GPi that is transmitted to thalamic neurons and is thought to
+impair their ability to faithfully relay information (thalamic relay fidelity biomarker,
+<span class='cite'>[<a href='indexli5.html#Xrubin_high_2004'>312</a>, <a href='indexli5.html#Xfeng_optimal_2007'>103</a>, <a href='indexli5.html#Xguo_thalamocortical_2008'>135</a>, <a href='indexli5.html#Xpirini_computational_2009'>285</a>, <a href='indexli5.html#Xhahn_modeling_2010'>139</a>, <a href='indexli5.html#Xguo_multi-site_2011'>134</a>]</span>). This was first demonstrated by <span class='cite'>[<a href='indexli5.html#Xrubin_high_2004'>312</a>]</span> in an extended version
+of the <span class='cite'>[<a href='indexli5.html#Xterman_activity_2002'>349</a>]</span> model that included the GPi and a thalamic population. In this model, STN DBS
+restored the ability of thalamic neurons to relay excitatory sensimotor input by eliminating
+oscillatory bursting inputs from the GPi that disrupted it. The same model was used to
+investigate the effectiveness of alternative DBS stimulation patterns <span class='cite'>[<a href='indexli5.html#Xfeng_optimal_2007'>103</a>]</span> and to study the
+influence of DBS on thalamic relay fidelity using experimentally recorded GPi spiking patterns
+recorded from parkinsonian monkeys <span class='cite'>[<a href='indexli5.html#Xguo_thalamocortical_2008'>135</a>]</span>. In a subsequent study by <span class='cite'>[<a href='indexli5.html#Xhahn_modeling_2010'>139</a>]</span> this model was
+further extended to include cortical beta-band activity to the STN-GPe loop, and
+the network parameters were fitted to match in vivo recordings of parkinsonian
+monkeys. Moreover, STN DBS was simulated using the updated view that STN
+efferents were entrained and somata received sub-threshold current pulses due to
+antidromic activation <span class='cite'>[<a href='indexli5.html#Xmiocinovic_computational_2006'>250</a>]</span>. The results showed how GPi bursting was reduced in a
+frequency-dependent manner, and dependent on the volume of STN neurons activated by
+DBS.
+</p>
+                                                                                
+
+                                                                                
+<!-- l. 1311 --><p class='noindent'><span class='paragraphHead'><a id='x7-370002.5.2'></a><span class='cmbx-10x-x-109'>Pathological oscillations</span></span>
+   Another class of models has focused on quantifying the suppression of pathological
+oscillatory activity in specific frequency bands associated with the motor symptoms of PD
+<span class='cite'>[<a href='indexli5.html#Xkumar_role_2011'>191</a>, <a href='indexli5.html#Xkang_interaction_2013'>174</a>, <a href='indexli5.html#Xkang_effects_2014'>175</a>, <a href='indexli5.html#Xkumaravelu_biophysical_2016'>193</a>, <a href='indexli5.html#Xholt_phasic_2016'>156</a>, <a href='indexli5.html#Xpopovych_pulsatile_2017'>289</a>, <a href='indexli5.html#Xanderson_action_2018'>16</a>]</span>. <span class='cite'>[<a href='indexli5.html#Xkumar_role_2011'>191</a>]</span> simulated DBS in the STN-GPe network in two
+distinct ways and quantified the effect on the power spectrum of STN population activity, and
+a derived synchronization index. When DBS was simulated as periodic blanking of
+excitatory inputs to the STN, at least 50% of STN neurons had to be stimulated at
+<!-- l. 1318 --><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'> <mo class='MathClass-rel'>&gt;</mo></math> 100
+Hz to quench oscillatory activity but strong harmonics of the stimulation frequency were
+introduced in the spectrum. When DBS was approximated as periodic synaptic inhibition,
+oscillations were also quenched at higher stimulation frequencies but no strong harmonics were
+introduced. <span class='cite'>[<a href='indexli5.html#Xkang_interaction_2013'>174</a>]</span> simulated the emergence of beta-band oscillations in a closed-loop
+model of the BGTC network as a result of the interaction of low-frequency (1.3 Hz)
+oscillations in the STN-GPe loop and higher frequency (30 Hz) firing in the cortex, as the
+strength of the hyperdirect pathway projection was increased. Their model showed a
+reduction in oscillatory power at both beta-band and tremor frequencies as the DBS
+frequency was increased, but strengthening of beta-band oscillations through resonance
+when the DBS frequency fell in this range. A similar closed-loop model consisting of
+single-compartment conductance-based neuron models was investigated by <span class='cite'>[<a href='indexli5.html#Xkumaravelu_biophysical_2016'>193</a>]</span>. They also
+demonstrated frequency-dependent suppression of oscillations, but both in the alpha and
+beta band, for DBS frequencies greater than 50 Hz. A noteworthy features of their
+model was that it reproduced multi-phasic responses obtained experimentally by
+<span class='cite'>[<a href='indexli5.html#Xkita_cortical_2011'>181</a>]</span> using cortical microstimulation. <span class='cite'>[<a href='indexli5.html#Xholt_phasic_2016'>156</a>]</span> demonstrated the effectiveness of an
+alternative closed-loop stimulation protocol in the network model of <span class='cite'>[<a href='indexli5.html#Xhahn_modeling_2010'>139</a>]</span>. They
+show that DBS pulses applied with a fixed phase relationship to the ongoing beta
+oscillation can suppress oscillations, and that suppressing phase relationships can be
+predicted from population phase response curves. Moreover, they show that beta-band
+suppression can be achieved using lower pulse amplitudes compared to HFS DBS, and
+that phasic stimulation using bursts of pulses is more effective than single-pulse
+stimulation.
+</p>
+<!-- l. 1346 --><p class='noindent'><span class='paragraphHead'><a id='x7-380002.5.2'></a><span class='cmbx-10x-x-109'>Functional responses</span></span>
+                                                                                
+
+                                                                                
+   A third class of network models attempts to relate the efficacy of DBS to its ability
+to restore functional responses related to motor processing and decision making
+<span class='cite'>[<a href='indexli5.html#Xfrank_hold_2007'>110</a>, <a href='indexli5.html#Xsantaniello_closed-loop_2011'>316</a>, <a href='indexli5.html#Xkumar_role_2011'>191</a>, <a href='indexli5.html#Xhumphries_network_2012'>160</a>, <a href='indexli5.html#Xmandali_probing_2016'>226</a>]</span>. <span class='cite'>[<a href='indexli5.html#Xhumphries_network_2012'>160</a>]</span> investigated the effect of DBS in a network of integrate-and-fire
+neurons connected topographically in segregated ‘channels’ designed to mimic the generation
+of motor-related responses. They showed that STN DBS, simulated using an intracellular
+current source, restored a mix of excitatory and inhibitory responses in different GPi output
+neurons similar to the situation before dopaminergic lesion. <span class='cite'>[<a href='indexli5.html#Xmandali_probing_2016'>226</a>]</span> trained a network of
+Izhikevich-type neurons to perform a probabilistic learning task using reinforcement learning
+techniques and investigated the effect of DBS on the learned behaviors. They found that
+STN DBS could shift the selection bias of learned behaviors from a reward-based to
+punishment-based bias depending on the electrode position, and that reaction times were
+lower during high conflict decisions, defined as providing equal rewards for multiple
+outcomes.
+</p><!-- l. 1364 --><p class='noindent'>
+</p>
+   <h5 class='subsubsectionHead'><a id='x7-390002.5.2'></a>Mean field models of DBS</h5>
+<!-- l. 1372 --><p class='noindent'>As an alternative to networks of single-compartment neuron models, mean-field models of
+neuronal population activity <span class='cite'>[<a href='indexli5.html#Xdeco_dynamic_2008'>79</a>]</span> have been used extensively to study DBS protocols, and in
+particular those that aim to desynchronize neuronal population activity and/or suppress
+oscillatory activity.
+</p><!-- l. 1379 --><p class='indent'>   The mechanism of action of open-loop high-frequency DBS has been studied in mean-field
+models of the oscillating STN-GPe loop using methods based on control theory in <span class='cite'>[<a href='indexli5.html#Xde_paor_analysis_2009'>76</a>, <a href='indexli5.html#Xdavidson_application_2014'>72</a>, <a href='indexli5.html#Xdavidson_analysis_2016'>71</a>]</span>.
+In these models, the mean-field of each population is represented by a second order linear
+transfer function with a sigmoidal nonlinearity at its input, and the two populations are
+reciprocally connected in series in closed-loop fashion. The DBS input to the STN is
+combined with the sigmoidal nonlinearity into an equivalent nonlinearity in order to
+make the system amenable to the derivation of analytical relationships between
+DBS amplitude and frequency, and oscillation amplitudes <span class='cite'>[<a href='indexli5.html#Xdavidson_application_2014'>72</a>]</span>. Another approach to
+open-loop control is <span class='cmti-10x-x-109'>coordinated reset </span>neuromodulation where oscillating populations are
+desynchronized by applying temporally and spatially coordinated pulses to subsets of the
+populations <span class='cite'>[<a href='indexli5.html#Xtass_model_2003'>345</a>]</span>. This type of stimulation has been applied in models using spike-timing
+dependent plasticity (STDP) to demonstrate that it can cause pathologically strong
+                                                                                
+
+                                                                                
+synaptic interactions to be unlearned, with long-lasting effects after stimulation offset
+<span class='cite'>[<a href='indexli5.html#Xtass_long-term_2006'>346</a>]</span>.
+</p><!-- l. 1406 --><p class='indent'>   A large number of studies have also used mean-field models to investigate closed-loop DBS
+protocols. <span class='cite'>[<a href='indexli5.html#Xrosenblum_controlling_2004'>310</a>, <a href='indexli5.html#Xrosenblum_delayed_2004'>309</a>]</span> introduced a closed-loop control scheme where the mean field was fed
+back as an input to individual neurons, represented as oscillators, with an appropriate delay
+and amplification. This caused the neurons to desynchronize, abolishing the mean field
+oscillation but not individual neuron’s oscillatory activity. Control using feedback of the
+mean-field was later extended using nonlinear transformations applied to the mean-field to
+improve robustness of the controllers and combined with multi-site stimulation as in
+coordinated reset DBS <span class='cite'>[<a href='indexli5.html#Xhauptmann_effectively_2005'>147</a>, <a href='indexli5.html#Xpopovych_effective_2005'>288</a>, <a href='indexli5.html#Xpyragas_controlling_2007'>293</a>, <a href='indexli5.html#Xluo_washout_2009'>216</a>, <a href='indexli5.html#Xpopovych_synchronization_2010'>290</a>]</span>.
+</p><!-- l. 1418 --><p class='noindent'>
+</p>
+   <h4 class='subsectionHead'><span class='titlemark'>2.5.3   </span> <a id='x7-400002.5.3'></a>Limitations of computational models</h4>
+<!-- l. 1419 --><p class='noindent'>Each of the modeling approaches discussed above has its own merits and is suitable for
+investigating distinct aspects of the mechanism of activation by DBS, either at the subcellular
+level, on neuronal tissues at macroscopic scales, or on neuronal network activity. However,
+detailed biophysical models typically focus on isolated neurons with synaptic inputs
+represented by spike sources determined by making a priori assumptions about afferent
+activation <span class='cite'>[<a href='indexli5.html#Xmcintyre_cellular_2004'>236</a>, <a href='indexli5.html#Xmiocinovic_computational_2006'>250</a>, <a href='indexli5.html#Xjohnson_quantifying_2008'>168</a>]</span>. Hence, neuronal activity patterns do not reflect those when the
+neuron is embedded in a network and is affected by synchronized patterns of activity that
+arise as as a result of the collective network dynamics. Network models on the other hand are
+suitable to investigate emergent phenomena but typically make a priori assumptions about
+which neuronal elements are activated or inhibited by DBS. Moreover, they often neglect
+heterogeneity in activation patterns that may occur because of spatial proximity to the
+electrode, or differential activation along the cell structure as a result of its placement in
+the electric field. Instead, DBS is typically modeled as an intracellular current in
+single-compartment cell models and volume conduction effects of the surrounding tissue is not
+taken into account. The influence of DBS amplitude and pulse duration is therefore
+not captured in a biophysically correct manner. No models of BG DBS currently
+exist that simultaneously take into account subcellular and distributed effects of
+neuronal activation, and network interactions that are influenced by the propagation of
+                                                                                
+
+                                                                                
+stimulus-induced spikes both orthodromically and antidromically away from the stimulated
+nucleus.
+</p><!-- l. 1447 --><p class='indent'>   In the next two chapters, a network model will be developed that combines these features
+into a single network model so that distributed effects of DBS can be studies at the network
+scale.
+                                                                                
+
+                                                                                
+</p>
+   <!-- l. 226 --><div class='crosslinks'><p class='noindent'>[<a href='indexch3.html'>next</a>] [<a href='indexch1.html'>prev</a>] [<a href='indexch1.html#tailindexch1.html'>prev-tail</a>] [<a href='indexch2.html'>front</a>] [<a href='index.html#indexch2.html'>up</a>] </p></div>
+<!-- l. 226 --><p class='indent'>   <a id='tailindexch2.html'></a>   </p> 
+</body> 
+</html>
